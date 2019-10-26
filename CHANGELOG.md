@@ -11,6 +11,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Removed
 ### BREAKING CHANGES
 
+## [1.0.0] - 2019-10-26
+### Added
+- Add saveLocalStorage command
+- Add restoreLocalStorage command
+- Add clearLocalStorageSnapshot command
+
 ## [1.0.0-alpha.1] - 2019-10-26
 ### Added
 - Add package structure.

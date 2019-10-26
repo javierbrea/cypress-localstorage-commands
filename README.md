@@ -8,8 +8,6 @@
 
 Extends Cypress' cy commands with localStorage methods. Allows preserving localStorage between tests.
 
-> IMPORTANT NOTE: Current alpha version is not functional. This package is still in development.
-
 ## The problem
 
 You want to preserve localStorage between Cypress tests.
@@ -39,13 +37,16 @@ import 'cypress-localstorage-commands'
 You can now use all next commands:
 
 ```js
-cy.localStorageSave() // Save current localStorage values
+cy.saveLocalStorage() // Save current localStorage values into an internal "snapshot"
 ```
 
 ```js
-cy.localStorageRestore() // Restore localStorage to previously saved values
+cy.restoreLocalStorage() // Restore localStorage to previously "snapshot" saved values
 ```
 
+```js
+cy.clearLocalStorageSnapshot() // Clear localStorage "snapshot" values
+```
 
 ## Contributing
 

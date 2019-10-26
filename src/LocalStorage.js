@@ -1,27 +1,28 @@
 class LocalStorage {
+  static get publicMethods() {
+    return ["clearLocalStorageSnapshot", "saveLocalStorage", "restoreLocalStorage"];
+  }
+
   constructor(localStorage) {
     this._localStorage = localStorage;
-    this.clear();
+    this.clearLocalStorageSnapshot();
   }
 
-  get publicMethods() {
-    return ["Clear", "Restore", "Save"];
+  clearLocalStorageSnapshot() {
+    this._snapshot = {};
   }
 
-  Clear() {
-    this._memory = {};
-    this._localStorage.clear();
-  }
-
-  Save() {
+  saveLocalStorage() {
+    this.clearLocalStorageSnapshot();
     Object.keys(this._localStorage).forEach(key => {
-      this._memory[key] = this._localStorage[key];
+      this._snapshot[key] = this._localStorage.getItem(key);
     });
   }
 
-  Restore() {
-    Object.keys(this._memory).forEach(key => {
-      this._localStorage.setItem(key, this._memory[key]);
+  restoreLocalStorage() {
+    this._localStorage.clear();
+    Object.keys(this._snapshot).forEach(key => {
+      this._localStorage.setItem(key, this._snapshot[key]);
     });
   }
 }
