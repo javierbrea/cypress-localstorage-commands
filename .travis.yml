@@ -19,7 +19,6 @@ addons:
 script:
   - npm run lint
   - npm run test
-  # - npm run check-coverage
   - npm run coveralls
   - 'if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then sonar-scanner; fi'
 
