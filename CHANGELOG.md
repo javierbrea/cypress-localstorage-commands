@@ -13,4 +13,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [1.0.0-alpha.1] - 2019-10-26
 ### Added
-- First pre-release. Reserve npm package name.
+- Add package structure.
+- Package still not functional.
+- Reserve npm package name.
+

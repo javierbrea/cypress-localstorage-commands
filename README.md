@@ -8,6 +8,7 @@
 
 Extends Cypress' cy commands with localStorage methods. Allows preserving localStorage between tests.
 
+> IMPORTANT NOTE: Current alpha version is not functional. This package is still in development.
 
 ## The problem
 
