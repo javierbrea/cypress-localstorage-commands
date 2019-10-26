@@ -1,0 +1,50 @@
+{
+  "name": "cypress-localstorage-commands",
+  "version": "1.0.0-alpha.1",
+  "description": "Extends Cypress' cy commands with localStorage methods. Allows preserving localStorage between tests",
+  "keywords": [
+    "cypress",
+    "local-storage",
+    "localstorage",
+    "methods",
+    "utilities",
+    "commands",
+    "testing-tools",
+    "testing",
+    "persistence"
+  ],
+  "author": "Javier Brea",
+  "license": "MIT",
+  "repository": "https://github.com/javierbrea/cypress-localstorage-commands",
+  "files": [
+    "src"
+  ],
+  "main": "index.js",
+  "scripts": {
+    "check-coverage": "msc-istanbul check-coverage --statements=100 --lines=100 --branches=100 --functions=100",
+    "coveralls": "cat ./coverage/lcov.info | coveralls",
+    "lint": "eslint src test",
+    "lint-staged": "lint-staged",
+    "test": "mocha-sinon-chai --istanbul --include-all-sources --print=detail --mocha --recursive test"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "coveralls": "^3.0.7",
+    "eslint": "6.6.0",
+    "eslint-config-prettier": "^6.4.0",
+    "eslint-plugin-prettier": "^3.1.1",
+    "husky": "^3.0.9",
+    "lint-staged": "^9.4.2",
+    "mocha-sinon-chai": "^3.0.0",
+    "prettier": "^1.18.2"
+  },
+  "lint-staged": {
+    "src/**/*.js": "eslint",
+    "test/**/*.js": "eslint"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint-staged"
+    }
+  }
+}
