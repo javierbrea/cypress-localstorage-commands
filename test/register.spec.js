@@ -21,7 +21,9 @@ describe("register", () => {
 
   describe("methods", () => {
     it("should register all LocalStorage public methods as commands on Cypress", () => {
-      expect(cypressMock.stubs.Commands.add.callCount).toEqual(LocalStorage.publicMethods.length);
+      expect(cypressMock.stubs.Commands.add.callCount).toEqual(
+        LocalStorage.cypressCommands.length
+      );
     });
 
     it("should register clearLocalStorageSnapshot method", () => {
