@@ -1,3 +1,15 @@
-console.log(
-  "cypress-localstorage-commands: Package in development. No commands have been registered"
-);
+const LocalStorage = require("./LocalStorage");
+
+const register = (Cypress, localStorage) => {
+  const localStorageCommands = new LocalStorage(localStorage);
+  LocalStorage.cypressCommands.forEach(commandName => {
+    Cypress.Commands.add(
+      commandName,
+      localStorageCommands[commandName].bind(localStorageCommands)
+    );
+  });
+};
+
+module.exports = {
+  register
+};
