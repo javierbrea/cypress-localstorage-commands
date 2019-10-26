@@ -1,5 +1,5 @@
 class LocalStorage {
-  static get publicMethods() {
+  static get cypressCommands() {
     return ["clearLocalStorageSnapshot", "saveLocalStorage", "restoreLocalStorage"];
   }
 
