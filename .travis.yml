@@ -29,8 +29,8 @@ script:
   - npm run test
   - cd test-acceptance/app
   - npm ci
-  - npm run cypress:install
-  - DEBUG=cypress:* && npm run test:ci
+  - npm run cypress:install --force
+  - npm run test:ci
   - cd ..
   - npm run coveralls
   - 'if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then sonar-scanner; fi'
