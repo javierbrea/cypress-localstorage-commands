@@ -11,6 +11,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Removed
 ### BREAKING CHANGES
 
+## [1.1.0] - 2019-10-27
+
 ## [1.0.0] - 2019-10-26
 ### Added
 - Add saveLocalStorage command
