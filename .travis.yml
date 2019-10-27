@@ -15,9 +15,6 @@ cache:
     - ~/node_modules
     - ~/test-acceptance/app/node_modules
     - ~/.sonar/cache
-  override:
-    - npm ci
-    - npm run cy:verify
 
 addons:
   sonarcloud:
@@ -33,7 +30,7 @@ script:
   - cd test-acceptance/app
   - npm i
   - npm run cypress:install
-  - npm run test:ci
+  - DEBUG=cypress:* && npm run test:ci
   - cd ..
   - npm run coveralls
   - 'if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then sonar-scanner; fi'
