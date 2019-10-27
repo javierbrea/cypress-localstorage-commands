@@ -35,9 +35,9 @@
     ]
   },
   "devDependencies": {
-    "serve": "^11.2.0",
+    "babel-plugin-module-resolver": "^3.2.0",
     "cypress": "3.1.5",
-    "start-server-and-test": "^1.10.6",
-    "cypress-localstorage-commands": "1.0.0"
+    "serve": "^11.2.0",
+    "start-server-and-test": "^1.10.6"
   }
 }
