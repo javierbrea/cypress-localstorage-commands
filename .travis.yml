@@ -29,8 +29,8 @@ script:
   # - npm run cypress:install
   # - npm run cypress:verify
   # - npm run test:ci
-  # - cd ..
-  # - npm run coveralls
+  - cd ~
+  - npm run coveralls
   - 'if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then sonar-scanner; fi'
 
 deploy:
