@@ -3,11 +3,6 @@ language: node_js
 node_js:
   - 10.8
 
-addons:
-  apt:
-    packages:
-      - libgconf-2.so.4
-
 cache:
   directories:
     - ~/.npm
@@ -17,6 +12,9 @@ cache:
     - ~/.sonar/cache
 
 addons:
+  apt:
+    packages:
+      - libgconf-2-4
   sonarcloud:
     organization: "javierbrea"
     token:
