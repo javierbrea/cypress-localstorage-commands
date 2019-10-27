@@ -18,6 +18,7 @@
     "serve": "serve -l 3000",
     "build:serve": "npm run build && npm run serve",
     "cypress:install": "cypress install",
+    "cypress:verify": "cypress verify",
     "cypress:open": "cypress open",
     "cypress:run": "cypress run",
     "test:ci": "start-server-and-test build:serve http-get://localhost:3000 cypress:run"

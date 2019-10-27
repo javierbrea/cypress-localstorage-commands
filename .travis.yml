@@ -30,6 +30,7 @@ script:
   - cd test-acceptance/app
   - npm ci
   - npm run cypress:install --force
+  - npm run cypress:verify
   - npm run test:ci
   - cd ..
   - npm run coveralls
