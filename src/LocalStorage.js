@@ -1,6 +1,13 @@
 class LocalStorage {
   static get cypressCommands() {
-    return ["clearLocalStorageSnapshot", "saveLocalStorage", "restoreLocalStorage"];
+    return [
+      "clearLocalStorageSnapshot",
+      "saveLocalStorage",
+      "restoreLocalStorage",
+      "setLocalStorage",
+      "getLocalStorage",
+      "removeLocalStorage"
+    ];
   }
 
   constructor(localStorage) {
