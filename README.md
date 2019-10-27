@@ -31,7 +31,7 @@ npm i --save-dev cypress-localstorage-commands
 Add this line to your project's `cypress/support/commands.js`:
 
 ```js
-import 'cypress-localstorage-commands'
+import "cypress-localstorage-commands"
 ```
 
 You can now use all next commands:
@@ -46,6 +46,18 @@ cy.restoreLocalStorage() // Restore localStorage to previously "snapshot" saved 
 
 ```js
 cy.clearLocalStorageSnapshot() // Clear localStorage "snapshot" values
+```
+
+```js
+cy.getLocalStorage("item") // Get localStorage item
+```
+
+```js
+cy.setLocalStorage("item", "value") // Set localStorage item
+```
+
+```js
+cy.removeLocalStorage("item") // Remove localStorage item
 ```
 
 ## Contributing

@@ -18,6 +18,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - Add removeLocalStorage command
 - Add acceptance tests
 
+### Changed
+- Improve documentation
+
 ## [1.0.0] - 2019-10-26
 ### Added
 - Add saveLocalStorage command
