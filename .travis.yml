@@ -7,8 +7,8 @@ cache:
   directories:
     - ~/.npm
     - ~/.cache
-    - /node_modules
-    - /test-acceptance/app/node_modules
+    - node_modules
+    - test-acceptance/app/node_modules
     - ~/.sonar/cache
 
 addons:
