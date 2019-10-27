@@ -28,7 +28,7 @@ script:
   - npm run lint
   - npm run test
   - cd test-acceptance/app
-  - npm i
+  - npm ci
   - npm run cypress:install
   - DEBUG=cypress:* && npm run test:ci
   - cd ..
