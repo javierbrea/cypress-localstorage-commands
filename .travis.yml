@@ -12,9 +12,9 @@ cache:
   directories:
     - ~/.npm
     - ~/.cache
-    - "node_modules"
-    - "test-acceptance/app/node_modules"
-    - "$HOME/.sonar/cache"
+    - ~/node_modules
+    - ~/test-acceptance/app/node_modules
+    - ~/.sonar/cache
   override:
     - npm ci
     - npm run cy:verify
