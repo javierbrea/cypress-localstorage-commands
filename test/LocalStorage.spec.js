@@ -56,9 +56,53 @@ describe("LocalStorage", () => {
         expect(localStorageMock.stubs.getItem("foo")).toEqual("foo-new-value");
         expect(localStorageMock.stubs.getItem("var")).toEqual("foo-var-value");
         localStorage.restoreLocalStorage();
-        expect(localStorageMock.stubs.getItem("var")).toEqual(undefined);
+        expect(localStorageMock.stubs.getItem("foo")).toEqual(undefined);
         expect(localStorageMock.stubs.getItem("var")).toEqual(undefined);
       });
+    });
+  });
+
+  describe("setLocalStorage method", () => {
+    it("should set values in localStorage", () => {
+      expect.assertions(2);
+      localStorage.setLocalStorage("foo", "foo-value");
+      localStorage.setLocalStorage("var", "var-value");
+      expect(localStorageMock.stubs.getItem("foo")).toEqual("foo-value");
+      expect(localStorageMock.stubs.getItem("var")).toEqual("var-value");
+    });
+
+    it("should not have set values in localStorage snapshot", () => {
+      expect.assertions(2);
+      localStorage.restoreLocalStorage();
+      expect(localStorageMock.stubs.getItem("foo")).toEqual(undefined);
+      expect(localStorageMock.stubs.getItem("var")).toEqual(undefined);
+    });
+  });
+
+  describe("getLocalStorage method", () => {
+    it("should get localStorage items", () => {
+      expect.assertions(2);
+      localStorage.setLocalStorage("foo", "foo-value");
+      localStorage.setLocalStorage("var", "var-value");
+      expect(localStorage.getLocalStorage("foo")).toEqual("foo-value");
+      expect(localStorage.getLocalStorage("var")).toEqual("var-value");
+    });
+  });
+
+  describe("removeLocalStorage", () => {
+    it("should remove local storage items", () => {
+      expect.assertions(2);
+      localStorage.saveLocalStorage();
+      localStorage.removeLocalStorage("foo");
+      expect(localStorage.getLocalStorage("foo")).toEqual(undefined);
+      expect(localStorage.getLocalStorage("var")).toEqual("var-value");
+    });
+
+    it("should not remove local storage items from localstorage snapshot", () => {
+      expect.assertions(2);
+      localStorage.restoreLocalStorage();
+      expect(localStorage.getLocalStorage("foo")).toEqual("foo-value");
+      expect(localStorage.getLocalStorage("var")).toEqual("var-value");
     });
   });
 });
