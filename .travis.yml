@@ -1,14 +1,20 @@
 language: node_js
 
 node_js:
-  - "10"
+  - 10.8
 
 cache:
   directories:
-    - "node_modules"
-    - "$HOME/.sonar/cache"
+    - ~/.npm
+    - ~/.cache
+    - node_modules
+    - test-acceptance/app/node_modules
+    - ~/.sonar/cache
 
 addons:
+  apt:
+    packages:
+      - libgconf-2-4
   sonarcloud:
     organization: "javierbrea"
     token:
@@ -19,6 +25,12 @@ addons:
 script:
   - npm run lint
   - npm run test
+  - cd test-acceptance/app
+  - npm ci
+  - npm run cypress:install
+  - npm run cypress:verify
+  - npm run test:ci
+  - cd ../..
   - npm run coveralls
   - 'if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then sonar-scanner; fi'
 

@@ -1,0 +1,13 @@
+button.cookies-button {
+  color: #09d3ac;
+  padding: 10px;
+  font-size: 20px;
+  border: 1px solid #09d3ac;
+  background-color: #282828;
+  cursor:pointer;
+}
+
+button.cookies-button:hover {
+   color: #09d3a0;
+  background-color: #222;
+}
