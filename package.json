@@ -22,16 +22,18 @@
   "main": "index.js",
   "scripts": {
     "coveralls": "cat ./coverage/lcov.info | coveralls",
-    "lint": "eslint src test",
+    "lint": "eslint src test test-acceptance/app/src test-acceptance/app/cypress",
     "lint-staged": "lint-staged",
     "test": "jest"
   },
   "dependencies": {},
   "devDependencies": {
+    "babel-eslint": "^10.0.3",
     "coveralls": "^3.0.7",
     "eslint": "6.6.0",
     "eslint-config-prettier": "^6.4.0",
     "eslint-plugin-prettier": "^3.1.1",
+    "eslint-plugin-react": "^7.16.0",
     "husky": "^3.0.9",
     "jest": "^24.9.0",
     "lint-staged": "^9.4.2",
@@ -39,11 +41,13 @@
     "sinon": "^7.5.0"
   },
   "peerDependencies": {
-    "cypress": "^2.1.0 || ^3.0.0"
+    "cypress": "^2.0.0 || ^3.0.0"
   },
   "lint-staged": {
     "src/**/*.js": "eslint",
-    "test/**/*.js": "eslint"
+    "test/**/*.js": "eslint",
+    "test-acceptance/app/src/**/*.js": "eslint",
+    "test-acceptance/app/cypress/**/*.js": "eslint"
   },
   "husky": {
     "hooks": {

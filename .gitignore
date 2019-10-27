@@ -8,6 +8,9 @@
 
 # tests
 /coverage
+/test-acceptance/app/build
+/test-acceptance/app/node_modules
+/test-acceptance/app/cypress/screenshots
 
 # misc
 .DS_Store
