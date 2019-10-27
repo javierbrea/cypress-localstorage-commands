@@ -30,7 +30,7 @@ addons:
 script:
   - npm run lint
   - npm run test
-  - cd test-acceptance/app && npm i && npm run test:ci
+  - cd test-acceptance/app && npm i && npm run cypress:install && npm run test:ci
   - npm run coveralls
   - 'if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then sonar-scanner; fi'
 
