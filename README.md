@@ -36,28 +36,60 @@ import "cypress-localstorage-commands"
 
 You can now use all next commands:
 
-```js
-cy.saveLocalStorage() // Save current localStorage values into an internal "snapshot"
-```
+### Commands
+
+Save current localStorage values into an internal "snapshot":
 
 ```js
-cy.restoreLocalStorage() // Restore localStorage to previously "snapshot" saved values
+cy.saveLocalStorage();
 ```
 
-```js
-cy.clearLocalStorageSnapshot() // Clear localStorage "snapshot" values
-```
+Restore localStorage to previously "snapshot" saved values:
 
 ```js
-cy.getLocalStorage("item") // Get localStorage item
+cy.restoreLocalStorage();
 ```
 
-```js
-cy.setLocalStorage("item", "value") // Set localStorage item
-```
+Clear localStorage "snapshot" values:
 
 ```js
-cy.removeLocalStorage("item") // Remove localStorage item
+cy.clearLocalStorageSnapshot();
+```
+
+Get localStorage item. Equivalent to `localStorage.getItem` in browser:
+
+```js
+cy.getLocalStorage("item");
+```
+
+Set localStorage item. Equivalent to `localStorage.setItem` in browser:
+
+```js
+cy.setLocalStorage("item", "value");
+```
+
+Remove localStorage item. Equivalent to `localStorage.removeItem` in browser:
+
+```js
+cy.removeLocalStorage("item");
+```
+
+### Preserving local storage between tests
+
+Use `saveLocalStorage` to save a snapshot of current `localStorage` at the end of one test, and use the `restoreLocalStorage` command to restore it at the beginning of another one:
+
+```js
+it("should hide privacy policy message on click accept cookies button", () => {
+  cy.get("#accept-cookies").click();
+  cy.get("#privacy-policy").should("not.be.visible");
+  cy.saveLocalStorage();
+});
+
+it("should not show privacy policy message after reloading page", () => {
+  cy.restoreLocalStorage();
+  cy.reload();
+  cy.get("#privacy-policy").should("not.be.visible");
+});
 ```
 
 ## Contributing
