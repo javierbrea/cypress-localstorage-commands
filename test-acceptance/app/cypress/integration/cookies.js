@@ -78,4 +78,53 @@ describe("Cookies", () => {
       cy.saveLocalStorage();
     });
   });
+
+  describe("when using setLocalStorage command to manually set user-preferences value", () => {
+    it("should display reject cookies button", () => {
+      cy.setLocalStorage("user-preferences", '{"cookiesAccepted":true}');
+      cy.reload();
+      cy.get(SELECTORS.REJECT_BUTTON).should("be.visible");
+      cy.saveLocalStorage();
+    });
+  });
+
+  describe("when using getLocalStorage command to manually get localStorage items", () => {
+    it("should return current localStorage values", () => {
+      cy.restoreLocalStorage();
+      cy.reload();
+      cy.get(SELECTORS.REJECT_BUTTON).should("be.visible");
+      cy.getLocalStorage("user-preferences").should("be", '{"cookiesAccepted":true}');
+      cy.setLocalStorage("user-preferences", '{"cookiesAccepted":false}');
+      cy.getLocalStorage("user-preferences").should("be", '{"cookiesAccepted":false}');
+      cy.saveLocalStorage();
+    });
+  });
+
+  describe("when using removeLocalStorage command to manually remove localStorage item", () => {
+    it("should remove item from localStorage", () => {
+      cy.restoreLocalStorage();
+      cy.reload();
+      cy.getLocalStorage("user-preferences").should("be", '{"cookiesAccepted":false}');
+      cy.get(SELECTORS.ACCEPT_BUTTON).should("be.visible");
+      cy.removeLocalStorage("user-preferences");
+      cy.getLocalStorage("user-preferences").should("be", undefined);
+    });
+
+    it("should not remove item from localStorage snapshot", () => {
+      cy.restoreLocalStorage();
+      cy.reload();
+      cy.getLocalStorage("user-preferences").should("be", '{"cookiesAccepted":false}');
+      cy.get(SELECTORS.ACCEPT_BUTTON).should("be.visible");
+      cy.removeLocalStorage("user-preferences");
+      cy.saveLocalStorage();
+    });
+
+    it("should remove item from localStorage snapshot after saving it", () => {
+      cy.setLocalStorage("user-preferences", '{"cookiesAccepted":true}');
+      cy.reload();
+      cy.get(SELECTORS.REJECT_BUTTON).should("be.visible");
+      cy.restoreLocalStorage();
+      cy.getLocalStorage("user-preferences").should("not.exist");
+    });
+  });
 });

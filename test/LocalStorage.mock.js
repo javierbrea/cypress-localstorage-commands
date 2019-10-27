@@ -1,6 +1,6 @@
 const sinon = require("sinon");
 
-const LOCALSTORAGE_METHODS = ["getItem", "setItem", "clear"];
+const LOCALSTORAGE_METHODS = ["getItem", "setItem", "removeItem", "clear"];
 
 const Mock = class Mock {
   constructor() {
