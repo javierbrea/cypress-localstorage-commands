@@ -9,7 +9,7 @@ cache:
     - ~/.cache
     - ~/node_modules
     - ~/test-acceptance/app/node_modules
-    - ~/.sonar/cache
+    - "$HOME/.sonar/cache"
 
 addons:
   apt:
@@ -27,7 +27,7 @@ script:
   - npm run test
   - cd test-acceptance/app
   - npm ci
-  - npm run cypress:install --force
+  - npm run cypress:install
   - npm run cypress:verify
   - npm run test:ci
   - cd ..
