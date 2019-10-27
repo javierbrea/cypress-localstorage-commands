@@ -9,7 +9,6 @@ cache:
     - ~/.cache
     - ~/node_modules
     - ~/test-acceptance/app/node_modules
-    - "$HOME/.sonar/cache"
 
 addons:
   apt:
