@@ -6,8 +6,12 @@
 # dependencies
 /node_modules
 
+#build
+/build
+
 # tests
-/coverage
+/cypress/screenshots
+/cypress/fixtures
 
 # misc
 .DS_Store

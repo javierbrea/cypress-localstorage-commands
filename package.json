@@ -22,9 +22,10 @@
   "main": "index.js",
   "scripts": {
     "coveralls": "cat ./coverage/lcov.info | coveralls",
-    "lint": "eslint src test test-acceptance/app/src test-acceptance/app/cypress",
+    "lint": "eslint src test test-e2e/app/src test-e2e/app/cypress",
     "lint-staged": "lint-staged",
-    "test": "jest"
+    "test": "jest",
+    "test-e2e:ci": "cd test-e2e/app && npm i && npm run test:ci"
   },
   "dependencies": {},
   "devDependencies": {
@@ -46,8 +47,8 @@
   "lint-staged": {
     "src/**/*.js": "eslint",
     "test/**/*.js": "eslint",
-    "test-acceptance/app/src/**/*.js": "eslint",
-    "test-acceptance/app/cypress/**/*.js": "eslint"
+    "test-e2e/app/src/**/*.js": "eslint",
+    "test-e2e/app/cypress/**/*.js": "eslint"
   },
   "husky": {
     "hooks": {
