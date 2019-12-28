@@ -8,7 +8,7 @@ cache:
     - ~/.npm
     - ~/.cache
     - node_modules
-    - test-e2e/app/node_modules
+    - test-e2e/react-app/node_modules
     - ~/.sonar/cache
 
 addons:
