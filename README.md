@@ -76,19 +76,77 @@ cy.removeLocalStorage("item");
 
 ### Preserving local storage between tests
 
-Use `saveLocalStorage` to save a snapshot of current `localStorage` at the end of one test, and use the `restoreLocalStorage` command to restore it at the beginning of another one:
+Use `saveLocalStorage` to save a snapshot of current `localStorage` at the end of one test, and use the `restoreLocalStorage` command to restore it at the beginning of another one. _The usage of `beforeEach` and `afterEach` is recommended for this purpose._
+
+### Examples
+
+#### Cookies button example
+
+Next example shows how this package can be used to test a "cookies button" _(which theoretically set a flag into `localStorage` and can be clicked only once)_
 
 ```js
-it("should hide privacy policy message on click accept cookies button", () => {
-  cy.get("#accept-cookies").click();
-  cy.get("#privacy-policy").should("not.be.visible");
-  cy.saveLocalStorage();
-});
+describe("Accept cookies button", () => {
+  const COOKIES_BUTTON = "#accept-cookies";
 
-it("should not show privacy policy message after reloading page", () => {
-  cy.restoreLocalStorage();
-  cy.reload();
-  cy.get("#privacy-policy").should("not.be.visible");
+  before(() => {
+    cy.clearLocalStorageSnapshot();
+  });
+
+  beforeEach(() => {
+    cy.restoreLocalStorage();
+    cy.visit("/");
+  });
+
+  afterEach(() => {
+    cy.saveLocalStorage();
+  });
+
+  it("should be visible", () => {
+    cy.get(COOKIES_BUTTON).should("be.visible");
+  });
+
+  it("should not be visible after clicked", () => {
+    cy.get(COOKIES_BUTTON).click();
+    cy.get(COOKIES_BUTTON).should("not.be.visible");
+  });
+
+  it("should not be visible after reloading", () => {
+    cy.get(COOKIES_BUTTON).should("not.be.visible");
+  });
+});
+```
+
+> Note the usage of `beforeEach` and `afterEach` for preserving `localStorage` between all tests. Also `clearLocalStorageSnapshot` is used in the `before` statement to avoid possible conflicts with other test files preserving localStorage.
+
+#### localStorage Assertions
+
+Based on the previous example, assertions could be added to check values of `localStorage`:
+
+```js
+describe("localStorage cookies-accepted item", () => {
+  beforeEach(() => {
+    cy.restoreLocalStorage();
+    cy.visit("/");
+  });
+
+  afterEach(() => {
+    cy.saveLocalStorage();
+  });
+
+  it("should be null first time page is visited", () => {
+    cy.getLocalStorage("cookies-accepted").should("equal", null);
+  });
+
+  it("should be true after clicking cookies button", () => {
+    cy.get("#accept-cookies").click();
+    cy.getLocalStorage("cookies-accepted").should("equal", "true");
+  });
+
+  it("should be true after reloading", () => {
+    cy.getLocalStorage("cookies-accepted").then(cookiesAccepted => {
+      expect(cookiesAccepted).to.equal("true");
+    });
+  });
 });
 ```
 
