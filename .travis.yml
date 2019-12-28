@@ -8,7 +8,7 @@ cache:
     - ~/.npm
     - ~/.cache
     - node_modules
-    - test-acceptance/app/node_modules
+    - test-e2e/react-app/node_modules
     - ~/.sonar/cache
 
 addons:
@@ -25,12 +25,7 @@ addons:
 script:
   - npm run lint
   - npm run test
-  - cd test-acceptance/app
-  - npm ci
-  - npm run cypress:install
-  - npm run cypress:verify
-  - npm run test:ci
-  - cd ../..
+  - npm run test-e2e:ci
   - npm run coveralls
   - 'if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then sonar-scanner; fi'
 

@@ -1,4 +1,4 @@
-import { connect } from "@xbyorange/react-mercury";
+import { connect } from "@data-provider/connector-react";
 
 import CookiesButton from "../../components/cookies-button";
 import { cookiesAccepted, rejectCookies } from "../../data/user-preferences";
