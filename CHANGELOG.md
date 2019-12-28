@@ -13,6 +13,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [1.1.1] - 2019-12-28
 ### Changed
+- Upgrade dependencies.
+- Rename acceptance tests into e2e tests.
+- Add npm command for running e2e tests.
 
 ## [1.1.0] - 2019-10-27
 ### Added
