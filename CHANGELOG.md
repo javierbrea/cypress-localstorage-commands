@@ -11,6 +11,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Removed
 ### BREAKING CHANGES
 
+## [1.1.1] - 2019-12-28
+### Changed
+
 ## [1.1.0] - 2019-10-27
 ### Added
 - Add getLocalStorage command
