@@ -1,4 +1,4 @@
-import { LocalStorage } from "@xbyorange/mercury-browser-storage";
+import { LocalStorage } from "@data-provider/browser-storage";
 
 export const userPreferences = new LocalStorage(
   "user-preferences",

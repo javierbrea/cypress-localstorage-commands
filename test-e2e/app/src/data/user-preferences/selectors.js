@@ -1,10 +1,10 @@
-import { Selector } from "@xbyorange/mercury";
+import { Selector } from "@data-provider/core";
 
 import { userPreferences } from "./origins";
 
 export const cookiesAccepted = new Selector(
   {
-    source: userPreferences,
+    provider: userPreferences,
     query: userPreferences.customQueries.cookiesAccepted
   },
   cookiesAcceptedResult => cookiesAcceptedResult
