@@ -118,7 +118,7 @@ describe("Accept cookies button", () => {
 
 > Note the usage of `beforeEach` and `afterEach` for preserving `localStorage` between all tests. Also `clearLocalStorageSnapshot` is used in the `before` statement to avoid possible conflicts with other test files preserving localStorage.
 
-#### localStorage Assertions
+#### localStorage assertions
 
 Based on the previous example, assertions could be added to check values of `localStorage`:
 
