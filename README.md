@@ -6,6 +6,8 @@
 
 # Cypress localStorage commands
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/javierbrea/cypress-localstorage-commands.svg)](https://greenkeeper.io/)
+
 Extends Cypress' cy commands with localStorage methods. Allows preserving localStorage between tests.
 
 ## The problem
