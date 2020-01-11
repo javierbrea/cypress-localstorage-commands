@@ -1,0 +1,10 @@
+{
+  "groups": {
+    "default": {
+      "packages": [
+        "package.json",
+        "test-e2e/react-app/package.json"
+      ]
+    }
+  }
+}
