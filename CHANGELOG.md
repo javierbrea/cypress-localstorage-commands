@@ -11,6 +11,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Removed
 ### BREAKING CHANGES
 
+## [1.1.2] - 2020-01-11
+### Changed
+- Upgrade dependencies
+- Disable temporarily Sonar as it is under maintenance
+
 ## [1.1.1] - 2019-12-28
 ### Changed
 - Upgrade dependencies.

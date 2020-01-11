@@ -27,7 +27,7 @@ script:
   - npm run test
   - npm run test-e2e:ci
   - npm run coveralls
-  - 'if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then sonar-scanner; fi'
+#  - 'if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then sonar-scanner; fi'
 
 deploy:
   provider: npm
