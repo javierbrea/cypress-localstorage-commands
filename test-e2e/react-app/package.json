@@ -37,7 +37,7 @@
   "devDependencies": {
     "react-scripts": "3.3.0",
     "babel-plugin-module-resolver": "^4.0.0",
-    "cypress": "3.8.1",
+    "cypress": "3.8.2",
     "serve": "^11.2.0",
     "start-server-and-test": "^1.10.6"
   }
