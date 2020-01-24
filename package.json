@@ -29,7 +29,7 @@
     "test-e2e:ci": "cd test-e2e/react-app && npm i && npm run test:ci"
   },
   "peerDependencies": {
-    "cypress": "^2.1.0 || ^3.0.0"
+    "cypress": "^3.8.3"
   },
   "dependencies": {},
   "devDependencies": {
