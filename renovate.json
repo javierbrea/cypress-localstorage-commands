@@ -1,5 +1,5 @@
 {
   "extends": [
-    "config:base"
+    "github>javierbrea/nodejs-ci-cd-shared-config"
   ]
 }
