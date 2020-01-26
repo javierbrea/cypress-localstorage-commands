@@ -11,6 +11,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Removed
 ### BREAKING CHANGES
 
+## [1.1.5] - 2020-01-26
+### Changed
+- Update dependencies
+
 ## [1.1.4] - 2020-01-13
 ### Changed
 - Use fixed versions in e2e tests dependencies
