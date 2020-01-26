@@ -1,6 +1,6 @@
 {
   "name": "cypress-localstorage-commands",
-  "version": "1.1.4",
+  "version": "1.1.5",
   "description": "Extends Cypress' cy commands with localStorage methods. Allows preserving localStorage between tests",
   "keywords": [
     "cypress",
@@ -26,7 +26,9 @@
     "lint-staged": "lint-staged",
     "test": "jest",
     "test-e2e": "cd test-e2e/react-app && npm run test:ci",
-    "test-e2e:ci": "cd test-e2e/react-app && npm i && npm run test:ci"
+    "test-e2e:ci": "cd test-e2e/react-app && npm i && npm run test:ci",
+    "test:coverage": "npm run test",
+    "test:ci": "npm run test && npm run test-e2e:ci"
   },
   "peerDependencies": {
     "cypress": "^2.1.0 || ^3.0.0"
