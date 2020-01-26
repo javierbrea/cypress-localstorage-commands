@@ -57,5 +57,8 @@
     "hooks": {
       "pre-commit": "npm run lint-staged"
     }
+  },
+  "engines": {
+    "node": "10.x || 12.x || 13.x"
   }
 }
