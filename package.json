@@ -1,6 +1,6 @@
 {
   "name": "cypress-localstorage-commands",
-  "version": "1.1.5",
+  "version": "1.1.6",
   "description": "Extends Cypress' cy commands with localStorage methods. Allows preserving localStorage between tests",
   "keywords": [
     "cypress",
@@ -31,7 +31,7 @@
     "test:ci": "npm run test && npm run test-e2e:ci"
   },
   "peerDependencies": {
-    "cypress": "^2.1.0 || ^3.0.0"
+    "cypress": "^2.1.0 || ^3.0.0 || ^4.0.0"
   },
   "dependencies": {},
   "devDependencies": {
@@ -40,8 +40,8 @@
     "eslint": "6.8.0",
     "eslint-config-prettier": "6.10.0",
     "eslint-plugin-prettier": "3.1.2",
-    "eslint-plugin-react": "7.18.0",
-    "husky": "4.2.1",
+    "eslint-plugin-react": "7.18.3",
+    "husky": "4.2.3",
     "jest": "25.1.0",
     "lint-staged": "10.0.7",
     "prettier": "1.19.1",
