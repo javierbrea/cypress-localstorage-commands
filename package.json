@@ -31,7 +31,7 @@
     "test:ci": "npm run test && npm run test-e2e:ci"
   },
   "peerDependencies": {
-    "cypress": "^2.1.0 || ^3.0.0"
+    "cypress": "^2.1.0 || ^3.0.0 || ^4.0.0"
   },
   "dependencies": {},
   "devDependencies": {
