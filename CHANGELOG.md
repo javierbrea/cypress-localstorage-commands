@@ -17,6 +17,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - chore(test): Update Cypress to v4.0.2 in e2e tests
 - chore(deps): Update eslint-plugin-react and husky devDependencies
 - chore(test): Update react-scripts devDependency in e2e tests
+- docs(readme): Fix typo
 
 ## [1.1.5] - 2020-02-01
 ### Changed
