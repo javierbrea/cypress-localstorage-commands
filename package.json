@@ -45,7 +45,7 @@
     "jest": "25.1.0",
     "lint-staged": "10.0.8",
     "prettier": "1.19.1",
-    "sinon": "8.1.1"
+    "sinon": "9.0.1"
   },
   "lint-staged": {
     "src/**/*.js": "eslint",
