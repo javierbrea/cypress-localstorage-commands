@@ -1,15 +1,13 @@
 import { LocalStorage } from "@data-provider/browser-storage";
 
-export const userPreferences = new LocalStorage(
-  "user-preferences",
-  {
-    cookiesAccepted: false
-  },
-  {
-    queriesDefaultValue: true
+export const userPreferences = new LocalStorage("user-preferences", {
+  initialState: {
+    data: {
+      cookiesAccepted: false
+    }
   }
-);
-
-userPreferences.addCustomQueries({
-  cookiesAccepted: () => "cookiesAccepted"
 });
+
+userPreferences.addQuery("cookiesAccepted", () => ({
+  prop: "cookiesAccepted"
+}));
