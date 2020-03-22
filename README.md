@@ -176,6 +176,3 @@ MIT, see [LICENSE](./LICENSE) for details.
 [quality-gate-url]: https://sonarcloud.io/dashboard?id=cypress-localstorage-commands
 [release-image]: https://img.shields.io/github/release-date/javierbrea/cypress-localstorage-commands.svg
 [release-url]: https://github.com/javierbrea/cypress-localstorage-commands/releases
-
-
-[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fjavierbrea%2Fcypress-localstorage-commands.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fjavierbrea%2Fcypress-localstorage-commands?ref=badge_large)
