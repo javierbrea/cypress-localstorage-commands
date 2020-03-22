@@ -1,4 +1,5 @@
 [![Build status][travisci-image]][travisci-url] [![Coverage Status][coveralls-image]][coveralls-url] [![Quality Gate][quality-gate-image]][quality-gate-url]
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fjavierbrea%2Fcypress-localstorage-commands.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fjavierbrea%2Fcypress-localstorage-commands?ref=badge_shield)
 
 [![NPM dependencies][npm-dependencies-image]][npm-dependencies-url] [![Renovate](https://img.shields.io/badge/renovate-enabled-brightgreen.svg)](https://renovatebot.com) [![Last commit][last-commit-image]][last-commit-url] [![Last release][release-image]][release-url] 
 

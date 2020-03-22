@@ -7,7 +7,7 @@ const Mock = class Mock {
     this._sandbox = sinon.createSandbox();
 
     this._stubs = {
-      getItem: this._sandbox.stub().callsFake(key => {
+      getItem: this._sandbox.stub().callsFake((key) => {
         return this._stubs[key];
       }),
       setItem: this._sandbox.stub().callsFake((key, value) => {
@@ -15,16 +15,16 @@ const Mock = class Mock {
           this._stubs[key] = value;
         }
       }),
-      removeItem: this._sandbox.stub().callsFake(key => {
+      removeItem: this._sandbox.stub().callsFake((key) => {
         delete this._stubs[key];
       }),
       clear: this._sandbox.stub().callsFake(() => {
-        Object.keys(this._stubs).forEach(key => {
+        Object.keys(this._stubs).forEach((key) => {
           if (!LOCALSTORAGE_METHODS.includes(key)) {
             delete this._stubs[key];
           }
         });
-      })
+      }),
     };
   }
 

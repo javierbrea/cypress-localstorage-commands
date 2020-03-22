@@ -1,7 +1,7 @@
 describe("Cookies", () => {
   const SELECTORS = {
     ACCEPT_BUTTON: "#accept-cookies",
-    REJECT_BUTTON: "#reject-cookies"
+    REJECT_BUTTON: "#reject-cookies",
   };
 
   describe("when cookies are not accepted", () => {
