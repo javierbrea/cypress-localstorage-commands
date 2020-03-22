@@ -17,7 +17,7 @@ const AcceptCookiesModule = ({ accepted }) => {
 };
 
 AcceptCookiesModule.propTypes = {
-  accepted: PropTypes.bool
+  accepted: PropTypes.bool,
 };
 
 export const Controller = withData(cookiesAccepted, "accepted")(AcceptCookiesModule);

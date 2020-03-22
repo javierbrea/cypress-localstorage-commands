@@ -4,5 +4,5 @@ import { userPreferences } from "./origins";
 
 export const cookiesAccepted = new Selector(
   userPreferences.queries.cookiesAccepted(),
-  cookiesAcceptedResult => cookiesAcceptedResult
+  (cookiesAcceptedResult) => cookiesAcceptedResult
 );

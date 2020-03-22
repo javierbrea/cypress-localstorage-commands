@@ -10,5 +10,5 @@ export const CookiesValue = ({ value }) => {
 };
 
 CookiesValue.propTypes = {
-  value: PropTypes.bool
+  value: PropTypes.bool,
 };

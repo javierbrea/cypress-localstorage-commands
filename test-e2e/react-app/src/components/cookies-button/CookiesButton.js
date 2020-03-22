@@ -18,5 +18,5 @@ CookiesButton.propTypes = {
   visible: PropTypes.bool,
   onClick: PropTypes.func,
   id: PropTypes.string,
-  text: PropTypes.string
+  text: PropTypes.string,
 };

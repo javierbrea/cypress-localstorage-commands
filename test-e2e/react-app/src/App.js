@@ -9,7 +9,7 @@ import CookiesValue from "./modules/cookies-value";
 
 const store = createStore(
   combineReducers({
-    dataProviders: storeManager.reducer
+    dataProviders: storeManager.reducer,
   }),
   window && window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 );

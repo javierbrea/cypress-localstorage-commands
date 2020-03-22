@@ -6,7 +6,7 @@ class LocalStorage {
       "restoreLocalStorage",
       "setLocalStorage",
       "getLocalStorage",
-      "removeLocalStorage"
+      "removeLocalStorage",
     ];
   }
 
@@ -21,14 +21,14 @@ class LocalStorage {
 
   saveLocalStorage() {
     this.clearLocalStorageSnapshot();
-    Object.keys(this._localStorage).forEach(key => {
+    Object.keys(this._localStorage).forEach((key) => {
       this._snapshot[key] = this._localStorage.getItem(key);
     });
   }
 
   restoreLocalStorage() {
     this._localStorage.clear();
-    Object.keys(this._snapshot).forEach(key => {
+    Object.keys(this._snapshot).forEach((key) => {
       this._localStorage.setItem(key, this._snapshot[key]);
     });
   }

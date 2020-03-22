@@ -18,7 +18,7 @@ describe("localStorage cookies-accepted item", () => {
   });
 
   it("should be true after reloading", () => {
-    cy.getLocalStorage("cookies-accepted").then(cookiesAccepted => {
+    cy.getLocalStorage("cookies-accepted").then((cookiesAccepted) => {
       expect(cookiesAccepted).to.equal("true");
     });
   });
