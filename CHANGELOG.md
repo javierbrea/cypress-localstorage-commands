@@ -11,6 +11,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Removed
 ### BREAKING CHANGES
 
+## [1.1.9] - 2020-04-28
+
+### Changed
+- chore(deps): Allow node.js v14
+- chore(deps): Update devDependencies
+
 ## [1.1.8] - 2020-04-09
 
 ### Changed
