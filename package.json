@@ -1,6 +1,6 @@
 {
   "name": "cypress-localstorage-commands",
-  "version": "1.1.9",
+  "version": "1.1.10",
   "description": "Extends Cypress' cy commands with localStorage methods. Allows preserving localStorage between tests",
   "keywords": [
     "cypress",
@@ -28,22 +28,27 @@
     "test-e2e": "cd test-e2e/react-app && npm run test:ci",
     "test-e2e:ci": "cd test-e2e/react-app && npm i && npm run test:ci",
     "test:coverage": "npm run test",
-    "test:ci": "npm run test && npm run test-e2e:ci"
+    "test:ci": "npm run test && npm run stryker && npm run test-e2e:ci",
+    "stryker:dev": "stryker run stryker.conf.local.js",
+    "stryker": "stryker run"
   },
   "peerDependencies": {
     "cypress": "^2.1.0 || ^3.0.0 || ^4.0.0"
   },
   "dependencies": {},
   "devDependencies": {
+    "@stryker-mutator/core": "3.2.3",
+    "@stryker-mutator/javascript-mutator": "3.2.3",
+    "@stryker-mutator/jest-runner": "3.2.3",
     "babel-eslint": "10.1.0",
     "coveralls": "3.0.9",
-    "eslint": "6.8.0",
+    "eslint": "7.0.0",
     "eslint-config-prettier": "6.11.0",
     "eslint-plugin-prettier": "3.1.3",
-    "eslint-plugin-react": "7.19.0",
+    "eslint-plugin-react": "7.20.0",
     "husky": "4.2.5",
-    "jest": "25.4.0",
-    "lint-staged": "10.2.0",
+    "jest": "26.0.1",
+    "lint-staged": "10.2.2",
     "prettier": "2.0.5",
     "sinon": "9.0.2"
   },
