@@ -28,13 +28,18 @@
     "test-e2e": "cd test-e2e/react-app && npm run test:ci",
     "test-e2e:ci": "cd test-e2e/react-app && npm i && npm run test:ci",
     "test:coverage": "npm run test",
-    "test:ci": "npm run test && npm run test-e2e:ci"
+    "test:ci": "npm run test && && npm run stryker && npm run test-e2e:ci",
+    "stryker:dev": "stryker run stryker.conf.local.js",
+    "stryker": "stryker run"
   },
   "peerDependencies": {
     "cypress": "^2.1.0 || ^3.0.0 || ^4.0.0"
   },
   "dependencies": {},
   "devDependencies": {
+    "@stryker-mutator/core": "3.2.3",
+    "@stryker-mutator/javascript-mutator": "3.2.3",
+    "@stryker-mutator/jest-runner": "3.2.3",
     "babel-eslint": "10.1.0",
     "coveralls": "3.0.9",
     "eslint": "6.8.0",
