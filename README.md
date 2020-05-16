@@ -1,8 +1,8 @@
 [![Build status][travisci-image]][travisci-url] [![Coverage Status][coveralls-image]][coveralls-url] [![Quality Gate][quality-gate-image]][quality-gate-url] [![Mutation testing badge](https://img.shields.io/endpoint?style=flat&url=https%3A%2F%2Fbadge-api.stryker-mutator.io%2Fgithub.com%2Fjavierbrea%2Fcypress-localstorage-commands%2Fmaster)](https://dashboard.stryker-mutator.io/reports/github.com/javierbrea/cypress-localstorage-commands/master)
 
-[![NPM dependencies][npm-dependencies-image]][npm-dependencies-url] [![Renovate](https://img.shields.io/badge/renovate-enabled-brightgreen.svg)](https://renovatebot.com) [![Last commit][last-commit-image]][last-commit-url] [![Last release][release-image]][release-url] [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fjavierbrea%2Fcypress-localstorage-commands.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fjavierbrea%2Fcypress-localstorage-commands?ref=badge_shield)
+[![NPM dependencies][npm-dependencies-image]][npm-dependencies-url] [![Renovate](https://img.shields.io/badge/renovate-enabled-brightgreen.svg)](https://renovatebot.com) [![Last commit][last-commit-image]][last-commit-url] [![Last release][release-image]][release-url]
 
-[![NPM downloads][npm-downloads-image]][npm-downloads-url] [![License][license-image]][license-url]
+[![NPM downloads][npm-downloads-image]][npm-downloads-url] [![License][license-image]][license-url] [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fjavierbrea%2Fcypress-localstorage-commands.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fjavierbrea%2Fcypress-localstorage-commands?ref=badge_shield)
 
 # Cypress localStorage commands
 

@@ -11,6 +11,14 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Removed
 ### BREAKING CHANGES
 
+## [1.1.10] - 2020-05-16
+
+### Added
+- tests(stryker): Add Stryker-mutator tests
+
+### Changed
+- chore(deps): Update devDependencies
+
 ## [1.1.9] - 2020-04-28
 
 ### Changed
