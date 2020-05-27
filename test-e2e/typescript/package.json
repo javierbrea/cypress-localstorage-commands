@@ -1,0 +1,21 @@
+{
+  "name": "app-typescript-tests",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {},
+  "scripts": {
+    "build:serve": "cd ../react-app && npm run build:serve",
+    "cypress:install": "cypress install",
+    "cypress:verify": "cypress verify",
+    "cypress:open": "cypress open",
+    "cypress:run": "cypress run",
+    "copy:library": "node commands/copyLibrary.js",
+    "build-and-serve-and-cypress": "start-server-and-test build:serve http-get://localhost:3000 cypress:run",
+    "test:ci": "npm run copy:library && npm run build-and-serve-and-cypress"
+  },
+  "devDependencies": {
+    "cypress": "4.7.0",
+    "start-server-and-test": "1.11.0",
+    "typescript": "3.9.3"
+  }
+}
