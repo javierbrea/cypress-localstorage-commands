@@ -17,7 +17,8 @@
   "license": "MIT",
   "repository": "https://github.com/javierbrea/cypress-localstorage-commands",
   "files": [
-    "src"
+    "src",
+    "index.d.ts"
   ],
   "main": "index.js",
   "scripts": {
