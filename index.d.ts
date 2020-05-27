@@ -21,14 +21,14 @@ declare namespace Cypress {
     clearLocalStorageSnapshot(): Chainable<Element>
 
     /**
-     * Command get localStorage item value
+     * Command to get localStorage item value
      * @param {string} itemKeyName - localStorage item to get
      * @example cy.getLocalStorage("cookies-accepted")
     */
     getLocalStorage(itemKeyName: string): Chainable<Element>
 
     /**
-     * Command get localStorage item value
+     * Command to set localStorage item value
      * @param {string} itemKeyName - localStorage item to set
      * @param {string} value - value to be set
      * @example cy.setLocalStorage("cookies-accepted", "true")
@@ -36,7 +36,7 @@ declare namespace Cypress {
     setLocalStorage(itemKeyName: string, value: string): Chainable<Element>
 
     /**
-     * Command get localStorage item value
+     * Command to remove localStorage item
      * @param {string} itemKeyName - localStorage item to remove
      * @example cy.removeLocalStorage("cookies-accepted")
     */
