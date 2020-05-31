@@ -23,7 +23,7 @@
   "main": "index.js",
   "scripts": {
     "coveralls": "cat ./coverage/lcov.info | coveralls",
-    "lint": "eslint src test test-e2e/react-app/src test-e2e/react-app/cypress",
+    "lint": "eslint src test test-e2e/react-app/src test-e2e/react-app/cypress test-e2e/typescript",
     "lint-staged": "lint-staged",
     "test": "jest",
     "test-e2e:react": "cd test-e2e/react-app && npm run test:ci",
@@ -39,11 +39,12 @@
   "peerDependencies": {
     "cypress": "^2.1.0 || ^3.0.0 || ^4.0.0"
   },
-  "dependencies": {},
   "devDependencies": {
     "@stryker-mutator/core": "3.2.4",
     "@stryker-mutator/javascript-mutator": "3.2.4",
     "@stryker-mutator/jest-runner": "3.2.4",
+    "@typescript-eslint/eslint-plugin": "3.0.2",
+    "@typescript-eslint/parser": "3.0.2",
     "babel-eslint": "10.1.0",
     "coveralls": "3.0.9",
     "eslint": "7.1.0",
@@ -54,13 +55,16 @@
     "jest": "26.0.1",
     "lint-staged": "10.2.6",
     "prettier": "2.0.5",
-    "sinon": "9.0.2"
+    "sinon": "9.0.2",
+    "typescript": "3.9.3"
   },
   "lint-staged": {
     "src/**/*.js": "eslint",
     "test/**/*.js": "eslint",
     "test-e2e/react-app/src/**/*.js": "eslint",
-    "test-e2e/react-app/cypress/**/*.js": "eslint"
+    "test-e2e/react-app/cypress/**/*.js": "eslint",
+    "test-e2e/typescript/**/*.js": "eslint",
+    "test-e2e/typescript/**/*.ts": "eslint"
   },
   "husky": {
     "hooks": {

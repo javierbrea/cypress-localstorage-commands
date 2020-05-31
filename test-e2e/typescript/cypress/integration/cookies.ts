@@ -1,3 +1,6 @@
+// Next reference is commented as package is not available at node_modules
+//// <reference types="cypress-localstorage-commands" />
+
 describe("Cookies", () => {
   const SELECTORS = {
     ACCEPT_BUTTON: "#accept-cookies",

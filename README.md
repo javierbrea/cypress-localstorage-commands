@@ -150,6 +150,26 @@ describe("localStorage cookies-accepted item", () => {
 });
 ```
 
+## Usage with TypeScript
+
+For those writing [TypesScript tests in Cypress][cypress-typescript], this package includes TypeScript declarations.
+
+Add "cypress-localstorage-commands" to the `types` property of the `tsconfig.json` file:
+
+```json
+{
+  "compilerOptions": {
+    "types": ["cypress", "cypress-localstorage-commands"]
+  }
+}
+```
+
+Or reference the package in the files using it:
+
+```typescript
+/// <reference types="cypress-localstorage-commands" />
+```
+
 ## Contributing
 
 Contributors are welcome.
@@ -175,3 +195,5 @@ MIT, see [LICENSE](./LICENSE) for details.
 [quality-gate-url]: https://sonarcloud.io/dashboard?id=cypress-localstorage-commands
 [release-image]: https://img.shields.io/github/release-date/javierbrea/cypress-localstorage-commands.svg
 [release-url]: https://github.com/javierbrea/cypress-localstorage-commands/releases
+
+[cypress-typescript]: https://docs.cypress.io/guides/tooling/typescript-support.html
