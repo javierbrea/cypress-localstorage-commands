@@ -11,6 +11,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Removed
 ### BREAKING CHANGES
 
+## [1.2.0] - 2020-05-31
+
+### Added
+- feat(TypeScript): Add TypeScript support
+
 ## [1.1.10] - 2020-05-16
 
 ### Added
