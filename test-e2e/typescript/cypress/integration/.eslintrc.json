@@ -1,7 +1,7 @@
 {
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
-    "project": "test-e2e/typescript/tsconfig.json"
+    "project": "tsconfig.json"
   },
   "plugins": [
     "@typescript-eslint"
