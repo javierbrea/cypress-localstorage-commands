@@ -23,6 +23,7 @@
   "main": "index.js",
   "scripts": {
     "coveralls": "cat ./coverage/lcov.info | coveralls",
+    "prelint": "cd test-e2e/typescript && npm run copy:library",
     "lint": "eslint src test test-e2e/react-app/src test-e2e/react-app/cypress test-e2e/typescript",
     "lint-staged": "lint-staged",
     "test": "jest",
