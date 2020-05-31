@@ -1,6 +1,6 @@
 {
   "name": "cypress-localstorage-commands",
-  "version": "1.1.10",
+  "version": "1.2.0",
   "description": "Extends Cypress' cy commands with localStorage methods. Allows preserving localStorage between tests",
   "keywords": [
     "cypress",
@@ -17,16 +17,25 @@
   "license": "MIT",
   "repository": "https://github.com/javierbrea/cypress-localstorage-commands",
   "files": [
-    "src"
+    "src",
+    "index.d.ts"
   ],
   "main": "index.js",
   "scripts": {
     "coveralls": "cat ./coverage/lcov.info | coveralls",
-    "lint": "eslint src test test-e2e/react-app/src test-e2e/react-app/cypress",
+    "lint:typescript": "cd test-e2e/typescript && npm run copy:library && npm run lint",
+    "lint:javascript": "eslint src test test-e2e/react-app/src test-e2e/react-app/cypress",
+    "lint:all": "npm run lint:javascript && npm run lint:typescript",
+    "lint": "npm run test-e2e:typescript:install && npm run lint:all",
+    "lint:local": "npm run lint:all",
     "lint-staged": "lint-staged",
     "test": "jest",
-    "test-e2e": "cd test-e2e/react-app && npm run test:ci",
-    "test-e2e:ci": "cd test-e2e/react-app && npm i && npm run test:ci",
+    "test-e2e:typescript:install": "cd test-e2e/typescript && npm i",
+    "test-e2e:react": "cd test-e2e/react-app && npm run test:ci",
+    "test-e2e:react:ci": "cd test-e2e/react-app && npm i && npm run test:ci",
+    "test-e2e:typescript": "cd test-e2e/typescript && npm run test:ci",
+    "test-e2e:typescript:ci": "cd test-e2e/typescript && npm i && npm run test:ci",
+    "test-e2e:ci": "npm run test-e2e:react:ci && npm run test-e2e:typescript:ci",
     "test:coverage": "npm run test",
     "test:ci": "npm run test && npm run stryker && npm run test-e2e:ci",
     "stryker:dev": "stryker run stryker.conf.local.js",
@@ -35,20 +44,19 @@
   "peerDependencies": {
     "cypress": "^2.1.0 || ^3.0.0 || ^4.0.0"
   },
-  "dependencies": {},
   "devDependencies": {
-    "@stryker-mutator/core": "3.2.3",
-    "@stryker-mutator/javascript-mutator": "3.2.3",
-    "@stryker-mutator/jest-runner": "3.2.3",
+    "@stryker-mutator/core": "3.2.4",
+    "@stryker-mutator/javascript-mutator": "3.2.4",
+    "@stryker-mutator/jest-runner": "3.2.4",
     "babel-eslint": "10.1.0",
     "coveralls": "3.0.9",
-    "eslint": "7.0.0",
+    "eslint": "7.1.0",
     "eslint-config-prettier": "6.11.0",
     "eslint-plugin-prettier": "3.1.3",
     "eslint-plugin-react": "7.20.0",
     "husky": "4.2.5",
     "jest": "26.0.1",
-    "lint-staged": "10.2.2",
+    "lint-staged": "10.2.6",
     "prettier": "2.0.5",
     "sinon": "9.0.2"
   },
@@ -56,7 +64,9 @@
     "src/**/*.js": "eslint",
     "test/**/*.js": "eslint",
     "test-e2e/react-app/src/**/*.js": "eslint",
-    "test-e2e/react-app/cypress/**/*.js": "eslint"
+    "test-e2e/react-app/cypress/**/*.js": "eslint",
+    "test-e2e/typescript/**/*.js": "npm run lint:typescript",
+    "test-e2e/typescript/**/*.ts": "npm run lint:typescript"
   },
   "husky": {
     "hooks": {

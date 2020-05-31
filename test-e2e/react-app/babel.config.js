@@ -5,9 +5,9 @@ module.exports = {
       {
         root: ["."],
         alias: {
-          "cypress-localstorage-commands": `../../`
-        }
-      }
-    ]
-  ]
+          "cypress-localstorage-commands": `../../`,
+        },
+      },
+    ],
+  ],
 };
