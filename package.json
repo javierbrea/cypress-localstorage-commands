@@ -23,11 +23,14 @@
   "main": "index.js",
   "scripts": {
     "coveralls": "cat ./coverage/lcov.info | coveralls",
-    "lint-typescript": "cd test-e2e/typescript && npm run lint",
-    "lint-javascript": "eslint src test test-e2e/react-app/src test-e2e/react-app/cypress test-e2e/typescript",
-    "lint": "npm run lint-javascript && npm run lint-typescript",
+    "lint:typescript": "cd test-e2e/typescript && npm run lint",
+    "lint:javascript": "eslint src test test-e2e/react-app/src test-e2e/react-app/cypress test-e2e/typescript",
+    "lint:all": "npm run lint:javascript && npm run lint:typescript",
+    "lint": "npm run test-e2e:typescript:install && npm run lint:all",
+    "lint:local": "npm run lint:all",
     "lint-staged": "lint-staged",
     "test": "jest",
+    "test-e2e:typescript:install": "cd test-e2e/typescript && npm i",
     "test-e2e:react": "cd test-e2e/react-app && npm run test:ci",
     "test-e2e:react:ci": "cd test-e2e/react-app && npm i && npm run test:ci",
     "test-e2e:typescript": "cd test-e2e/typescript && npm run test:ci",
@@ -62,8 +65,8 @@
     "test/**/*.js": "eslint",
     "test-e2e/react-app/src/**/*.js": "eslint",
     "test-e2e/react-app/cypress/**/*.js": "eslint",
-    "test-e2e/typescript/**/*.js": "npm run lint-typescript",
-    "test-e2e/typescript/**/*.ts": "npm run lint-typescript"
+    "test-e2e/typescript/**/*.js": "npm run lint:typescript",
+    "test-e2e/typescript/**/*.ts": "npm run lint:typescript"
   },
   "husky": {
     "hooks": {
