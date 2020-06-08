@@ -40,7 +40,7 @@
     "react-scripts": "3.4.1",
     "babel-plugin-module-resolver": "4.0.0",
     "cypress": "4.7.0",
-    "serve": "11.3.1",
+    "serve": "11.3.2",
     "start-server-and-test": "1.11.0"
   }
 }
