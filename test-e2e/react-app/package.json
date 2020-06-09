@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "dependencies": {
-    "@data-provider/core": "2.2.1",
+    "@data-provider/core": "2.4.0",
     "@data-provider/browser-storage": "2.0.4",
     "@data-provider/react": "1.0.3",
     "prop-types": "15.7.2",
