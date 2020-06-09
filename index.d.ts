@@ -6,26 +6,26 @@ declare namespace Cypress {
      * Command to save current localStorage values into an internal "snapshot"
      * @example cy.saveLocalStorage()
     */
-    saveLocalStorage(): Chainable<Element>
+    saveLocalStorage(): Chainable<undefined>
 
     /**
      * Command to restore localStorage to previously "snapshot" saved values
      * @example cy.restoreLocalStorage()
     */
-    restoreLocalStorage(): Chainable<Element>
+    restoreLocalStorage(): Chainable<undefined>
 
     /**
      * Command to clear localStorage "snapshot" values
      * @example cy.clearLocalStorageSnapshot()
     */
-    clearLocalStorageSnapshot(): Chainable<Element>
+    clearLocalStorageSnapshot(): Chainable<undefined>
 
     /**
      * Command to get localStorage item value
      * @param {string} itemKeyName - localStorage item to get
      * @example cy.getLocalStorage("cookies-accepted")
     */
-    getLocalStorage(itemKeyName: string): Chainable<Element>
+    getLocalStorage(itemKeyName: string): Chainable<string|null>
 
     /**
      * Command to set localStorage item value
@@ -33,13 +33,13 @@ declare namespace Cypress {
      * @param {string} value - value to be set
      * @example cy.setLocalStorage("cookies-accepted", "true")
     */
-    setLocalStorage(itemKeyName: string, value: string): Chainable<Element>
+    setLocalStorage(itemKeyName: string, value: string): Chainable<undefined>
 
     /**
      * Command to remove localStorage item
      * @param {string} itemKeyName - localStorage item to remove
      * @example cy.removeLocalStorage("cookies-accepted")
     */
-    removeLocalStorage(itemKeyName: string): Chainable<Element>
+    removeLocalStorage(itemKeyName: string): Chainable<undefined>
   }
 }

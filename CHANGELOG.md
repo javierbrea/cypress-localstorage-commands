@@ -11,6 +11,14 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Removed
 ### BREAKING CHANGES
 
+## [1.2.1] - 2020-06-09
+
+### Fixed
+- fix(TypeScript): Fix TypeScript return types declarations
+
+### Changed
+- chore(deps): Update devDependencies
+
 ## [1.2.0] - 2020-05-31
 
 ### Added
