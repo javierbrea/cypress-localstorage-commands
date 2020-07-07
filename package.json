@@ -45,9 +45,9 @@
     "cypress": "^2.1.0 || ^3.0.0 || ^4.0.0"
   },
   "devDependencies": {
-    "@stryker-mutator/core": "3.3.0",
-    "@stryker-mutator/javascript-mutator": "3.3.0",
-    "@stryker-mutator/jest-runner": "3.3.0",
+    "@stryker-mutator/core": "3.3.1",
+    "@stryker-mutator/javascript-mutator": "3.3.1",
+    "@stryker-mutator/jest-runner": "3.3.1",
     "babel-eslint": "10.1.0",
     "coveralls": "3.0.9",
     "eslint": "7.4.0",
