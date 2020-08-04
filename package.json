@@ -50,7 +50,7 @@
     "@stryker-mutator/jest-runner": "3.3.1",
     "babel-eslint": "10.1.0",
     "coveralls": "3.0.9",
-    "eslint": "7.5.0",
+    "eslint": "7.6.0",
     "eslint-config-prettier": "6.11.0",
     "eslint-plugin-prettier": "3.1.4",
     "eslint-plugin-react": "7.20.5",
