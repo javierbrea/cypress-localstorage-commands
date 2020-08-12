@@ -22,7 +22,7 @@
     "eslint": "7.6.0",
     "eslint-config-prettier": "6.11.0",
     "eslint-plugin-prettier": "3.1.4",
-    "start-server-and-test": "1.11.2",
+    "start-server-and-test": "1.11.3",
     "typescript": "3.9.7"
   }
 }
