@@ -1,6 +1,6 @@
 {
   "name": "cypress-localstorage-commands",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "description": "Extends Cypress' cy commands with localStorage methods. Allows preserving localStorage between tests",
   "keywords": [
     "cypress",
@@ -42,23 +42,23 @@
     "stryker": "stryker run"
   },
   "peerDependencies": {
-    "cypress": "^2.1.0 || ^3.0.0 || ^4.0.0"
+    "cypress": "^2.1.0 || ^3.0.0 || ^4.0.0 || ^5.0.0"
   },
   "devDependencies": {
-    "@stryker-mutator/core": "3.2.4",
-    "@stryker-mutator/javascript-mutator": "3.2.4",
-    "@stryker-mutator/jest-runner": "3.2.4",
+    "@stryker-mutator/core": "3.3.1",
+    "@stryker-mutator/javascript-mutator": "3.3.1",
+    "@stryker-mutator/jest-runner": "3.3.1",
     "babel-eslint": "10.1.0",
     "coveralls": "3.0.9",
-    "eslint": "7.2.0",
+    "eslint": "7.7.0",
     "eslint-config-prettier": "6.11.0",
-    "eslint-plugin-prettier": "3.1.3",
-    "eslint-plugin-react": "7.20.0",
+    "eslint-plugin-prettier": "3.1.4",
+    "eslint-plugin-react": "7.20.6",
     "husky": "4.2.5",
-    "jest": "26.0.1",
-    "lint-staged": "10.2.9",
+    "jest": "26.4.0",
+    "lint-staged": "10.2.11",
     "prettier": "2.0.5",
-    "sinon": "9.0.2"
+    "sinon": "9.0.3"
   },
   "lint-staged": {
     "src/**/*.js": "eslint",
@@ -74,6 +74,6 @@
     }
   },
   "engines": {
-    "node": "10.x || 12.x || 13.x || 14.x"
+    "node": "12.x || 13.x || 14.x"
   }
 }
