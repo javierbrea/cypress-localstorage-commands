@@ -14,6 +14,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ## [1.2.2] - 2020-08-27
 
 ### Changed
+- chore(deps): Add Cypress ^5.0.0 to peerDependencies
 - chore(deps): Update devDependencies
 
 ## [1.2.1] - 2020-06-09
