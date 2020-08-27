@@ -42,7 +42,7 @@
     "stryker": "stryker run"
   },
   "peerDependencies": {
-    "cypress": "^2.1.0 || ^3.0.0 || ^4.0.0"
+    "cypress": "^2.1.0 || ^3.0.0 || ^4.0.0 || ^5.0.0"
   },
   "devDependencies": {
     "@stryker-mutator/core": "3.3.1",
@@ -74,6 +74,6 @@
     }
   },
   "engines": {
-    "node": "10.x || 12.x || 13.x || 14.x"
+    "node": "12.x || 13.x || 14.x"
   }
 }
