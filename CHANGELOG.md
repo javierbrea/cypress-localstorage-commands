@@ -11,6 +11,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Removed
 ### BREAKING CHANGES
 
+## [1.2.2] - 2020-08-27
+
+### Changed
+- chore(deps): Update devDependencies
+
 ## [1.2.1] - 2020-06-09
 
 ### Fixed
