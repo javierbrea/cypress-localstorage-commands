@@ -1,6 +1,6 @@
 {
   "name": "cypress-localstorage-commands",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "description": "Extends Cypress' cy commands with localStorage methods. Allows preserving localStorage between tests",
   "keywords": [
     "cypress",
