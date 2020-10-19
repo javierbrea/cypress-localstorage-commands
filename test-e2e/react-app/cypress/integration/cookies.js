@@ -93,9 +93,9 @@ describe("Cookies", () => {
       cy.restoreLocalStorage();
       cy.reload();
       cy.get(SELECTORS.REJECT_BUTTON).should("be.visible");
-      cy.getLocalStorage("user-preferences").should("be", '{"cookiesAccepted":true}');
+      cy.getLocalStorage("user-preferences").should("equal", '{"cookiesAccepted":true}');
       cy.setLocalStorage("user-preferences", '{"cookiesAccepted":false}');
-      cy.getLocalStorage("user-preferences").should("be", '{"cookiesAccepted":false}');
+      cy.getLocalStorage("user-preferences").should("equal", '{"cookiesAccepted":false}');
       cy.saveLocalStorage();
     });
   });
@@ -104,16 +104,16 @@ describe("Cookies", () => {
     it("should remove item from localStorage", () => {
       cy.restoreLocalStorage();
       cy.reload();
-      cy.getLocalStorage("user-preferences").should("be", '{"cookiesAccepted":false}');
+      cy.getLocalStorage("user-preferences").should("equal", '{"cookiesAccepted":false}');
       cy.get(SELECTORS.ACCEPT_BUTTON).should("be.visible");
       cy.removeLocalStorage("user-preferences");
-      cy.getLocalStorage("user-preferences").should("be", undefined);
+      cy.getLocalStorage("user-preferences").should("equal", null);
     });
 
     it("should not remove item from localStorage snapshot", () => {
       cy.restoreLocalStorage();
       cy.reload();
-      cy.getLocalStorage("user-preferences").should("be", '{"cookiesAccepted":false}');
+      cy.getLocalStorage("user-preferences").should("equal", '{"cookiesAccepted":false}');
       cy.get(SELECTORS.ACCEPT_BUTTON).should("be.visible");
       cy.removeLocalStorage("user-preferences");
       cy.saveLocalStorage();
