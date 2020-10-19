@@ -11,6 +11,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Removed
 ### BREAKING CHANGES
 
+## [1.2.3] - 2020-10-19
+
+### Changed
+- chore(deps): Update devDependencies
+- test(cypress): Do not use "be" as assertion in Cypress tests as it is no longer supported
+- chore(deps): Modify Stryker config to adapt it to Stryker 4.0 version
+
 ## [1.2.2] - 2020-08-27
 
 ### Changed
