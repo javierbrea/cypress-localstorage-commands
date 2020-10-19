@@ -19,10 +19,10 @@
     "@typescript-eslint/eslint-plugin": "4.4.1",
     "@typescript-eslint/parser": "4.4.1",
     "cypress": "5.0.0",
-    "eslint": "7.7.0",
+    "eslint": "7.11.0",
     "eslint-config-prettier": "6.11.0",
     "eslint-plugin-prettier": "3.1.4",
-    "start-server-and-test": "1.11.3",
-    "typescript": "4.0.2"
+    "start-server-and-test": "1.11.5",
+    "typescript": "4.0.3"
   }
 }
