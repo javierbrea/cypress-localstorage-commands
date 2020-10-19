@@ -46,7 +46,6 @@
   },
   "devDependencies": {
     "@stryker-mutator/core": "4.0.0",
-    "@stryker-mutator/javascript-mutator": "4.0.0",
     "@stryker-mutator/jest-runner": "4.0.0",
     "babel-eslint": "10.1.0",
     "coveralls": "3.0.9",
