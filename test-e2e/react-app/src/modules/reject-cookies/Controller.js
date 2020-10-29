@@ -1,4 +1,3 @@
-import React from "react";
 import { withData } from "@data-provider/react";
 
 import CookiesButton from "../../components/cookies-button";
