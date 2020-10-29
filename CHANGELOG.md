@@ -11,6 +11,14 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Removed
 ### BREAKING CHANGES
 
+## [1.2.4] - 2020-10-29
+
+### Added
+- chore(deps): Add node engine dep option for node@v15.x
+
+### Changed
+- chore(deps): Update devDependencies
+
 ## [1.2.3] - 2020-10-19
 
 ### Changed
