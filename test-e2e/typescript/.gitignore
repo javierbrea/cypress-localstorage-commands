@@ -30,3 +30,6 @@ yarn-error.log*
 
 # Generated files
 /cypress/support/cypress-localstorage-commands
+
+# caches
+.eslintcache

@@ -20,10 +20,10 @@ describe("Accept cookies button", () => {
 
   it("should not be visible after clicked", () => {
     cy.get(COOKIES_BUTTON).click();
-    cy.get(COOKIES_BUTTON).should("not.be.visible");
+    cy.get(COOKIES_BUTTON).should("not.exist");
   });
 
   it("should not be visible after reloading", () => {
-    cy.get(COOKIES_BUTTON).should("not.be.visible");
+    cy.get(COOKIES_BUTTON).should("not.exist");
   });
 });
