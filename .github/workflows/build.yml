@@ -9,6 +9,10 @@ jobs:
         node: ["15.2.0"]
     steps:
       - uses: actions/checkout@v2
+      - name: Extract branch name
+        shell: bash
+        run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF##*/})"
+        id: extract_branch
       - name: Use Node.js
         uses: actions/setup-node@v1
         with:
@@ -26,13 +30,14 @@ jobs:
             ${{ runner.os }}-build-
             ${{ runner.os }}-
       - run: npm ci
-      - run: npm run lint
+      # - run: npm run lint
       - run: echo $BRANCH_NAME
         env:
-          BRANCH_NAME: ${GITHUB_REF##*/}
-      - run: npm run test:ci
+          BRANCH_NAME: ${{ steps.extract_branch.outputs.branch }}
+      # - run: npm run test:ci
+      - run: npm run test:coverage
         env:
-          BRANCH_NAME: ${GITHUB_REF##*/}
+          BRANCH_NAME: ${{ steps.extract_branch.outputs.branch }}
           STRYKER_TOKEN: ${{ secrets.STRYKER_TOKEN }}
       - name: Upload test results
         uses: actions/upload-artifact@v2
