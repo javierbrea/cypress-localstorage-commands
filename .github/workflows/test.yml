@@ -1,16 +1,17 @@
 name: test
 on: [push, pull_request]
-build:
-  runs-on: ubuntu-latest
-  strategy:
-    matrix:
-      node: ["12.19.0", "14.15.0", "15.2.0"]
-  steps:
-    - uses: actions/checkout@v2
-    - name: Use Node.js
-      uses: actions/setup-node@v1
-      with:
-        node-version: ${{ matrix.node }}
-    - run: npm run lint
-    - run: npm run test:ci
-    - run: npm run coveralls
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node: ["12.19.0", "14.15.0", "15.2.0"]
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node }}
+      - run: npm run lint
+      - run: npm run test:ci
+      - run: npm run coveralls
