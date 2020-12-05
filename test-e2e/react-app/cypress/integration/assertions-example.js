@@ -14,7 +14,7 @@ describe("localStorage cookies-accepted item", () => {
 
   it("should be true after clicking cookies button", () => {
     cy.get("#accept-cookies").click();
-    cy.getLocalStorage("cookies-accepted").should("equal", "false");
+    cy.getLocalStorage("cookies-accepted").should("equal", "true");
   });
 
   it("should be true after reloading", () => {
