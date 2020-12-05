@@ -1,4 +1,4 @@
-[![Build status][travisci-image]][travisci-url] [![Coverage Status][coveralls-image]][coveralls-url] [![Quality Gate][quality-gate-image]][quality-gate-url] [![Mutation testing badge](https://img.shields.io/endpoint?style=flat&url=https%3A%2F%2Fbadge-api.stryker-mutator.io%2Fgithub.com%2Fjavierbrea%2Fcypress-localstorage-commands%2Fmaster)](https://dashboard.stryker-mutator.io/reports/github.com/javierbrea/cypress-localstorage-commands/master)
+[![Build status][build-image]][build-url] [![Coverage Status][coveralls-image]][coveralls-url] [![Quality Gate][quality-gate-image]][quality-gate-url] [![Mutation testing status][mutation-image]][mutation-url]
 
 [![NPM dependencies][npm-dependencies-image]][npm-dependencies-url] [![Renovate](https://img.shields.io/badge/renovate-enabled-brightgreen.svg)](https://renovatebot.com) [![Last commit][last-commit-image]][last-commit-url] [![Last release][release-image]][release-url]
 
@@ -181,8 +181,10 @@ MIT, see [LICENSE](./LICENSE) for details.
 
 [coveralls-image]: https://coveralls.io/repos/github/javierbrea/cypress-localstorage-commands/badge.svg
 [coveralls-url]: https://coveralls.io/github/javierbrea/cypress-localstorage-commands
-[travisci-image]: https://travis-ci.com/javierbrea/cypress-localstorage-commands.svg?branch=master
-[travisci-url]: https://travis-ci.com/javierbrea/cypress-localstorage-commands
+[build-image]: https://github.com/javierbrea/cypress-localstorage-commands/workflows/build/badge.svg?branch=chore-deps-cypress-6
+[build-url]: https://github.com/javierbrea/cypress-localstorage-commands/actions?query=workflow%3Abuild
+[mutation-image]: https://img.shields.io/endpoint?style=flat&url=https%3A%2F%2Fbadge-api.stryker-mutator.io%2Fgithub.com%2Fjavierbrea%2Fcypress-localstorage-commands%2Fmaster
+[mutation-url]: https://dashboard.stryker-mutator.io/reports/github.com/javierbrea/cypress-localstorage-commands/master
 [last-commit-image]: https://img.shields.io/github/last-commit/javierbrea/cypress-localstorage-commands.svg
 [last-commit-url]: https://github.com/javierbrea/cypress-localstorage-commands/commits
 [license-image]: https://img.shields.io/npm/l/cypress-localstorage-commands.svg

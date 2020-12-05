@@ -11,6 +11,14 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Removed
 ### BREAKING CHANGES
 
+## [1.2.5] - 2020-12-05
+
+### Changed
+- chore(ci): Migrate CI to github actions. Rename npm commands
+- chore(deps): Add Cypress 6.x to peerDependencies
+- chore(test): Update Cypress to v6.0.1 in e2e tests
+- chore(deps): Update devDependencies
+
 ## [1.2.4] - 2020-10-29
 
 ### Added
