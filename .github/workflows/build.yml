@@ -42,7 +42,7 @@ jobs:
         run: npm run test:e2e
         id: test-e2e
       - name: Upload E2E tests screenshots
-        if: ${{ steps.test-e2e.outcome == "failure" }}
+        if: ${{ steps.test-e2e.outcome == 'failure' }}
         uses: actions/upload-artifact@v2
         with:
           name: e2e-screenshots-react-app-${{ matrix.node }}
