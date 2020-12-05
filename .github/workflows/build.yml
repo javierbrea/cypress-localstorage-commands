@@ -34,6 +34,7 @@ jobs:
           path: ./coverage
           retention-days: 1
   analysis:
+    runs-on: ubuntu-latest
     needs: test
     steps:
       - name: Download test results
