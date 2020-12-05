@@ -28,3 +28,6 @@ yarn-error.log*
 /reports
 .stryker-tmp
 stryker.conf.local.js
+
+# caches
+.eslintcache
