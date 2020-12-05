@@ -5,7 +5,8 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node: ["12.19.0", "14.15.0", "15.2.0"]
+        # node: ["12.19.0", "14.15.0", "15.2.0"]
+        node: ["15.2.0"]
     steps:
       - uses: actions/checkout@v2
       - name: Use Node.js
@@ -26,6 +27,9 @@ jobs:
             ${{ runner.os }}-
       - run: npm ci
       - run: npm run lint
+      - run: echo $BRANCH_NAME
+        env:
+          BRANCH_NAME: ${GITHUB_REF##*/}
       - run: npm run test:ci
         env:
           BRANCH_NAME: ${GITHUB_REF##*/}
@@ -45,6 +49,7 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: artifact-15.2.0
+          path: coverage
       - name: Coveralls
         uses: coverallsapp/github-action@master
         with:
