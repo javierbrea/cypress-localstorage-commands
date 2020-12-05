@@ -28,7 +28,7 @@ jobs:
       - run: npm run lint
       - run: npm run test:ci
       - name: Upload test results
-        uses: 'actions/upload-artifact@v2'
+        uses: actions/upload-artifact@v2
         with:
           name: artifact-${{ matrix.node-version }}
           path: ./coverage
