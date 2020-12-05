@@ -1,5 +1,5 @@
 const BRANCH_NAME = process.env.BRANCH_NAME;
-const STRYKER_DASHBOARD_API_KEY = process.env.STRYKER_TOKEN;
+const STRYKER_DASHBOARD_API_KEY = process.env.STRYKER_DASHBOARD_API_KEY;
 
 const BASE_CONFIG = {
   files: ["*.js", "src/**/*.js", "test/**/*.js"],
