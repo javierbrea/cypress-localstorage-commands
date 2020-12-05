@@ -11,7 +11,7 @@ jobs:
       - name: Extract branch name
         shell: bash
         run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF##*/})"
-        id: extract_branch
+        id: extract-branch
       - name: Use Node.js
         uses: actions/setup-node@v1
         with:
@@ -29,13 +29,25 @@ jobs:
             ${{ runner.os }}-build-
             ${{ runner.os }}-
       - run: npm ci
-      - run: npm run lint
-      - run: npm run test:unit
-      - run: npm run test:mutation
+      - name: Lint
+        run: npm run lint
+      - name: Test unit
+        run: npm run test:unit
+      - name: Test mutation
+        run: npm run test:mutation
         env:
-          BRANCH_NAME: ${{ steps.extract_branch.outputs.branch }}
+          BRANCH_NAME: ${{ steps.extract-branch.outputs.branch }}
           STRYKER_DASHBOARD_API_KEY: ${{ secrets.STRYKER_TOKEN }}
-      - run: npm run test:e2e
+      - name: Test E2E
+        run: npm run test:e2e
+        id: test-e2e
+      - name: Upload E2E tests screenshots
+        if: ${{ steps.test-e2e.outcome === "failure" }}
+        uses: actions/upload-artifact@v2
+        with:
+          name: e2e-screenshots-react-app
+          path: test-e2e/react-app/cypress/screenshots
+          retention-days: 7
       - name: Upload test results
         uses: actions/upload-artifact@v2
         with:
