@@ -27,10 +27,13 @@ jobs:
       - run: npm ci
       - run: npm run lint
       - run: npm run test:ci
+        env:
+          BRANCH_NAME: ${GITHUB_REF##*/}
+          STRYKER_TOKEN: ${{ secrets.STRYKER_TOKEN }}
       - name: Upload test results
         uses: actions/upload-artifact@v2
         with:
-          name: artifact-${{ matrix.node-version }}
+          name: artifact-${{ matrix.node }}
           path: coverage
           retention-days: 1
   analysis:
