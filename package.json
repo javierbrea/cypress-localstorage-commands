@@ -40,7 +40,7 @@
     "test:ci": "npm run test:unit && npm run test:mutation && npm run test:e2e"
   },
   "peerDependencies": {
-    "cypress": "^2.1.0 || ^3.0.0 || ^4.0.0 || ^5.0.0"
+    "cypress": "^2.1.0 || 3.x || 4.x || 5.x || 6.x"
   },
   "devDependencies": {
     "@stryker-mutator/core": "4.1.2",
