@@ -22,7 +22,6 @@
   ],
   "main": "index.js",
   "scripts": {
-    "coveralls": "cat ./coverage/lcov.info | coveralls",
     "lint:typescript": "cd test-e2e/typescript && npm run copy:library && npm run lint",
     "lint:javascript": "eslint src test test-e2e/react-app/src test-e2e/react-app/cypress",
     "lint:all": "npm run lint:javascript && npm run lint:typescript",
@@ -47,7 +46,6 @@
     "@stryker-mutator/core": "4.1.2",
     "@stryker-mutator/jest-runner": "4.1.2",
     "babel-eslint": "10.1.0",
-    "coveralls": "3.0.9",
     "eslint": "7.14.0",
     "eslint-config-prettier": "6.15.0",
     "eslint-plugin-prettier": "3.1.4",
