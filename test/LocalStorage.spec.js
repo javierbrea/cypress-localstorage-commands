@@ -1,16 +1,21 @@
 const LocalStorageMock = require("./LocalStorage.mock");
+const CyMock = require("./Cy.mock");
 const LocalStorage = require("../src/LocalStorage");
 
 describe("LocalStorage", () => {
+  let windowLocalStorageMock;
   let localStorageMock;
   let localStorage;
+  let cyMock;
 
   beforeAll(() => {
+    cyMock = new CyMock();
     localStorageMock = new LocalStorageMock();
-    localStorage = new LocalStorage(localStorageMock.stubs);
+    localStorage = new LocalStorage(localStorageMock.stubs, cyMock.stubs);
   });
 
   afterAll(() => {
+    cyMock.restore();
     localStorageMock.restore();
   });
 
@@ -103,6 +108,95 @@ describe("LocalStorage", () => {
       localStorage.restoreLocalStorage();
       expect(localStorage.getLocalStorage("foo")).toEqual("foo-value");
       expect(localStorage.getLocalStorage("var")).toEqual("var-value");
+    });
+  });
+
+  describe("disableLocalStorage", () => {
+    beforeEach(() => {
+      windowLocalStorageMock = new CyMock();
+      cyMock = new CyMock();
+      localStorage = new LocalStorage(windowLocalStorageMock.window.localStorage, cyMock.stubs);
+    });
+
+    afterEach(() => {
+      windowLocalStorageMock.restore();
+    });
+
+    it("should do nothing if page is not reloaded", () => {
+      expect.assertions(3);
+      localStorage.disableLocalStorage();
+      expect(() => cyMock.window.localStorage.setItem()).not.toThrow();
+      expect(() => cyMock.window.localStorage.getItem()).not.toThrow();
+      expect(() => cyMock.window.localStorage.removeItem()).not.toThrow();
+    });
+
+    it("should use Cypress window:before:load event to create stubs", () => {
+      localStorage.disableLocalStorage();
+      expect(cyMock.stubs.on.getCall(0).args[0]).toEqual("window:before:load");
+    });
+
+    it("should make localStorage methods to throw after reloading page", () => {
+      expect.assertions(3);
+      localStorage.disableLocalStorage();
+      cyMock.loadWindow();
+      expect(() => cyMock.window.localStorage.setItem()).toThrow();
+      expect(() => cyMock.window.localStorage.getItem()).toThrow();
+      expect(() => cyMock.window.localStorage.removeItem()).toThrow();
+    });
+
+    it("should make cy.setLocalStorage command to log after reloading page", () => {
+      expect.assertions(1);
+      localStorage.disableLocalStorage();
+      cyMock.loadWindow();
+      localStorage.setLocalStorage("foo", "foo");
+      expect(cyMock.stubs.log.calledWith("localStorage.setItem is disabled")).toEqual(true);
+    });
+
+    it("should make cy.getLocalStorage command to log after reloading page", () => {
+      expect.assertions(1);
+      localStorage.disableLocalStorage();
+      cyMock.loadWindow();
+      localStorage.getLocalStorage("foo");
+      expect(cyMock.stubs.log.calledWith("localStorage.getItem is disabled")).toEqual(true);
+    });
+
+    it("should make cy.removeLocalStorage command to log after reloading page", () => {
+      expect.assertions(1);
+      localStorage.disableLocalStorage();
+      cyMock.loadWindow();
+      localStorage.removeLocalStorage("foo");
+      expect(cyMock.stubs.log.calledWith("localStorage.removeItem is disabled")).toEqual(true);
+    });
+
+    it("should do nothing if window.localStorage is not available", () => {
+      cyMock.window.localStorage = null;
+      localStorage.disableLocalStorage();
+      cyMock.loadWindow();
+      localStorage.setLocalStorage("foo", "foo");
+      expect(cyMock.stubs.log.callCount).toEqual(0);
+    });
+
+    it("should work when reloading page multiple times", () => {
+      expect.assertions(3);
+      localStorage.disableLocalStorage();
+      cyMock.loadWindow();
+      cyMock.loadWindow();
+      cyMock.loadWindow();
+      expect(() => cyMock.window.localStorage.setItem()).toThrow();
+      expect(() => cyMock.window.localStorage.getItem()).toThrow();
+      expect(() => cyMock.window.localStorage.removeItem()).toThrow();
+    });
+
+    it("should work when called multiple times", () => {
+      expect.assertions(3);
+      localStorage.disableLocalStorage();
+      cyMock.loadWindow();
+      localStorage.disableLocalStorage();
+      localStorage.disableLocalStorage();
+      cyMock.loadWindow();
+      expect(() => cyMock.window.localStorage.setItem()).toThrow();
+      expect(() => cyMock.window.localStorage.getItem()).toThrow();
+      expect(() => cyMock.window.localStorage.removeItem()).toThrow();
     });
   });
 });

@@ -1,3 +1,9 @@
+function logDisabled(method) {
+  return function () {
+    return this._cy.log(`localStorage.${method} is disabled`);
+  };
+}
+
 class LocalStorage {
   static get cypressCommands() {
     return [
@@ -7,11 +13,16 @@ class LocalStorage {
       "setLocalStorage",
       "getLocalStorage",
       "removeLocalStorage",
+      "disableLocalStorage",
     ];
   }
 
-  constructor(localStorage) {
+  constructor(localStorage, cy) {
+    this._cy = cy;
     this._localStorage = localStorage;
+    this._logSetDisabled = logDisabled("setItem").bind(this);
+    this._logGetDisabled = logDisabled("getItem").bind(this);
+    this._logRemoveDisabled = logDisabled("removeItem").bind(this);
     this.clearLocalStorageSnapshot();
   }
 
@@ -43,6 +54,23 @@ class LocalStorage {
 
   removeLocalStorage(key) {
     return this._localStorage.removeItem(key);
+  }
+
+  disableLocalStorage() {
+    this._cy.on("window:before:load", (win) => {
+      if (
+        win.localStorage &&
+        !win.localStorage.setItem.wrappedMethod &&
+        !this._localStorage.setItem.wrappedMethod
+      ) {
+        this._cy.stub(this._localStorage, "setItem").callsFake(this._logSetDisabled);
+        this._cy.stub(this._localStorage, "getItem").callsFake(this._logGetDisabled);
+        this._cy.stub(this._localStorage, "removeItem").callsFake(this._logRemoveDisabled);
+        this._cy.stub(win.localStorage, "setItem").throws();
+        this._cy.stub(win.localStorage, "getItem").throws();
+        this._cy.stub(win.localStorage, "removeItem").throws();
+      }
+    });
   }
 }
 
