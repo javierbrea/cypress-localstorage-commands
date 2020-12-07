@@ -60,6 +60,7 @@
     "*.js": "eslint",
     "src/**/*.js": "eslint",
     "test/**/*.js": "eslint",
+    "test-e2e/react-app/*.js": "eslint",
     "test-e2e/react-app/src/**/*.js": "eslint",
     "test-e2e/react-app/cypress/**/*.js": "eslint",
     "test-e2e/typescript/**/*.js": "npm run lint:typescript",
