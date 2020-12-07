@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Added
 - feat(#191): Add disableLocalStorage command (Thanks to @Uninen for his contribution).
 ### Changed
+- chore(deps): Update some devDependencies
 ### Fixed
 - style(lint): Lint also files in root folder. Fix jest.config style
 ### Removed
