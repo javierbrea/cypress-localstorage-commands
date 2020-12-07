@@ -39,47 +39,43 @@ You can now use all next commands:
 
 ### Commands
 
-Save current localStorage values into an internal "snapshot":
+##### `cy.saveLocalStorage()`
 
-```js
-cy.saveLocalStorage();
-```
+Saves current localStorage values into an internal "snapshot".
 
-Restore localStorage to previously "snapshot" saved values:
+##### `cy.restoreLocalStorage()`
 
-```js
-cy.restoreLocalStorage();
-```
+Restores localStorage to previously "snapshot" saved values.
 
-Clear localStorage "snapshot" values:
+##### `cy.clearLocalStorageSnapshot()`
 
-```js
-cy.clearLocalStorageSnapshot();
-```
+Clears localStorage "snapshot" values, so previously saved values are cleaned.
 
-Get localStorage item. Equivalent to `localStorage.getItem` in browser:
+##### `cy.getLocalStorage(item)`
 
-```js
-cy.getLocalStorage("item");
-```
+Gets localStorage item. Equivalent to `localStorage.getItem` in browser.
 
-Set localStorage item. Equivalent to `localStorage.setItem` in browser:
+* `item` _(String)_: Item to get from `localStorage`.
 
-```js
-cy.setLocalStorage("item", "value");
-```
+##### `cy.setLocalStorage(item, value)`
 
-Remove localStorage item. Equivalent to `localStorage.removeItem` in browser:
+Sets localStorage item. Equivalent to `localStorage.setItem` in browser.
 
-```js
-cy.removeLocalStorage("item");
-```
+* `item` _(String)_: Item to set value.
+* `value` _(String)_: Value to be set.
 
-Disable localStorage. Produce localStorage methods to throw errors.
+##### `cy.removeLocalStorage(item)`
 
-```js
-cy.disableLocalStorage();
-```
+Removes localStorage item. Equivalent to `localStorage.removeItem` in browser.
+
+* `item` _(String)_: Item to be removed.
+
+##### `cy.disableLocalStorage(options)`
+
+Disables localStorage. It produces localStorage methods to throw errors.
+
+* `options` _(Object)_: Options to use when disabling `localStorage`.
+  * `withError` _(Error)_: If provided, invocations to `localStorage` methods will throw this error.
 
 ### Preserving local storage between tests
 
@@ -176,6 +172,7 @@ Based on previous "Accept cookies button" example, next tests could be added:
 ```js
 //...
 const LOCALSTORAGE_DISABLED_WARNING = "#localstorage-disabled-warning";
+const LOCALSTORAGE_ERROR = "#localstorage-error";
 
 //... should not be visible after clicked
 
@@ -191,6 +188,12 @@ it("should display warning if localStorage is disabled", () => {
   cy.get(LOCALSTORAGE_DISABLED_WARNING).should("be.visible");
 });
 
+it("should display localStorage error message", () => {
+  cy.disableLocalStorage();
+  cy.reload();
+  cy.get(LOCALSTORAGE_ERROR).should("have.text", "Error");
+});
+
 // ...should not be visible after reloading
 ```
 
@@ -199,7 +202,9 @@ it("should display warning if localStorage is disabled", () => {
 ```js
 describe("when localStorage is disabled", () => {
   beforeEach(() => {
-    cy.disableLocalStorage();
+    cy.disableLocalStorage({
+      withError: new Error("Disabled by cypress-localstorage-commands"),
+    });
     cy.visit("/");
   });
 
@@ -209,6 +214,10 @@ describe("when localStorage is disabled", () => {
 
   it("should display accept-cookies button disabled", () => {
     cy.get("#accept-cookies").should("be.disabled");
+  });
+
+  it("should display localStorage error message", () => {
+    cy.get("#localstorage-error").should("have.text", "Disabled by cypress-localstorage-commands");
   });
 });
 ```

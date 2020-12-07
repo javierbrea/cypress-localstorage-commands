@@ -214,5 +214,17 @@ describe("LocalStorage", () => {
       expect(() => cyMock.window.localStorage.getItem()).toThrow();
       expect(() => cyMock.window.localStorage.removeItem()).toThrow();
     });
+
+    it("should throw error provided in the 'withError' option", () => {
+      expect.assertions(3);
+      const error = new Error("foo");
+      localStorage.disableLocalStorage({
+        withError: error,
+      });
+      cyMock.loadWindow();
+      expect(() => cyMock.window.localStorage.setItem()).toThrow(error);
+      expect(() => cyMock.window.localStorage.getItem()).toThrow(error);
+      expect(() => cyMock.window.localStorage.removeItem()).toThrow(error);
+    });
   });
 });

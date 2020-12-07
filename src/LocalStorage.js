@@ -64,7 +64,7 @@ class LocalStorage {
     return this._localStorage.removeItem(key);
   }
 
-  disableLocalStorage() {
+  disableLocalStorage(options = {}) {
     this._cy.on("window:before:load", (win) => {
       if (
         win.localStorage &&
@@ -75,7 +75,7 @@ class LocalStorage {
           this._cy
             .stub(this._localStorage, localStorageMethod)
             .callsFake(this[logDisabledMethodName(localStorageMethod)]);
-          this._cy.stub(win.localStorage, localStorageMethod).throws();
+          this._cy.stub(win.localStorage, localStorageMethod).throws(options.withError);
         });
       }
     });

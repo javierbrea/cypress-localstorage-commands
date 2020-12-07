@@ -11,5 +11,10 @@ export const LocalStorageWarning = () => {
     return null;
   }
 
-  return <p id="localstorage-disabled-warning">⚠️ LocalStorage is disabled</p>;
+  return (
+    <p id="localstorage-disabled-warning">
+      ⚠️ LocalStorage is disabled. Received error:{" "}
+      <span id="localstorage-error">{error.message}</span>
+    </p>
+  );
 };
