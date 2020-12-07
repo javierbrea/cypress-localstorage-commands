@@ -212,12 +212,12 @@ describe("when localStorage is disabled", () => {
     cy.get("#localstorage-disabled-warning").should("be.visible");
   });
 
-  it("should display accept-cookies button disabled", () => {
-    cy.get("#accept-cookies").should("be.disabled");
-  });
-
   it("should display localStorage error message", () => {
     cy.get("#localstorage-error").should("have.text", "Disabled by cypress-localstorage-commands");
+  });
+
+  it("should display accept-cookies button disabled", () => {
+    cy.get("#accept-cookies").should("be.disabled");
   });
 });
 ```
