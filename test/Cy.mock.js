@@ -9,6 +9,7 @@ class Cy {
         setItem: () => {},
         getItem: () => {},
         removeItem: () => {},
+        clear: () => {},
       },
     };
 

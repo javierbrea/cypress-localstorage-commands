@@ -5,6 +5,7 @@ describe("Cookies", () => {
   const SELECTORS = {
     ACCEPT_BUTTON: "#accept-cookies",
     REJECT_BUTTON: "#reject-cookies",
+    LOCALSTORAGE_DISABLED_WARNING: "#localstorage-disabled-warning",
   };
 
   describe("when cookies are not accepted", () => {
@@ -111,11 +112,17 @@ describe("Cookies", () => {
       cy.getLocalStorage("cookies-accepted").should("not.exist");
     });
 
+    it("should display warning if localStorage is disabled", () => {
+      cy.disableLocalStorage();
+      cy.reload();
+      cy.get(SELECTORS.LOCALSTORAGE_DISABLED_WARNING).should("be.visible");
+    });
+
     it("should not set cookiesAccepted localStorage value when user clicks accept cookies button", () => {
       cy.disableLocalStorage();
       cy.reload();
       cy.getLocalStorage("cookies-accepted").should("not.exist");
-      cy.get(SELECTORS.ACCEPT_BUTTON).click();
+      cy.get(SELECTORS.ACCEPT_BUTTON).click({ force: true });
       cy.getLocalStorage("cookies-accepted").should("not.exist");
       cy.wait(500);
       cy.get(SELECTORS.REJECT_BUTTON).should("not.exist");

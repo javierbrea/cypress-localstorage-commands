@@ -1,6 +1,6 @@
 function logDisabled(method) {
   return function () {
-    return this._cy.log(`localStorage.${method} is disabled`);
+    this._cy.log(`localStorage.${method} is disabled`);
   };
 }
 
@@ -23,6 +23,7 @@ class LocalStorage {
     this._logSetDisabled = logDisabled("setItem").bind(this);
     this._logGetDisabled = logDisabled("getItem").bind(this);
     this._logRemoveDisabled = logDisabled("removeItem").bind(this);
+    this._logClearDisabled = logDisabled("clear").bind(this);
     this.clearLocalStorageSnapshot();
   }
 
@@ -31,10 +32,12 @@ class LocalStorage {
   }
 
   saveLocalStorage() {
-    this.clearLocalStorageSnapshot();
-    Object.keys(this._localStorage).forEach((key) => {
-      this._snapshot[key] = this._localStorage.getItem(key);
-    });
+    if (!this._localStorage.getItem.wrappedMethod) {
+      this.clearLocalStorageSnapshot();
+      Object.keys(this._localStorage).forEach((key) => {
+        this._snapshot[key] = this._localStorage.getItem(key);
+      });
+    }
   }
 
   restoreLocalStorage() {
@@ -66,9 +69,11 @@ class LocalStorage {
         this._cy.stub(this._localStorage, "setItem").callsFake(this._logSetDisabled);
         this._cy.stub(this._localStorage, "getItem").callsFake(this._logGetDisabled);
         this._cy.stub(this._localStorage, "removeItem").callsFake(this._logRemoveDisabled);
+        this._cy.stub(this._localStorage, "clear").callsFake(this._logClearDisabled);
         this._cy.stub(win.localStorage, "setItem").throws();
         this._cy.stub(win.localStorage, "getItem").throws();
         this._cy.stub(win.localStorage, "removeItem").throws();
+        this._cy.stub(win.localStorage, "clear").throws();
       }
     });
   }

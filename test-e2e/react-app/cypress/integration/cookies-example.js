@@ -1,5 +1,6 @@
 describe("Accept cookies button", () => {
   const COOKIES_BUTTON = "#accept-cookies";
+  const LOCALSTORAGE_DISABLED_WARNING = "#localstorage-disabled-warning";
 
   before(() => {
     cy.clearLocalStorageSnapshot();
@@ -21,6 +22,18 @@ describe("Accept cookies button", () => {
   it("should not be visible after clicked", () => {
     cy.get(COOKIES_BUTTON).click();
     cy.get(COOKIES_BUTTON).should("not.exist");
+  });
+
+  it("should still be visible when reloading if localStorage is disabled", () => {
+    cy.disableLocalStorage();
+    cy.reload();
+    cy.get(COOKIES_BUTTON).should("be.visible");
+  });
+
+  it("should display warning if localStorage is disabled", () => {
+    cy.disableLocalStorage();
+    cy.reload();
+    cy.get(LOCALSTORAGE_DISABLED_WARNING).should("be.visible");
   });
 
   it("should not be visible after reloading", () => {

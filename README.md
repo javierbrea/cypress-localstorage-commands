@@ -159,7 +159,7 @@ describe("localStorage cookies-accepted item", () => {
 
 ### Disabling localStorage
 
-Use `cy.disableLocalStorage()` to simulate that `localStorage` is disabled, producing that any invocation to `localStorage.setItem`, `localStorage.getItem` or `localStorage.removeItem` will throw an error. [As MDN docs recommend](https://developer.mozilla.org/en-US/docs/Web/API/Storage/setItem), _"developers should make sure to always catch possible exceptions from setItem()"_. This command allows to test that possible exceptions are handled correctly.
+Use `cy.disableLocalStorage()` to simulate that `localStorage` is disabled, producing that any invocation to `localStorage.setItem`, `localStorage.getItem`, `localStorage.removeItem` or `localStorage.clear` will throw an error. [As MDN docs recommend](https://developer.mozilla.org/en-US/docs/Web/API/Storage/setItem), _"developers should make sure to always catch possible exceptions from setItem()"_. This command allows to test that possible exceptions are handled correctly.
 
 Note that:
 

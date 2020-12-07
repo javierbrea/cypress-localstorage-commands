@@ -168,6 +168,22 @@ describe("LocalStorage", () => {
       expect(cyMock.stubs.log.calledWith("localStorage.removeItem is disabled")).toEqual(true);
     });
 
+    it("should make cy.restoreLocalStorage command to log after reloading page", () => {
+      expect.assertions(1);
+      localStorage.disableLocalStorage();
+      cyMock.loadWindow();
+      localStorage.restoreLocalStorage();
+      expect(cyMock.stubs.log.calledWith("localStorage.clear is disabled")).toEqual(true);
+    });
+
+    it("should make cy.saveLocalStorage command to do nothing", () => {
+      expect.assertions(1);
+      localStorage.disableLocalStorage();
+      cyMock.loadWindow();
+      localStorage.saveLocalStorage();
+      expect(windowLocalStorageMock.window.localStorage.getItem.callCount).toEqual(0);
+    });
+
     it("should do nothing if window.localStorage is not available", () => {
       cyMock.window.localStorage = null;
       localStorage.disableLocalStorage();
