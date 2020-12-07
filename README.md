@@ -6,15 +6,16 @@
 
 # Cypress localStorage commands
 
-Extends Cypress' cy commands with localStorage methods. Allows preserving localStorage between tests.
+Extends Cypress' cy commands with localStorage methods. Allows preserving localStorage between tests and disabling localStorage.
 
-## The problem
+## The problems
 
-You want to preserve localStorage between Cypress tests.
+* You want to preserve localStorage between Cypress tests.
+* You want to disable localStorage to check error handling.
 
 ## This solution
 
-This solution allows you to use all browser localStorage methods through Cypress commands, and preserve it between tests.
+This solution allows you to use all browser localStorage methods through Cypress commands, and preserve it between tests. It also allows to simulate that localStorage is disabled in the browser.
 
 ## Installation
 
@@ -74,9 +75,15 @@ Remove localStorage item. Equivalent to `localStorage.removeItem` in browser:
 cy.removeLocalStorage("item");
 ```
 
+Disable localStorage. Produce localStorage methods to throw errors.
+
+```js
+cy.disableLocalStorage();
+```
+
 ### Preserving local storage between tests
 
-Use `saveLocalStorage` to save a snapshot of current `localStorage` at the end of one test, and use the `restoreLocalStorage` command to restore it at the beginning of another one. _The usage of `beforeEach` and `afterEach` is recommended for this purpose._
+Use `cy.saveLocalStorage()` to save a snapshot of current `localStorage` at the end of one test, and use the `cy.restoreLocalStorage()` command to restore it at the beginning of another one. _The usage of `beforeEach` and `afterEach` is recommended for this purpose._
 
 ### Examples
 
@@ -116,7 +123,7 @@ describe("Accept cookies button", () => {
 });
 ```
 
-> Note the usage of `beforeEach` and `afterEach` for preserving `localStorage` between all tests. Also `clearLocalStorageSnapshot` is used in the `before` statement to avoid possible conflicts with other test files preserving localStorage.
+> Note the usage of `beforeEach` and `afterEach` for preserving `localStorage` between all tests. Also `cy.clearLocalStorageSnapshot` is used in the `before` statement to avoid possible conflicts with other test files preserving localStorage.
 
 #### localStorage assertions
 
@@ -146,6 +153,62 @@ describe("localStorage cookies-accepted item", () => {
     cy.getLocalStorage("cookies-accepted").then(cookiesAccepted => {
       expect(cookiesAccepted).to.equal("true");
     });
+  });
+});
+```
+
+### Disabling localStorage
+
+Use `cy.disableLocalStorage()` to simulate that `localStorage` is disabled, producing that any invocation to `localStorage.setItem`, `localStorage.getItem` or `localStorage.removeItem` will throw an error. [As MDN docs recommend](https://developer.mozilla.org/en-US/docs/Web/API/Storage/setItem), _"developers should make sure to always catch possible exceptions from setItem()"_. This command allows to test that possible exceptions are handled correctly.
+
+Note that:
+
+* Only pages loaded after calling this command will have `localStorage` disabled, so always use `cy.reload` or `cy.visit` after executing it.
+* The `localStorage` only remains disabled for all pages loaded during the current test. If you want to disable it for multiple tests, execute it in all of them, or in a `beforeEach` statement.
+* If any of the other plugin commands (except `clearLocalStorageSnapshot`) is executed while `localStorage` is disabled, it will do nothing but producing a Cypress log as: _"localStorage.setItem is disabled"_
+
+### Examples
+
+#### Disabling localStorage in a single test
+
+Based on previous "Accept cookies button" example, next tests could be added:
+
+```js
+//...
+const LOCALSTORAGE_DISABLED_WARNING = "#localstorage-disabled-warning";
+
+//... should not be visible after clicked
+
+it("should still be visible when reloading if localStorage is disabled", () => {
+  cy.disableLocalStorage();
+  cy.reload();
+  cy.get(COOKIES_BUTTON).should("be.visible");
+});
+
+it("should display warning if localStorage is disabled", () => {
+  cy.disableLocalStorage();
+  cy.reload();
+  cy.get(LOCALSTORAGE_DISABLED_WARNING).should("be.visible");
+});
+
+// ...should not be visible after reloading
+```
+
+#### Disabling localStorage in multiple tests
+
+```js
+describe("when localStorage is disabled", () => {
+  beforeEach(() => {
+    cy.disableLocalStorage();
+    cy.visit("/");
+  });
+
+  it("should display localStorage warning", () => {
+    cy.get("#localstorage-disabled-warning").should("be.visible");
+  });
+
+  it("should display accept-cookies button disabled", () => {
+    cy.get("#accept-cookies").should("be.disabled");
   });
 });
 ```
