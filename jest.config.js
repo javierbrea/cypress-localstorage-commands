@@ -20,13 +20,13 @@ module.exports = {
       branches: 100,
       functions: 100,
       lines: 100,
-      statements: 100
-    }
+      statements: 100,
+    },
   },
 
   // The test environment that will be used for testing
   testEnvironment: "node",
 
   // The glob patterns Jest uses to detect test files
-  testMatch: ["**/test/**/*.spec.js"]
+  testMatch: ["**/test/**/*.spec.js"],
 };

@@ -41,5 +41,14 @@ declare namespace Cypress {
      * @example cy.removeLocalStorage("cookies-accepted")
     */
     removeLocalStorage(itemKeyName: string): Chainable<undefined>
+
+    /**
+     * Command to disable localStorage
+     * @param {object} options - Options for disabling localStorage
+     * @example cy.disableLocalStorage()
+    */
+    disableLocalStorage(options?: {
+      withError: Error
+    }): Chainable<undefined>
   }
 }

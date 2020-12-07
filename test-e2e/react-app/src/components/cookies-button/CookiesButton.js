@@ -2,12 +2,12 @@ import PropTypes from "prop-types";
 
 import "./CookiesButton.css";
 
-export const CookiesButton = ({ visible, onClick, id, text }) => {
+export const CookiesButton = ({ visible, onClick, id, text, disabled }) => {
   if (!visible) {
     return null;
   }
   return (
-    <button onClick={onClick} id={id} className="cookies-button">
+    <button onClick={onClick} id={id} className="cookies-button" disabled={disabled}>
       {text}
     </button>
   );
@@ -18,4 +18,5 @@ CookiesButton.propTypes = {
   onClick: PropTypes.func,
   id: PropTypes.string,
   text: PropTypes.string,
+  disabled: PropTypes.bool,
 };
