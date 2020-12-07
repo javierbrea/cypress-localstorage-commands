@@ -6,7 +6,6 @@ export const CookiesButton = ({ visible, onClick, id, text, disabled }) => {
   if (!visible) {
     return null;
   }
-  console.log(disabled);
   return (
     <button onClick={onClick} id={id} className="cookies-button" disabled={disabled}>
       {text}
