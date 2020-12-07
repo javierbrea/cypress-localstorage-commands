@@ -1,7 +1,13 @@
+const LOCAL_STORAGE_METHODS = ["setItem", "getItem", "removeItem", "clear"];
+
 function logDisabled(method) {
   return function () {
     this._cy.log(`localStorage.${method} is disabled`);
   };
+}
+
+function logDisabledMethodName(localStorageMethod) {
+  return `_log${localStorageMethod}Disabled`;
 }
 
 class LocalStorage {
@@ -20,10 +26,9 @@ class LocalStorage {
   constructor(localStorage, cy) {
     this._cy = cy;
     this._localStorage = localStorage;
-    this._logSetDisabled = logDisabled("setItem").bind(this);
-    this._logGetDisabled = logDisabled("getItem").bind(this);
-    this._logRemoveDisabled = logDisabled("removeItem").bind(this);
-    this._logClearDisabled = logDisabled("clear").bind(this);
+    LOCAL_STORAGE_METHODS.forEach((localStorageMethod) => {
+      this[logDisabledMethodName(localStorageMethod)] = logDisabled(localStorageMethod).bind(this);
+    });
     this.clearLocalStorageSnapshot();
   }
 
@@ -63,17 +68,15 @@ class LocalStorage {
     this._cy.on("window:before:load", (win) => {
       if (
         win.localStorage &&
-        !win.localStorage.setItem.wrappedMethod &&
-        !this._localStorage.setItem.wrappedMethod
+        !win.localStorage[LOCAL_STORAGE_METHODS[0]].wrappedMethod &&
+        !this._localStorage[LOCAL_STORAGE_METHODS[0]].wrappedMethod
       ) {
-        this._cy.stub(this._localStorage, "setItem").callsFake(this._logSetDisabled);
-        this._cy.stub(this._localStorage, "getItem").callsFake(this._logGetDisabled);
-        this._cy.stub(this._localStorage, "removeItem").callsFake(this._logRemoveDisabled);
-        this._cy.stub(this._localStorage, "clear").callsFake(this._logClearDisabled);
-        this._cy.stub(win.localStorage, "setItem").throws();
-        this._cy.stub(win.localStorage, "getItem").throws();
-        this._cy.stub(win.localStorage, "removeItem").throws();
-        this._cy.stub(win.localStorage, "clear").throws();
+        LOCAL_STORAGE_METHODS.forEach((localStorageMethod) => {
+          this._cy
+            .stub(this._localStorage, localStorageMethod)
+            .callsFake(this[logDisabledMethodName(localStorageMethod)]);
+          this._cy.stub(win.localStorage, localStorageMethod).throws();
+        });
       }
     });
   }
