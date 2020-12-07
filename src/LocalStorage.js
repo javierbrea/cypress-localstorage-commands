@@ -1,3 +1,15 @@
+const LOCAL_STORAGE_METHODS = ["setItem", "getItem", "removeItem", "clear"];
+
+function logDisabled(method) {
+  return function () {
+    this._cy.log(`localStorage.${method} is disabled`);
+  };
+}
+
+function logDisabledMethodName(localStorageMethod) {
+  return `_log${localStorageMethod}Disabled`;
+}
+
 class LocalStorage {
   static get cypressCommands() {
     return [
@@ -7,11 +19,16 @@ class LocalStorage {
       "setLocalStorage",
       "getLocalStorage",
       "removeLocalStorage",
+      "disableLocalStorage",
     ];
   }
 
-  constructor(localStorage) {
+  constructor(localStorage, cy) {
+    this._cy = cy;
     this._localStorage = localStorage;
+    LOCAL_STORAGE_METHODS.forEach((localStorageMethod) => {
+      this[logDisabledMethodName(localStorageMethod)] = logDisabled(localStorageMethod).bind(this);
+    });
     this.clearLocalStorageSnapshot();
   }
 
@@ -20,10 +37,12 @@ class LocalStorage {
   }
 
   saveLocalStorage() {
-    this.clearLocalStorageSnapshot();
-    Object.keys(this._localStorage).forEach((key) => {
-      this._snapshot[key] = this._localStorage.getItem(key);
-    });
+    if (!this._localStorage.getItem.wrappedMethod) {
+      this.clearLocalStorageSnapshot();
+      Object.keys(this._localStorage).forEach((key) => {
+        this._snapshot[key] = this._localStorage.getItem(key);
+      });
+    }
   }
 
   restoreLocalStorage() {
@@ -43,6 +62,23 @@ class LocalStorage {
 
   removeLocalStorage(key) {
     return this._localStorage.removeItem(key);
+  }
+
+  disableLocalStorage(options = {}) {
+    this._cy.on("window:before:load", (win) => {
+      if (
+        win.localStorage &&
+        !win.localStorage[LOCAL_STORAGE_METHODS[0]].wrappedMethod &&
+        !this._localStorage[LOCAL_STORAGE_METHODS[0]].wrappedMethod
+      ) {
+        LOCAL_STORAGE_METHODS.forEach((localStorageMethod) => {
+          this._cy
+            .stub(this._localStorage, localStorageMethod)
+            .callsFake(this[logDisabledMethodName(localStorageMethod)]);
+          this._cy.stub(win.localStorage, localStorageMethod).throws(options.withError);
+        });
+      }
+    });
   }
 }
 

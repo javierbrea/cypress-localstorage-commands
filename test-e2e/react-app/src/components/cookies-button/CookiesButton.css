@@ -8,6 +8,13 @@ button.cookies-button {
 }
 
 button.cookies-button:hover {
-   color: #09d3a0;
+  color: #09d3a0;
   background-color: #222;
+}
+
+button.cookies-button:disabled, button.cookies-button:disabled:hover  {
+  opacity: 0.3;
+  color: #09d3ac;
+  background-color: #282828;
+  cursor:default;
 }

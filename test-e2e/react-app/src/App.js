@@ -5,6 +5,7 @@ import "./App.css";
 import AcceptCookies from "./modules/accept-cookies";
 import RejectCookies from "./modules/reject-cookies";
 import CookiesValue from "./modules/cookies-value";
+import LocalStorageWarning from "./modules/localstorage-warning";
 
 const store = createStore(
   combineReducers({
@@ -24,6 +25,7 @@ function App() {
           <AcceptCookies />
           <RejectCookies />
           <CookiesValue />
+          <LocalStorageWarning />
         </header>
       </div>
     </Provider>
