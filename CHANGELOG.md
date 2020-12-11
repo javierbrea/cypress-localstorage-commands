@@ -7,9 +7,20 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ## [unreleased]
 ### Added
 ### Changed
+
 ### Fixed
 ### Removed
 ### BREAKING CHANGES
+
+## [1.3.1] - 2020-12-11
+
+### Changed
+- chore(#210): Support all Node.js releases that have not passed their end date
+- chore(deps): Update devDependencies
+- chore(ci): Do not execute SonarCloud on PRs from forks
+
+### Fixed
+- docs(readme): Fix build badge url
 
 ## [1.3.0] - 2020-12-07
 
