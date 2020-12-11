@@ -253,7 +253,7 @@ MIT, see [LICENSE](./LICENSE) for details.
 
 [coveralls-image]: https://coveralls.io/repos/github/javierbrea/cypress-localstorage-commands/badge.svg
 [coveralls-url]: https://coveralls.io/github/javierbrea/cypress-localstorage-commands
-[build-image]: https://github.com/javierbrea/cypress-localstorage-commands/workflows/build/badge.svg?branch=chore-deps-cypress-6
+[build-image]: https://github.com/javierbrea/cypress-localstorage-commands/workflows/build/badge.svg?branch=master
 [build-url]: https://github.com/javierbrea/cypress-localstorage-commands/actions?query=workflow%3Abuild+branch%3Amaster
 [mutation-image]: https://img.shields.io/endpoint?style=flat&url=https%3A%2F%2Fbadge-api.stryker-mutator.io%2Fgithub.com%2Fjavierbrea%2Fcypress-localstorage-commands%2Fmaster
 [mutation-url]: https://dashboard.stryker-mutator.io/reports/github.com/javierbrea/cypress-localstorage-commands/master

@@ -17,7 +17,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Changed
 - chore(#210): Support all Node.js releases that have not passed their end date
 - chore(deps): Update devDependencies
-
+- docs(readme): Fix build badge url
 
 ## [1.3.0] - 2020-12-07
 
