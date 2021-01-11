@@ -4,7 +4,7 @@
   "private": true,
   "dependencies": {
     "@data-provider/core": "2.10.0",
-    "@data-provider/browser-storage": "2.2.2",
+    "@data-provider/browser-storage": "2.3.0",
     "@data-provider/react": "1.5.1",
     "prop-types": "15.7.2",
     "react": "17.0.1",
