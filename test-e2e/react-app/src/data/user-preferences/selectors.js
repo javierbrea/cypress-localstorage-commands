@@ -2,10 +2,6 @@ import { Selector } from "@data-provider/core";
 
 import { userPreferences } from "./origins";
 
-export const cookiesAccepted = new Selector(
-  userPreferences.queries.cookiesAccepted(),
-  (cookiesAcceptedResult) => cookiesAcceptedResult,
-  {
-    id: "cookies-accepted",
-  }
-);
+export const cookiesAccepted = new Selector(userPreferences.queries.cookiesAccepted(), {
+  id: "cookies-accepted",
+});

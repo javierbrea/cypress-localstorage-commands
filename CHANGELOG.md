@@ -7,10 +7,18 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ## [unreleased]
 ### Added
 ### Changed
-
 ### Fixed
 ### Removed
 ### BREAKING CHANGES
+
+## [1.4.0] - 2021-01-17
+
+### Added
+- chore: Add types property to package.json (#232)
+
+### Changed
+- chore(deps): Update devDependencies
+- test(e2e): Adapt testing react app code to [data-provider v3](https://www.data-provider.org/docs/guides-migrating-from-v2-to-v3)
 
 ## [1.3.1] - 2020-12-11
 

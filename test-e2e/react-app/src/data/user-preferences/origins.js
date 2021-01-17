@@ -1,6 +1,7 @@
 import { LocalStorage } from "@data-provider/browser-storage";
 
-export const userPreferences = new LocalStorage("user-preferences", {
+export const userPreferences = new LocalStorage({
+  id: "user-preferences",
   storageFallback: false,
 });
 
