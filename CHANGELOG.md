@@ -6,8 +6,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [unreleased]
 ### Added
-- chore(#232): Add types property to package.json (#232)
+- chore: Add types property to package.json (#232)
 ### Changed
+- chore(deps): Update devDependencies
+- test(e2e): Adapt testing react app code to [data-provider v3](https://www.data-provider.org/docs/guides-migrating-from-v2-to-v3)
 ### Fixed
 ### Removed
 ### BREAKING CHANGES

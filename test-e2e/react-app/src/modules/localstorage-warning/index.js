@@ -1,3 +1,1 @@
-import { LocalStorageWarning } from "./LocalStorageWarning";
-
-export default LocalStorageWarning;
+export { default } from "./LocalStorageWarning";
