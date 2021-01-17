@@ -21,6 +21,7 @@
     "index.d.ts"
   ],
   "main": "index.js",
+  "types": "index.d.ts",
   "scripts": {
     "lint:typescript": "cd test-e2e/typescript && npm run copy:library && npm run lint",
     "lint:javascript": "eslint src test test-e2e/react-app/src test-e2e/react-app/cypress test-e2e/react-app/*.js *.js",

@@ -6,8 +6,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [unreleased]
 ### Added
+- chore(#232): Add types property to package.json (#232)
 ### Changed
-
 ### Fixed
 ### Removed
 ### BREAKING CHANGES
