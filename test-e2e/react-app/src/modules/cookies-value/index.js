@@ -1,3 +1,1 @@
-import { Controller } from "./Controller";
-
-export default Controller;
+export { default } from "./CookiesValue";

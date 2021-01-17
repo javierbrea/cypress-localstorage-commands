@@ -4,7 +4,7 @@ import { cookiesAccepted } from "../../data/user-preferences";
 
 import "./LocalStorageWarning.css";
 
-export const LocalStorageWarning = () => {
+const LocalStorageWarning = () => {
   const error = useError(cookiesAccepted);
 
   if (!error) {
@@ -18,3 +18,5 @@ export const LocalStorageWarning = () => {
     </p>
   );
 };
+
+export default LocalStorageWarning;
