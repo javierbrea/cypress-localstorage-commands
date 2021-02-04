@@ -41,6 +41,6 @@
     "babel-plugin-module-resolver": "4.1.0",
     "cypress": "6.3.0",
     "serve": "11.3.2",
-    "start-server-and-test": "1.11.7"
+    "start-server-and-test": "1.12.0"
   }
 }
