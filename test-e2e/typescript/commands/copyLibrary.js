@@ -1,5 +1,3 @@
-// TODO, use typescript paths alias to load directly library from parent folder instead of copying it
-
 const path = require("path");
 const fsExtra = require("fs-extra");
 

@@ -15,6 +15,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Changed
 - chore(deps): Update devDependencies
+- test: Refactor Sonar smells
 
 ## [1.4.0] - 2021-01-17
 
