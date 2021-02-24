@@ -1,15 +1,19 @@
 const sinon = require("sinon");
 
+const doNothing = () => {
+  // do nothing
+};
+
 class Cy {
   constructor() {
     this._sandbox = sinon.createSandbox();
 
     this._windowMock = {
       localStorage: {
-        setItem: () => {},
-        getItem: () => {},
-        removeItem: () => {},
-        clear: () => {},
+        setItem: doNothing,
+        getItem: doNothing,
+        removeItem: doNothing,
+        clear: doNothing,
       },
     };
 
