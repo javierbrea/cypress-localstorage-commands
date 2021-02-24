@@ -2,7 +2,6 @@
   "name": "app-typescript-tests",
   "version": "1.0.0",
   "private": true,
-  "dependencies": {},
   "scripts": {
     "prelint": "npm run copy:library",
     "lint": "eslint commands cypress",
@@ -16,13 +15,13 @@
     "test:ci": "npm run copy:library && npm run build-and-serve-and-cypress"
   },
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "4.15.0",
-    "@typescript-eslint/parser": "4.15.0",
-    "cypress": "6.4.0",
+    "@typescript-eslint/eslint-plugin": "4.15.2",
+    "@typescript-eslint/parser": "4.15.2",
+    "cypress": "6.5.0",
     "eslint": "7.19.0",
     "eslint-config-prettier": "7.2.0",
     "eslint-plugin-prettier": "3.3.1",
     "start-server-and-test": "1.12.0",
-    "typescript": "4.1.3"
+    "typescript": "4.2.2"
   }
 }
