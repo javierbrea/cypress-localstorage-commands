@@ -17,6 +17,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - chore(deps): Support Cypress v7.x in peerDependencies
 
 ### Changed
+- test(e2e): Run e2e tests in Cypress v7.x
+- chore(pipelines): Update node versions
 - chore(pipelines): Do not run tests in Node 10, because it is not supported by Cypress v7.x
 - chore(deps): Update devDependencies
 
