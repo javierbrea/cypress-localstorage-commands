@@ -1,6 +1,6 @@
 {
   "name": "cypress-localstorage-commands",
-  "version": "1.4.2",
+  "version": "1.4.3",
   "description": "Extends Cypress' cy commands with localStorage methods. Allows preserving localStorage between tests",
   "keywords": [
     "cypress",
@@ -42,7 +42,7 @@
     "test:ci": "npm run test:unit && npm run test:mutation && npm run test:e2e"
   },
   "peerDependencies": {
-    "cypress": "^2.1.0 || 3.x || 4.x || 5.x || 6.x"
+    "cypress": "^2.1.0 || 3.x || 4.x || 5.x || 6.x || 7.x"
   },
   "devDependencies": {
     "@stryker-mutator/core": "4.5.1",
