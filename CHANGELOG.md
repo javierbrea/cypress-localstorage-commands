@@ -11,6 +11,14 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Removed
 ### BREAKING CHANGES
 
+## [1.4.4] - 2021-04-29
+
+### Added
+- chore(deps): Support Node v16.x in engines. Run tests also in node 16.0.0
+
+### Changed
+- chore(deps): Update devDependencies
+
 ## [1.4.3] - 2021-04-07
 
 ### Added
