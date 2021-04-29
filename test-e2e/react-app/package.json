@@ -9,8 +9,8 @@
     "prop-types": "15.7.2",
     "react": "17.0.2",
     "react-dom": "17.0.2",
-    "react-redux": "7.2.3",
-    "redux": "4.0.5"
+    "react-redux": "7.2.4",
+    "redux": "4.1.0"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -38,7 +38,7 @@
   },
   "devDependencies": {
     "babel-plugin-module-resolver": "4.1.0",
-    "cypress": "7.0.0",
+    "cypress": "7.1.0",
     "react-scripts": "4.0.3",
     "serve": "11.3.2",
     "start-server-and-test": "1.12.1"
