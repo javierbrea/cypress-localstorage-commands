@@ -15,6 +15,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Changed
 - chore(deps): Update devDependencies
+- chore: Migrate Sonar project
 
 ## [1.4.4] - 2021-04-29
 
