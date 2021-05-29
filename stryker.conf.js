@@ -2,7 +2,7 @@ const BRANCH_NAME = process.env.BRANCH_NAME;
 const STRYKER_DASHBOARD_API_KEY = process.env.STRYKER_DASHBOARD_API_KEY;
 
 const BASE_CONFIG = {
-  files: ["*.js", "src/**/*.js", "test/**/*.js"],
+  ignorePatterns: ["**", "!*.js", "!src/**/*.js", "!test/**/*.js"],
   packageManager: "npm",
   thresholds: {
     high: 80,

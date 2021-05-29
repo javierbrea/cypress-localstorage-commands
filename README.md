@@ -265,8 +265,8 @@ MIT, see [LICENSE](./LICENSE) for details.
 [npm-downloads-url]: https://www.npmjs.com/package/cypress-localstorage-commands
 [npm-dependencies-image]: https://img.shields.io/david/javierbrea/cypress-localstorage-commands.svg
 [npm-dependencies-url]: https://david-dm.org/javierbrea/cypress-localstorage-commands
-[quality-gate-image]: https://sonarcloud.io/api/project_badges/measure?project=cypress-localstorage-commands&metric=alert_status
-[quality-gate-url]: https://sonarcloud.io/dashboard?id=cypress-localstorage-commands
+[quality-gate-image]: https://sonarcloud.io/api/project_badges/measure?project=javierbrea_cypress-localstorage-commands&metric=alert_status
+[quality-gate-url]: https://sonarcloud.io/dashboard?id=javierbrea_cypress-localstorage-commands
 [release-image]: https://img.shields.io/github/release-date/javierbrea/cypress-localstorage-commands.svg
 [release-url]: https://github.com/javierbrea/cypress-localstorage-commands/releases
 
