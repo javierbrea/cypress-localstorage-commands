@@ -46,8 +46,8 @@
     "cypress": "^2.1.0 || 3.x || 4.x || 5.x || 6.x || 7.x"
   },
   "devDependencies": {
-    "@stryker-mutator/core": "5.0.0",
-    "@stryker-mutator/jest-runner": "5.0.0",
+    "@stryker-mutator/core": "5.0.1",
+    "@stryker-mutator/jest-runner": "5.0.1",
     "babel-eslint": "10.1.0",
     "eslint": "7.27.0",
     "eslint-config-prettier": "8.3.0",
@@ -55,10 +55,10 @@
     "eslint-plugin-react": "7.23.2",
     "husky": "6.0.0",
     "is-ci": "3.0.0",
-    "jest": "27.0.0",
+    "jest": "27.0.1",
     "lint-staged": "11.0.0",
     "prettier": "2.3.0",
-    "sinon": "11.0.0"
+    "sinon": "11.1.1"
   },
   "lint-staged": {
     "*.js": "eslint",
