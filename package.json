@@ -43,7 +43,7 @@
     "prepare": "is-ci || husky install"
   },
   "peerDependencies": {
-    "cypress": "^2.1.0 || 3.x || 4.x || 5.x || 6.x || 7.x"
+    "cypress": "^2.1.0 || 3.x || 4.x || 5.x || 6.x || 7.x || 8.x"
   },
   "devDependencies": {
     "@stryker-mutator/core": "5.1.1",
