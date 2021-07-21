@@ -17,6 +17,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Changed
 - chore(deps): Update devDependencies
+
 ## [1.4.5] - 2021-05-29
 
 ### Changed
