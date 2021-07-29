@@ -42,6 +42,6 @@
     "cypress": "8.0.0",
     "react-scripts": "4.0.3",
     "serve": "12.0.0",
-    "start-server-and-test": "1.13.0"
+    "start-server-and-test": "1.13.1"
   }
 }
