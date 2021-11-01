@@ -11,6 +11,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Removed
 ### BREAKING CHANGES
 
+## [1.6.0] - 2021-11-01
+### Changed
+- chore(deps): Update devDependencies
+- chore(deps): Support any NodeJs version greater than 10.x.
+
 ## [1.5.0] - 2021-07-21
 ### Added
 - chore(#330): Use Cypress v8 in E2E tests. Add Cypress v8.x to peerDependencies
