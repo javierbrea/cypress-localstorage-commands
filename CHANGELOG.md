@@ -14,7 +14,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ## [1.6.0] - 2021-11-01
 ### Changed
 - chore(deps): Update devDependencies
-- chore(deps): Support any NodeJs version greater than 10.x. Run tests also with 17.x. Stop running tests with 12.x
+- chore(deps): Support any NodeJs version greater than 10.x.
 
 ## [1.5.0] - 2021-07-21
 ### Added
