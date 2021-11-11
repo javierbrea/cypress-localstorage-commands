@@ -11,6 +11,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Removed
 ### BREAKING CHANGES
 
+## [1.6.1] - 2021-11-11
+### Changed
+- chore(#382): Use Cypress v9 in E2E tests
+- chore(#382): Support any Cypress version greater than 2.1.0
+
 ## [1.6.0] - 2021-11-01
 ### Changed
 - chore(deps): Update devDependencies
