@@ -15,6 +15,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Changed
 - chore(#382): Use Cypress v9 in E2E tests
 - chore(#382): Support any Cypress version greater than 2.1.0
+- chore(deps): Update devDependencies
 
 ## [1.6.0] - 2021-11-01
 ### Changed
