@@ -1,6 +1,6 @@
 [![Build status][build-image]][build-url] [![Coverage Status][coveralls-image]][coveralls-url] [![Quality Gate][quality-gate-image]][quality-gate-url] [![Mutation testing status][mutation-image]][mutation-url]
 
-[![NPM dependencies][npm-dependencies-image]][npm-dependencies-url] [![Renovate](https://img.shields.io/badge/renovate-enabled-brightgreen.svg)](https://renovatebot.com) [![Last commit][last-commit-image]][last-commit-url] [![Last release][release-image]][release-url]
+[![Renovate](https://img.shields.io/badge/renovate-enabled-brightgreen.svg)](https://renovatebot.com) [![Last commit][last-commit-image]][last-commit-url] [![Last release][release-image]][release-url]
 
 [![NPM downloads][npm-downloads-image]][npm-downloads-url] [![License][license-image]][license-url] [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fjavierbrea%2Fcypress-localstorage-commands.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fjavierbrea%2Fcypress-localstorage-commands?ref=badge_shield)
 
@@ -39,17 +39,23 @@ You can now use all next commands:
 
 ### Commands
 
-##### `cy.saveLocalStorage()`
+##### `cy.saveLocalStorage([snapshotName])`
 
 Saves current localStorage values into an internal "snapshot".
 
-##### `cy.restoreLocalStorage()`
+* `snapshotName` _(String)_: Optionally, a `snapshotName` can be provided, and then data from localStorage will be saved into a snapshot with that name. So, multiple snapshots can be stored.
 
-Restores localStorage to previously "snapshot" saved values.
+##### `cy.restoreLocalStorage([snapshotName])`
 
-##### `cy.clearLocalStorageSnapshot()`
+Restores localStorage to previously "snapshot" saved values. __
+
+* `snapshotName` _(String)_: Optional. If provided, the localStorage will be restored using data from that specific snapshot.
+
+##### `cy.clearLocalStorageSnapshot([snapshotName])`
 
 Clears localStorage "snapshot" values, so previously saved values are cleaned.
+
+* `snapshotName` _(String)_: Optional. If provided, only data from that specific snapshot will be cleared.
 
 ##### `cy.getLocalStorage(item)`
 
@@ -149,6 +155,44 @@ describe("localStorage cookies-accepted item", () => {
     cy.getLocalStorage("cookies-accepted").then(cookiesAccepted => {
       expect(cookiesAccepted).to.equal("true");
     });
+  });
+});
+```
+
+#### Named snapshots
+
+Next example shows how named snapshots can be used to storage different states of `localStorage` and restore one or another depending of the test:
+
+```js
+describe("Accept cookies button", () => {
+  const COOKIES_BUTTON = "#accept-cookies";
+
+  before(() => {
+    cy.clearLocalStorageSnapshot();
+  });
+
+  it("should be visible", () => {
+    cy.visit("/");
+    cy.get(COOKIES_BUTTON).should("be.visible");
+    cy.saveLocalStorage("cookies-not-accepted");
+  });
+
+  it("should not exist after clicked", () => {
+    cy.get(COOKIES_BUTTON).click();
+    cy.get(COOKIES_BUTTON).should("not.exist");
+    cy.saveLocalStorage("cookies-accepted");
+  });
+
+  it("should be visible when cookies are not accepted", () => {
+    cy.restoreLocalStorage("cookies-not-accepted");
+    cy.visit("/");
+    cy.get(COOKIES_BUTTON).should("be.visible");
+  });
+
+  it("should not exist when cookies are accepted", () => {
+    cy.restoreLocalStorage("cookies-accepted");
+    cy.visit("/");
+    cy.get(COOKIES_BUTTON).should("not.exist");
   });
 });
 ```
@@ -263,8 +307,6 @@ MIT, see [LICENSE](./LICENSE) for details.
 [license-url]: https://github.com/javierbrea/cypress-localstorage-commands/blob/master/LICENSE
 [npm-downloads-image]: https://img.shields.io/npm/dm/cypress-localstorage-commands.svg
 [npm-downloads-url]: https://www.npmjs.com/package/cypress-localstorage-commands
-[npm-dependencies-image]: https://img.shields.io/david/javierbrea/cypress-localstorage-commands.svg
-[npm-dependencies-url]: https://david-dm.org/javierbrea/cypress-localstorage-commands
 [quality-gate-image]: https://sonarcloud.io/api/project_badges/measure?project=javierbrea_cypress-localstorage-commands&metric=alert_status
 [quality-gate-url]: https://sonarcloud.io/dashboard?id=javierbrea_cypress-localstorage-commands
 [release-image]: https://img.shields.io/github/release-date/javierbrea/cypress-localstorage-commands.svg
