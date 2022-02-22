@@ -40,6 +40,7 @@
     "test:unit": "npm run test",
     "test:mutation": "stryker run",
     "test:ci": "npm run test:unit && npm run test:mutation && npm run test:e2e",
+    "tsc": "tsc",
     "prepare": "is-ci || husky install"
   },
   "peerDependencies": {
@@ -61,7 +62,8 @@
     "jest": "27.3.1",
     "lint-staged": "11.2.6",
     "prettier": "2.4.1",
-    "sinon": "11.1.2"
+    "sinon": "11.1.2",
+    "typescript": "4.4.4"
   },
   "lint-staged": {
     "*.js": "eslint",

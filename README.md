@@ -39,17 +39,23 @@ You can now use all next commands:
 
 ### Commands
 
-##### `cy.saveLocalStorage()`
+##### `cy.saveLocalStorage([snapshotName])`
 
 Saves current localStorage values into an internal "snapshot".
 
-##### `cy.restoreLocalStorage()`
+* `snapshotName` _(String)_: Optionally, a `snapshotName` can be provided, and then data from localStorage will be saved into a snapshot with that name. So, multiple snapshots can be stored.
 
-Restores localStorage to previously "snapshot" saved values.
+##### `cy.restoreLocalStorage([snapshotName])`
 
-##### `cy.clearLocalStorageSnapshot()`
+Restores localStorage to previously "snapshot" saved values. __
+
+* `snapshotName` _(String)_: Optional. If provided, the localStorage will be restored using data from that specific snapshot.
+
+##### `cy.clearLocalStorageSnapshot([snapshotName])`
 
 Clears localStorage "snapshot" values, so previously saved values are cleaned.
+
+* `snapshotName` _(String)_: Optional. If provided, only data from that specific snapshot will be cleared.
 
 ##### `cy.getLocalStorage(item)`
 
@@ -149,6 +155,44 @@ describe("localStorage cookies-accepted item", () => {
     cy.getLocalStorage("cookies-accepted").then(cookiesAccepted => {
       expect(cookiesAccepted).to.equal("true");
     });
+  });
+});
+```
+
+#### Named snapshots
+
+Next example shows how named snapshots can be used to storage different states of `localStorage` and restore one or another depending of the test:
+
+```js
+describe("Accept cookies button", () => {
+  const COOKIES_BUTTON = "#accept-cookies";
+
+  before(() => {
+    cy.clearLocalStorageSnapshot();
+  });
+
+  it("should be visible", () => {
+    cy.visit("/");
+    cy.get(COOKIES_BUTTON).should("be.visible");
+    cy.saveLocalStorage("cookies-not-accepted");
+  });
+
+  it("should not exist after clicked", () => {
+    cy.get(COOKIES_BUTTON).click();
+    cy.get(COOKIES_BUTTON).should("not.exist");
+    cy.saveLocalStorage("cookies-accepted");
+  });
+
+  it("should be visible when cookies are not accepted", () => {
+    cy.restoreLocalStorage("cookies-not-accepted");
+    cy.visit("/");
+    cy.get(COOKIES_BUTTON).should("be.visible");
+  });
+
+  it("should not exist when cookies are accepted", () => {
+    cy.restoreLocalStorage("cookies-accepted");
+    cy.visit("/");
+    cy.get(COOKIES_BUTTON).should("not.exist");
   });
 });
 ```

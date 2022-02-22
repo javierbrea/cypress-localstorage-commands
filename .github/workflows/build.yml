@@ -39,6 +39,8 @@ jobs:
         run: npm ci
       - name: Lint
         run: npm run lint
+      - name: Check types
+        run: npm run tsc
       - name: Test unit
         run: npm run test:unit
       - name: Test mutation

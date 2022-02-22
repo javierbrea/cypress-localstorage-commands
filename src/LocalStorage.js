@@ -24,6 +24,7 @@ class LocalStorage {
   }
 
   constructor(localStorage, cy) {
+    this._namedSnapshots = {};
     this._cy = cy;
     this._localStorage = localStorage;
     LOCAL_STORAGE_METHODS.forEach((localStorageMethod) => {
@@ -32,23 +33,38 @@ class LocalStorage {
     this.clearLocalStorageSnapshot();
   }
 
-  clearLocalStorageSnapshot() {
-    this._snapshot = {};
+  _saveLocalStorageKey(key, snapshotName) {
+    if (snapshotName) {
+      this._namedSnapshots[snapshotName][key] = this._localStorage.getItem(key);
+    } else {
+      this._snapshot[key] = this._localStorage.getItem(key);
+    }
   }
 
-  saveLocalStorage() {
+  clearLocalStorageSnapshot(snapshotName) {
+    if (snapshotName) {
+      this._namedSnapshots[snapshotName] = {};
+    } else {
+      this._snapshot = {};
+    }
+  }
+
+  saveLocalStorage(snapshotName) {
     if (!this._localStorage.getItem.wrappedMethod) {
-      this.clearLocalStorageSnapshot();
+      this.clearLocalStorageSnapshot(snapshotName);
       Object.keys(this._localStorage).forEach((key) => {
-        this._snapshot[key] = this._localStorage.getItem(key);
+        this._saveLocalStorageKey(key, snapshotName);
       });
     }
   }
 
-  restoreLocalStorage() {
+  restoreLocalStorage(snapshotName) {
     this._localStorage.clear();
-    Object.keys(this._snapshot).forEach((key) => {
-      this._localStorage.setItem(key, this._snapshot[key]);
+    const snapshotToRestore = !!snapshotName
+      ? this._namedSnapshots[snapshotName] || {}
+      : this._snapshot;
+    Object.keys(snapshotToRestore).forEach((key) => {
+      this._localStorage.setItem(key, snapshotToRestore[key]);
     });
   }
 
