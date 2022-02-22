@@ -6,7 +6,7 @@
     "@data-provider/browser-storage": "3.1.0",
     "@data-provider/core": "3.1.0",
     "@data-provider/react": "1.6.0",
-    "prop-types": "15.7.2",
+    "prop-types": "15.8.1",
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "react-redux": "7.2.6",
@@ -37,11 +37,11 @@
     ]
   },
   "devDependencies": {
-    "@cypress/webpack-preprocessor": "5.9.1",
+    "@cypress/webpack-preprocessor": "5.11.1",
     "babel-plugin-module-resolver": "4.1.0",
-    "cypress": "9.0.0",
-    "react-scripts": "4.0.3",
-    "serve": "12.0.1",
+    "cypress": "9.5.0",
+    "react-scripts": "5.0.0",
+    "serve": "13.0.2",
     "start-server-and-test": "1.14.0"
   }
 }
