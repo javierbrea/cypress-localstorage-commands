@@ -1,6 +1,6 @@
 [![Build status][build-image]][build-url] [![Coverage Status][coveralls-image]][coveralls-url] [![Quality Gate][quality-gate-image]][quality-gate-url] [![Mutation testing status][mutation-image]][mutation-url]
 
-[![NPM dependencies][npm-dependencies-image]][npm-dependencies-url] [![Renovate](https://img.shields.io/badge/renovate-enabled-brightgreen.svg)](https://renovatebot.com) [![Last commit][last-commit-image]][last-commit-url] [![Last release][release-image]][release-url]
+[![Renovate](https://img.shields.io/badge/renovate-enabled-brightgreen.svg)](https://renovatebot.com) [![Last commit][last-commit-image]][last-commit-url] [![Last release][release-image]][release-url]
 
 [![NPM downloads][npm-downloads-image]][npm-downloads-url] [![License][license-image]][license-url] [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fjavierbrea%2Fcypress-localstorage-commands.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fjavierbrea%2Fcypress-localstorage-commands?ref=badge_shield)
 
@@ -263,8 +263,6 @@ MIT, see [LICENSE](./LICENSE) for details.
 [license-url]: https://github.com/javierbrea/cypress-localstorage-commands/blob/master/LICENSE
 [npm-downloads-image]: https://img.shields.io/npm/dm/cypress-localstorage-commands.svg
 [npm-downloads-url]: https://www.npmjs.com/package/cypress-localstorage-commands
-[npm-dependencies-image]: https://img.shields.io/david/javierbrea/cypress-localstorage-commands.svg
-[npm-dependencies-url]: https://david-dm.org/javierbrea/cypress-localstorage-commands
 [quality-gate-image]: https://sonarcloud.io/api/project_badges/measure?project=javierbrea_cypress-localstorage-commands&metric=alert_status
 [quality-gate-url]: https://sonarcloud.io/dashboard?id=javierbrea_cypress-localstorage-commands
 [release-image]: https://img.shields.io/github/release-date/javierbrea/cypress-localstorage-commands.svg
