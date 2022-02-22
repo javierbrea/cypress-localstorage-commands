@@ -15,6 +15,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Added
 - feat(#376): Support multiple snapshots allowing to define a name in save, restore and clear commands.
+- chore: Add command to check types. Run it in build workflow
+- chore: Add eslint plugins
 
 ### Removed
 - docs: Remove broken dependencies badge
