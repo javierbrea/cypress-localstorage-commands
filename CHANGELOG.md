@@ -13,6 +13,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [unreleased]
 
+### Added
+- feat(#376): Support multiple snapshots allowing to define a name in save, restore and clear commands.
+
 ### Removed
 - docs: Remove broken dependencies badge
 
