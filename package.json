@@ -50,6 +50,7 @@
     "@stryker-mutator/core": "5.4.1",
     "@stryker-mutator/jest-runner": "5.4.1",
     "babel-eslint": "10.1.0",
+    "cypress": "9.0.0",
     "eslint": "7.32.0",
     "eslint-config-prettier": "8.3.0",
     "eslint-plugin-prettier": "3.4.1",
