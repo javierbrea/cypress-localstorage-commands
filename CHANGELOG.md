@@ -11,6 +11,20 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Removed
 ### BREAKING CHANGES
 
+## [1.7.0] - 2022-02-22
+
+### Added
+- feat(#376): Support multiple snapshots allowing to define a name in save, restore and clear commands.
+- chore: Add command to check types. Run it in build workflow
+- chore: Add eslint plugins
+
+### Removed
+- docs: Remove broken dependencies badge
+
+### Changed
+- chore: Remove NodeJs v15 from tests workflow. Add NodeJs v17
+- chore(deps): Update devDependencies
+
 ## [1.6.1] - 2021-11-11
 ### Changed
 - chore(#382): Use Cypress v9 in E2E tests

@@ -4,21 +4,24 @@ declare namespace Cypress {
   interface Chainable {
     /**
      * Command to save current localStorage values into an internal "snapshot"
+     * @param {string} snapshotName - Name of the snapshot
      * @example cy.saveLocalStorage()
     */
-    saveLocalStorage(): Chainable<undefined>
+    saveLocalStorage(snapshotName?: string): Chainable<undefined>
 
     /**
      * Command to restore localStorage to previously "snapshot" saved values
+     * @param {string} snapshotName - Name of the snapshot
      * @example cy.restoreLocalStorage()
     */
-    restoreLocalStorage(): Chainable<undefined>
+    restoreLocalStorage(snapshotName?: string): Chainable<undefined>
 
     /**
      * Command to clear localStorage "snapshot" values
+     * @param {string} snapshotName - Name of the snapshot
      * @example cy.clearLocalStorageSnapshot()
     */
-    clearLocalStorageSnapshot(): Chainable<undefined>
+    clearLocalStorageSnapshot(snapshotName?: string): Chainable<undefined>
 
     /**
      * Command to get localStorage item value

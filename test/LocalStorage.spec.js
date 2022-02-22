@@ -67,6 +67,50 @@ describe("LocalStorage", () => {
     });
   });
 
+  describe("LocalStorage named snapshots", () => {
+    describe("save and restore methods", () => {
+      it("should restore values that localStorage had when save method was called", () => {
+        expect.assertions(3);
+        localStorageMock.stubs.setItem("foo", "foo-value");
+        localStorageMock.stubs.setItem("var", "var-value");
+        localStorage.saveLocalStorage("first");
+        localStorageMock.stubs.setItem("foo", "foo-new-value");
+        localStorage.saveLocalStorage("second");
+        expect(localStorageMock.stubs.getItem("foo")).toEqual("foo-new-value");
+        localStorage.restoreLocalStorage("first");
+        expect(localStorageMock.stubs.getItem("foo")).toEqual("foo-value");
+        localStorage.restoreLocalStorage("second");
+        expect(localStorageMock.stubs.getItem("foo")).toEqual("foo-new-value");
+      });
+
+      it("should clear whole localStorage if snapshot to restore does not exists", () => {
+        localStorage.restoreLocalStorage("fourth");
+        expect(localStorageMock.stubs.getItem("foo")).toEqual(undefined);
+        expect(localStorageMock.stubs.getItem("var")).toEqual(undefined);
+      });
+    });
+
+    describe("Clear method", () => {
+      it("should clear values in localStorage snapshot, but maintain localStorage values", () => {
+        expect.assertions(4);
+        localStorage.restoreLocalStorage("second");
+        localStorageMock.stubs.setItem("var", "foo-var-value");
+        localStorage.clearLocalStorageSnapshot("second");
+        expect(localStorageMock.stubs.getItem("foo")).toEqual("foo-new-value");
+        expect(localStorageMock.stubs.getItem("var")).toEqual("foo-var-value");
+        localStorage.restoreLocalStorage("second");
+        expect(localStorageMock.stubs.getItem("foo")).toEqual(undefined);
+        expect(localStorageMock.stubs.getItem("var")).toEqual(undefined);
+      });
+
+      it("should not clear values from other snapshot", () => {
+        localStorage.restoreLocalStorage("first");
+        expect(localStorageMock.stubs.getItem("foo")).toEqual("foo-value");
+        expect(localStorageMock.stubs.getItem("var")).toEqual("var-value");
+      });
+    });
+  });
+
   describe("setLocalStorage method", () => {
     it("should set values in localStorage", () => {
       expect.assertions(2);
