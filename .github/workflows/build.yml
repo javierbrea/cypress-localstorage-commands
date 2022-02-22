@@ -11,7 +11,7 @@ jobs:
     strategy:
       matrix:
         # NodeJS v17 still not supported in tests due to incompatibility with react-scripts
-        node: ["12.22.7", "14.16.1", "15.14.0", "16.13.0"]
+        node: ["12.22.7", "14.16.1", "16.13.0", "17.5.0"]
     steps:
       - name: Checkout
         uses: actions/checkout@v2

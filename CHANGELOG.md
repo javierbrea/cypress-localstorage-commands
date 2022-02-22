@@ -21,6 +21,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Removed
 - docs: Remove broken dependencies badge
 
+### Changed
+- chore: Remove NodeJs v15 from tests workflow. Add NodeJs v17
+
 ## [1.6.1] - 2021-11-11
 ### Changed
 - chore(#382): Use Cypress v9 in E2E tests
