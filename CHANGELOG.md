@@ -23,6 +23,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Changed
 - chore: Remove NodeJs v15 from tests workflow. Add NodeJs v17
+- chore(deps): Update devDependencies
 
 ## [1.6.1] - 2021-11-11
 ### Changed
