@@ -11,7 +11,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Removed
 ### BREAKING CHANGES
 
-## [1.7.0]
+## [1.7.0] - 2022-02-22
 
 ### Added
 - feat(#376): Support multiple snapshots allowing to define a name in save, restore and clear commands.
