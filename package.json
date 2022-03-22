@@ -59,7 +59,7 @@
     "eslint-plugin-mocha": "10.0.3",
     "eslint-plugin-no-only-tests": "2.6.0",
     "eslint-plugin-prettier": "4.0.0",
-    "eslint-plugin-react": "7.29.2",
+    "eslint-plugin-react": "7.29.4",
     "husky": "7.0.4",
     "is-ci": "3.0.1",
     "jest": "27.5.1",
