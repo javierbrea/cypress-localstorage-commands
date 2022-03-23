@@ -54,7 +54,7 @@
     "@stryker-mutator/jest-runner": "5.6.1",
     "cypress": "9.5.2",
     "eslint": "8.11.0",
-    "eslint-config-prettier": "8.4.0",
+    "eslint-config-prettier": "8.5.0",
     "eslint-plugin-jest": "26.1.2",
     "eslint-plugin-mocha": "10.0.3",
     "eslint-plugin-no-only-tests": "2.6.0",
