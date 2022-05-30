@@ -11,6 +11,16 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Removed
 ### BREAKING CHANGES
 
+## [2.0.0] - 2022-05-30
+
+### Removed
+- chore: Drop NodeJs 12 support
+- docs: Remove Fossa badge
+
+### Changed
+- chore: Remove NodeJs v12 from tests workflow. Add NodeJs v18
+- chore(deps): Update devDependencies
+
 ## [1.7.0] - 2022-02-22
 
 ### Added
