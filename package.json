@@ -1,6 +1,6 @@
 {
   "name": "cypress-localstorage-commands",
-  "version": "1.7.0",
+  "version": "2.0.0",
   "description": "Extends Cypress' cy commands with localStorage methods. Allows preserving localStorage between tests",
   "keywords": [
     "cypress",
@@ -79,6 +79,6 @@
     "test-e2e/typescript/**/*.ts": "npm run lint:typescript"
   },
   "engines": {
-    "node": ">=10.0.0"
+    "node": ">=14.0.0"
   }
 }
