@@ -3,14 +3,14 @@
   "version": "1.0.0",
   "private": true,
   "dependencies": {
-    "@data-provider/browser-storage": "3.1.0",
-    "@data-provider/core": "3.1.0",
-    "@data-provider/react": "1.6.0",
+    "@data-provider/browser-storage": "4.0.0",
+    "@data-provider/core": "4.0.0",
+    "@data-provider/react": "2.0.0",
     "prop-types": "15.8.1",
-    "react": "17.0.2",
-    "react-dom": "17.0.2",
-    "react-redux": "7.2.6",
-    "redux": "4.1.2"
+    "react": "18.1.0",
+    "react-dom": "18.1.0",
+    "react-redux": "8.0.2",
+    "redux": "4.2.0"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -40,7 +40,7 @@
     "@cypress/webpack-preprocessor": "5.11.1",
     "babel-plugin-module-resolver": "4.1.0",
     "cypress": "9.7.0",
-    "react-scripts": "5.0.0",
+    "react-scripts": "5.0.1",
     "serve": "13.0.2",
     "start-server-and-test": "1.14.0"
   }
