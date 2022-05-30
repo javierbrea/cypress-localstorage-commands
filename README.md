@@ -2,7 +2,7 @@
 
 [![Renovate](https://img.shields.io/badge/renovate-enabled-brightgreen.svg)](https://renovatebot.com) [![Last commit][last-commit-image]][last-commit-url] [![Last release][release-image]][release-url]
 
-[![NPM downloads][npm-downloads-image]][npm-downloads-url] [![License][license-image]][license-url] [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fjavierbrea%2Fcypress-localstorage-commands.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fjavierbrea%2Fcypress-localstorage-commands?ref=badge_shield)
+[![NPM downloads][npm-downloads-image]][npm-downloads-url] [![License][license-image]][license-url]
 
 # Cypress localStorage commands
 
