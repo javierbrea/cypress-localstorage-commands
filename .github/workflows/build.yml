@@ -4,6 +4,7 @@ on:
     branches:
       - master
       - release
+      - feat-release
   pull_request:
 jobs:
   test:
