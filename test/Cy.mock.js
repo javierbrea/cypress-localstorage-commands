@@ -18,7 +18,7 @@ class Cy {
     };
 
     this._stubs = {
-      on: this._sandbox.stub().callsFake((eventName, callback) => {
+      on: this._sandbox.stub().callsFake((_eventName, callback) => {
         this._callback = callback;
       }),
       log: this._sandbox.stub(),
