@@ -26,7 +26,7 @@ module.exports = {
   extends: ["prettier", "plugin:jest/recommended", "plugin:mocha/recommended"],
   overrides: [
     {
-      files: ["test-e2e/**/integration/*.js"],
+      files: ["test-e2e/**/e2e/*.js"],
       rules: {
         "jest/valid-expect": [0],
         "jest/valid-expect-in-promise": [0],
