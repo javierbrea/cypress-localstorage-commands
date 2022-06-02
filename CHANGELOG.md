@@ -11,6 +11,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Removed
 ### BREAKING CHANGES
 
+## [2.1.0] - 2022-06-02
+
+### Changed
+- chore: Update Cypress devDependency to v10
+- test: Use Cypress v10 for running plugin e2e tests. Update configuration.
+- chore: Update github actions versions
+
 ## [2.0.0] - 2022-05-30
 
 ### Removed
