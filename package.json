@@ -52,7 +52,7 @@
     "@babel/preset-react": "7.17.12",
     "@stryker-mutator/core": "6.0.2",
     "@stryker-mutator/jest-runner": "6.0.2",
-    "cypress": "10.0.2",
+    "cypress": "10.0.3",
     "eslint": "8.17.0",
     "eslint-config-prettier": "8.5.0",
     "eslint-plugin-jest": "26.5.3",
