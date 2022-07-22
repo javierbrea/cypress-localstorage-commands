@@ -8,6 +8,11 @@ module.exports = {
       delete defaults.webpackOptions.module.rules[0].use[0].options.presets;
       on("file:preprocessor", webpackPreprocessor(defaults));
     },
+    specPattern: [
+      "cypress/e2e/*.cy.js",
+      "cypress/e2e/across-specs/save.cy.js",
+      "cypress/e2e/across-specs/restore.cy.js",
+    ],
   },
   video: false,
 };

@@ -12,6 +12,7 @@
 # tests
 /cypress/screenshots
 /cypress/fixtures
+/cypress/videos
 
 # misc
 .DS_Store
