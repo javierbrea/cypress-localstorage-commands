@@ -1,3 +1,5 @@
+const { GET_SNAPSHOT_TASK, SET_SNAPSHOT_TASK, CLEAR_SNAPSHOT_TASK } = require("./constants");
+
 const LOCAL_STORAGE_METHODS = ["setItem", "getItem", "removeItem", "clear"];
 
 function logDisabled(method) {
@@ -30,7 +32,6 @@ class LocalStorage {
     LOCAL_STORAGE_METHODS.forEach((localStorageMethod) => {
       this[logDisabledMethodName(localStorageMethod)] = logDisabled(localStorageMethod).bind(this);
     });
-    this.clearLocalStorageSnapshot();
   }
 
   _saveLocalStorageKey(key, snapshotName) {
@@ -46,6 +47,7 @@ class LocalStorage {
       this._namedSnapshots[snapshotName] = {};
     } else {
       this._snapshot = {};
+      return this._cy.task(CLEAR_SNAPSHOT_TASK);
     }
   }
 
@@ -55,6 +57,7 @@ class LocalStorage {
       Object.keys(this._localStorage).forEach((key) => {
         this._saveLocalStorageKey(key, snapshotName);
       });
+      return this._cy.task(SET_SNAPSHOT_TASK, this._snapshot);
     }
   }
 
@@ -63,9 +66,17 @@ class LocalStorage {
     const snapshotToRestore = !!snapshotName
       ? this._namedSnapshots[snapshotName] || {}
       : this._snapshot;
-    Object.keys(snapshotToRestore).forEach((key) => {
-      this._localStorage.setItem(key, snapshotToRestore[key]);
-    });
+    if (snapshotName) {
+      Object.keys(snapshotToRestore).forEach((key) => {
+        this._localStorage.setItem(key, snapshotToRestore[key]);
+      });
+    } else {
+      return this._cy.task(GET_SNAPSHOT_TASK).then((snapshot) => {
+        Object.keys(snapshot).forEach((key) => {
+          this._localStorage.setItem(key, snapshot[key]);
+        });
+      });
+    }
   }
 
   getLocalStorage(key) {
