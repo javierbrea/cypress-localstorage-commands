@@ -47,8 +47,8 @@ class LocalStorage {
       this._namedSnapshots[snapshotName] = {};
     } else {
       this._snapshot = {};
-      return this._cy.task(CLEAR_SNAPSHOT_TASK);
     }
+    return this._cy.task(CLEAR_SNAPSHOT_TASK, snapshotName);
   }
 
   saveLocalStorage(snapshotName) {
@@ -57,26 +57,18 @@ class LocalStorage {
       Object.keys(this._localStorage).forEach((key) => {
         this._saveLocalStorageKey(key, snapshotName);
       });
-      return this._cy.task(SET_SNAPSHOT_TASK, this._snapshot);
+      const snapshotToSave = snapshotName ? this._namedSnapshots[snapshotName] : this._snapshot;
+      return this._cy.task(SET_SNAPSHOT_TASK, { name: snapshotName, snapshot: snapshotToSave });
     }
   }
 
   restoreLocalStorage(snapshotName) {
     this._localStorage.clear();
-    const snapshotToRestore = !!snapshotName
-      ? this._namedSnapshots[snapshotName] || {}
-      : this._snapshot;
-    if (snapshotName) {
-      Object.keys(snapshotToRestore).forEach((key) => {
-        this._localStorage.setItem(key, snapshotToRestore[key]);
+    return this._cy.task(GET_SNAPSHOT_TASK, snapshotName).then((snapshot) => {
+      Object.keys(snapshot).forEach((key) => {
+        this._localStorage.setItem(key, snapshot[key]);
       });
-    } else {
-      return this._cy.task(GET_SNAPSHOT_TASK).then((snapshot) => {
-        Object.keys(snapshot).forEach((key) => {
-          this._localStorage.setItem(key, snapshot[key]);
-        });
-      });
-    }
+    });
   }
 
   getLocalStorage(key) {
