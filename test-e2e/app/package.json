@@ -1,6 +1,5 @@
 {
   "name": "app",
-  "version": "1.0.0",
   "private": true,
   "dependencies": {
     "@data-provider/browser-storage": "4.0.0",
@@ -17,12 +16,7 @@
     "build": "react-scripts build",
     "eject": "react-scripts eject",
     "serve": "serve -l 3000",
-    "build:serve": "npm run build && npm run serve",
-    "cypress:install": "cypress install",
-    "cypress:verify": "cypress verify",
-    "cypress:open": "cypress open",
-    "cypress:run": "cypress run",
-    "test:ci": "start-server-and-test build:serve http-get://localhost:3000 cypress:run"
+    "build:serve": "npm run build && npm run serve"
   },
   "browserslist": {
     "production": [
@@ -37,11 +31,8 @@
     ]
   },
   "devDependencies": {
-    "@cypress/webpack-preprocessor": "5.12.0",
     "babel-plugin-module-resolver": "4.1.0",
-    "cypress": "10.3.0",
     "react-scripts": "5.0.1",
-    "serve": "13.0.4",
-    "start-server-and-test": "1.14.0"
+    "serve": "13.0.4"
   }
 }

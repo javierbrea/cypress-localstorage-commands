@@ -5,7 +5,7 @@
   "scripts": {
     "prelint": "npm run copy:library",
     "lint": "eslint commands cypress",
-    "build:serve": "cd ../react-app && npm run build:serve",
+    "build:serve": "cd ../app && npm run build:serve",
     "cypress:install": "cypress install",
     "cypress:verify": "cypress verify",
     "cypress:open": "cypress open",

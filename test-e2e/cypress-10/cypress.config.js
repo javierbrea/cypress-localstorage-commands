@@ -10,12 +10,12 @@ module.exports = {
       on("file:preprocessor", webpackPreprocessor(defaults));
     },
     specPattern: [
-      "cypress/e2e/*.cy.js",
-      "cypress/e2e/across-specs/save.cy.js",
-      "cypress/e2e/across-specs/restore.cy.js",
-      "cypress/e2e/named-across-specs/save.cy.js",
-      "cypress/e2e/named-across-specs/restore.cy.js",
-      "cypress/e2e/named-across-specs/restore-after-clear.cy.js",
+      "../specs/cypress/e2e/*.cy.js",
+      "../specs/cypress/e2e/across-specs/save.cy.js",
+      "../specs/cypress/e2e/across-specs/restore.cy.js",
+      "../specs/cypress/e2e/named-across-specs/save.cy.js",
+      "../specs/cypress/e2e/named-across-specs/restore.cy.js",
+      "../specs/cypress/e2e/named-across-specs/restore-after-clear.cy.js",
     ],
   },
   video: false,
