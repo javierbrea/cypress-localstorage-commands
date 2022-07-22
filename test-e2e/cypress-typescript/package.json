@@ -10,7 +10,7 @@
     "cypress:verify": "cypress verify",
     "cypress:open": "cypress open",
     "cypress:run": "cypress run",
-    "copy:library": "node commands/copyLibrary.js",
+    "copy:library": "node scripts/copyLibrary.js",
     "build-and-serve-and-cypress": "start-server-and-test build:serve http-get://localhost:3000 cypress:run",
     "test:ci": "npm run copy:library && npm run build-and-serve-and-cypress"
   },

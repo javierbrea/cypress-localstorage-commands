@@ -10,6 +10,7 @@
 /cypress/screenshots
 /cypress/fixtures
 /cypress/videos
+/cypress/integration
 
 # misc
 .DS_Store
