@@ -1,8 +1,14 @@
-const { GET_SNAPSHOT_TASK, SET_SNAPSHOT_TASK, CLEAR_SNAPSHOT_TASK } = require("./constants");
+const {
+  GET_SNAPSHOT_TASK,
+  SET_SNAPSHOT_TASK,
+  CLEAR_SNAPSHOT_TASK,
+  NODE_EVENTS_INSTALLED,
+} = require("./constants");
 
 module.exports = (on, config) => {
   const namedSnapshots = {};
   let globalSnapshot = {};
+  config.env[NODE_EVENTS_INSTALLED] = true;
 
   // Create cypress-local-storage-commands tasks
   on("task", {

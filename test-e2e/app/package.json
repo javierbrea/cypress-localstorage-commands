@@ -33,6 +33,6 @@
   "devDependencies": {
     "babel-plugin-module-resolver": "4.1.0",
     "react-scripts": "5.0.1",
-    "serve": "13.0.4"
+    "serve": "14.0.1"
   }
 }

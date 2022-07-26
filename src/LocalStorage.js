@@ -1,4 +1,9 @@
-const { GET_SNAPSHOT_TASK, SET_SNAPSHOT_TASK, CLEAR_SNAPSHOT_TASK } = require("./constants");
+const {
+  GET_SNAPSHOT_TASK,
+  SET_SNAPSHOT_TASK,
+  CLEAR_SNAPSHOT_TASK,
+  NODE_EVENTS_INSTALLED,
+} = require("./constants");
 
 const LOCAL_STORAGE_METHODS = ["setItem", "getItem", "removeItem", "clear"];
 
@@ -25,16 +30,20 @@ class LocalStorage {
     ];
   }
 
-  constructor(localStorage, cy) {
+  constructor(localStorage, cy, Cypress) {
+    this._nodeEventsInstalled = Cypress.env(NODE_EVENTS_INSTALLED) === true;
+    this._snapshot = {};
     this._namedSnapshots = {};
     this._cy = cy;
     this._localStorage = localStorage;
+    this._loggedInstallationWarn = false;
+
     LOCAL_STORAGE_METHODS.forEach((localStorageMethod) => {
       this[logDisabledMethodName(localStorageMethod)] = logDisabled(localStorageMethod).bind(this);
     });
   }
 
-  _saveLocalStorageKey(key, snapshotName) {
+  _saveLocalStorageKeyToMemory(key, snapshotName) {
     if (snapshotName) {
       this._namedSnapshots[snapshotName][key] = this._localStorage.getItem(key);
     } else {
@@ -42,33 +51,75 @@ class LocalStorage {
     }
   }
 
-  clearLocalStorageSnapshot(snapshotName) {
+  _saveLocalStorageToMemory(snapshotName) {
+    Object.keys(this._localStorage).forEach((key) => {
+      this._saveLocalStorageKeyToMemory(key, snapshotName);
+    });
+  }
+
+  _clearMemorySnapshot(snapshotName) {
     if (snapshotName) {
       this._namedSnapshots[snapshotName] = {};
     } else {
       this._snapshot = {};
     }
-    return this._cy.task(CLEAR_SNAPSHOT_TASK, snapshotName);
+  }
+
+  _getSnapshotFromMemory(snapshotName) {
+    return snapshotName ? this._namedSnapshots[snapshotName] : this._snapshot;
+  }
+
+  _restoreLocalStorageFromSnapshot(obj) {
+    Object.keys(obj).forEach((key) => {
+      this._localStorage.setItem(key, obj[key]);
+    });
+  }
+
+  _restoreLocalStorageFromMemory(snapshotName) {
+    this._restoreLocalStorageFromSnapshot(this._getSnapshotFromMemory(snapshotName));
+  }
+
+  _copySnapshotFromMemoryToNode(snapshotName) {
+    if (this._nodeEventsInstalled) {
+      return this._cy.task(SET_SNAPSHOT_TASK, {
+        name: snapshotName,
+        snapshot: this._getSnapshotFromMemory(snapshotName),
+      });
+    }
+  }
+
+  _clearNodeSnapshot(snapshotName) {
+    if (this._nodeEventsInstalled) {
+      return this._cy.task(CLEAR_SNAPSHOT_TASK, snapshotName);
+    }
+  }
+
+  _restoreLocalStorageFromNode(snapshotName) {
+    return this._cy.task(GET_SNAPSHOT_TASK, snapshotName).then((snapshot) => {
+      this._restoreLocalStorageFromSnapshot(snapshot);
+    });
+  }
+
+  clearLocalStorageSnapshot(snapshotName) {
+    this._clearMemorySnapshot(snapshotName);
+    return this._clearNodeSnapshot(snapshotName);
   }
 
   saveLocalStorage(snapshotName) {
     if (!this._localStorage.getItem.wrappedMethod) {
       this.clearLocalStorageSnapshot(snapshotName);
-      Object.keys(this._localStorage).forEach((key) => {
-        this._saveLocalStorageKey(key, snapshotName);
-      });
-      const snapshotToSave = snapshotName ? this._namedSnapshots[snapshotName] : this._snapshot;
-      return this._cy.task(SET_SNAPSHOT_TASK, { name: snapshotName, snapshot: snapshotToSave });
+      this._saveLocalStorageToMemory(snapshotName);
+      return this._copySnapshotFromMemoryToNode(snapshotName);
     }
   }
 
   restoreLocalStorage(snapshotName) {
     this._localStorage.clear();
-    return this._cy.task(GET_SNAPSHOT_TASK, snapshotName).then((snapshot) => {
-      Object.keys(snapshot).forEach((key) => {
-        this._localStorage.setItem(key, snapshot[key]);
-      });
-    });
+    if (this._nodeEventsInstalled) {
+      return this._restoreLocalStorageFromNode(snapshotName);
+    } else {
+      this._restoreLocalStorageFromMemory(snapshotName);
+    }
   }
 
   getLocalStorage(key) {
