@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "prelint": "npm run copy:library",
-    "lint": "eslint commands cypress",
+    "lint": "eslint scripts cypress",
     "build:serve": "cd ../app && npm run build:serve",
     "cypress:install": "cypress install",
     "cypress:verify": "cypress verify",
