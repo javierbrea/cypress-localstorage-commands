@@ -9,7 +9,17 @@
       "allowedVersions": "9.x"
     },
     {
+      "matchPaths": ["test-e2e/cypress-9-no-plugin/package.json"],
+      "matchPackageNames": ["cypress"],
+      "allowedVersions": "9.x"
+    },
+    {
       "matchPaths": ["test-e2e/cypress-10/package.json"],
+      "matchPackageNames": ["cypress"],
+      "allowedVersions": "10.x"
+    },
+    {
+      "matchPaths": ["test-e2e/cypress-10-no-plugin/package.json"],
       "matchPackageNames": ["cypress"],
       "allowedVersions": "10.x"
     }
