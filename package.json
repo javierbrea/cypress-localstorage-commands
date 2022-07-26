@@ -50,7 +50,7 @@
     "test:e2e:cypress-typescript:install": "cd test-e2e/cypress-typescript && npm i",
     "test:e2e:cypress-typescript": "cd test-e2e/cypress-typescript && npm run test:ci",
     "test:e2e:cypress-typescript:ci": "npm run test:e2e:cypress-typescript:install && npm run test:e2e:cypress-typescript",
-    "test:e2e": "npm run test:e2e:cypress-9:ci && npm run test:e2e:cypress-9-no-plugin:ci && npm run test:e2e:cypress-10:ci && npm run test:e2e:cypress-10-no-plugin:ci && npm run test:e2e:cypress-typescript:ci",
+    "test:e2e": "npm run test:e2e:app:install && npm run test:e2e:cypress-9:ci && npm run test:e2e:cypress-9-no-plugin:ci && npm run test:e2e:cypress-10:ci && npm run test:e2e:cypress-10-no-plugin:ci && npm run test:e2e:cypress-typescript:ci",
     "test:unit": "npm run test",
     "test:mutation": "stryker run",
     "test:ci": "npm run test:unit && npm run test:mutation && npm run test:e2e",
