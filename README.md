@@ -82,6 +82,8 @@ module.exports = (on, config) => {
 
 ## Usage
 
+### Commands
+
 #### `cy.saveLocalStorage([snapshotName])`
 
 Saves current localStorage values into an internal "snapshot".
@@ -129,6 +131,8 @@ Disables localStorage. It produces localStorage methods to throw errors.
 ### Preserving local storage between tests
 
 Use `cy.saveLocalStorage()` to save a snapshot of current `localStorage` at the end of one test, and use the `cy.restoreLocalStorage()` command to restore it at the beginning of another one. _The usage of `beforeEach` and `afterEach` is recommended for this purpose._
+
+> ⚠ When the [plugin's Node events are installed](#installing-node-events), the `cy.restoreLocalStorage()` command will be able to restore the localStorage snapshots saved in other spec files. Otherwise, snapshots are completely cleared between spec files.
 
 ### Examples
 
