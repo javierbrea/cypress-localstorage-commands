@@ -23,6 +23,7 @@ class Cy {
       }),
       log: this._sandbox.stub(),
       stub: this._sandbox.stub,
+      task: this._sandbox.stub().resolves(),
     };
   }
 

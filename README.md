@@ -6,16 +6,17 @@
 
 # Cypress localStorage commands
 
-Extends Cypress' cy commands with localStorage methods. Allows preserving localStorage between tests and disabling localStorage.
+Extends Cypress' cy commands with localStorage methods. Allows preserving localStorage between tests and spec files, and disabling localStorage.
 
 ## The problems
 
 * You want to preserve localStorage between Cypress tests.
+* You want to preserve localStorage between Cypress spec files.
 * You want to disable localStorage to check error handling.
 
 ## This solution
 
-This solution allows you to use all browser localStorage methods through Cypress commands, and preserve it between tests. It also allows to simulate that localStorage is disabled in the browser.
+This solution allows you to use all browser localStorage methods through Cypress commands, and preserve it between tests and spec files. It also allows to simulate that localStorage is disabled in the browser.
 
 ## Installation
 
@@ -25,58 +26,102 @@ This module is distributed via npm which is bundled with node and should be inst
 npm i --save-dev cypress-localstorage-commands
 ```
 
-## Usage
+### Installing commands
 
-`cypress-localstorage-commands` extends Cypress' cy command.
+`cypress-localstorage-commands` extends Cypress' cy commands.
 
-Add this line to your project's `cypress/support/commands.js`:
+At the top of your Cypress' support file (usually `cypress/support/e2e.js` for `e2e` testing type):
+
+```javascript
+import "cypress-localstorage-commands";
+```
+
+Read [Cypress configuration docs](https://docs.cypress.io/guides/references/configuration) for further info.
+
+<details>
+<summary><strong>Installing commands in Cypress <10.0</strong></summary>
+
+Add this line to your project's `cypress/support/index.js`:
 
 ```js
 import "cypress-localstorage-commands"
 ```
 
-You can now use all next commands:
+</details>
+
+### Installing Node events
+
+__⚠ In order to support preserving localStorage across Cypress spec files, the plugin's Node events must be installed also.__ Otherwise, localStorage will be preserved only across tests in the same spec file.
+
+In the `cypress.config.js` file:
+
+```javascript
+module.exports = {
+  e2e: {
+    setupNodeEvents(on, config) {
+      require("cypress-localstorage-commands/plugin")(on, config);
+      return config;
+    },
+  },
+};
+```
+
+<details>
+<summary><strong>Installing Node events in Cypress <10.0</strong></summary>
+
+In the `cypress/plugins/index.js` file:
+
+```javascript
+module.exports = (on, config) => {
+  require("cypress-localstorage-commands/plugin")(on, config);
+  return config;
+};
+```
+
+</details>
+
+## Usage
 
 ### Commands
 
-##### `cy.saveLocalStorage([snapshotName])`
+#### `cy.saveLocalStorage([snapshotName])`
 
 Saves current localStorage values into an internal "snapshot".
 
 * `snapshotName` _(String)_: Optionally, a `snapshotName` can be provided, and then data from localStorage will be saved into a snapshot with that name. So, multiple snapshots can be stored.
 
-##### `cy.restoreLocalStorage([snapshotName])`
+#### `cy.restoreLocalStorage([snapshotName])`
 
 Restores localStorage to previously "snapshot" saved values. __
 
 * `snapshotName` _(String)_: Optional. If provided, the localStorage will be restored using data from that specific snapshot.
 
-##### `cy.clearLocalStorageSnapshot([snapshotName])`
+#### `cy.clearLocalStorageSnapshot([snapshotName])`
 
 Clears localStorage "snapshot" values, so previously saved values are cleaned.
 
 * `snapshotName` _(String)_: Optional. If provided, only data from that specific snapshot will be cleared.
 
-##### `cy.getLocalStorage(item)`
+#### `cy.getLocalStorage(item)`
 
 Gets localStorage item. Equivalent to `localStorage.getItem` in browser.
 
 * `item` _(String)_: Item to get from `localStorage`.
 
-##### `cy.setLocalStorage(item, value)`
+#### `cy.setLocalStorage(item, value)`
 
 Sets localStorage item. Equivalent to `localStorage.setItem` in browser.
 
 * `item` _(String)_: Item to set value.
 * `value` _(String)_: Value to be set.
 
-##### `cy.removeLocalStorage(item)`
+#### `cy.removeLocalStorage(item)`
 
 Removes localStorage item. Equivalent to `localStorage.removeItem` in browser.
 
 * `item` _(String)_: Item to be removed.
 
-##### `cy.disableLocalStorage(options)`
+#### `cy.disableLocalStorage(options)`
 
 Disables localStorage. It produces localStorage methods to throw errors.
 
@@ -86,6 +131,8 @@ Disables localStorage. It produces localStorage methods to throw errors.
 ### Preserving local storage between tests
 
 Use `cy.saveLocalStorage()` to save a snapshot of current `localStorage` at the end of one test, and use the `cy.restoreLocalStorage()` command to restore it at the beginning of another one. _The usage of `beforeEach` and `afterEach` is recommended for this purpose._
+
+> ⚠ When the [plugin's Node events are installed](#installing-node-events), the `cy.restoreLocalStorage()` command will be able to restore the localStorage snapshots saved in other spec files. Otherwise, snapshots are completely cleared between spec files.
 
 ### Examples
 
@@ -125,7 +172,7 @@ describe("Accept cookies button", () => {
 });
 ```
 
-> Note the usage of `beforeEach` and `afterEach` for preserving `localStorage` between all tests. Also `cy.clearLocalStorageSnapshot` is used in the `before` statement to avoid possible conflicts with other test files preserving localStorage.
+> Note the usage of `beforeEach` and `afterEach` for preserving `localStorage` between all tests. Also `cy.clearLocalStorageSnapshot` is used in the `before` statement to avoid possible conflicts with other spec files preserving localStorage.
 
 #### localStorage assertions
 
