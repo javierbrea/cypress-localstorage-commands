@@ -11,7 +11,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Removed
 ### BREAKING CHANGES
 
-## [unreleased]
+## [2.2.0] - 2022-07-26
 
 ### Added
 - feat(#401): Support preserving localStorage across spec files. Node events must be installed to support this feature.
