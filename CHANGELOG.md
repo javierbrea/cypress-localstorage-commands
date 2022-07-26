@@ -11,6 +11,16 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Removed
 ### BREAKING CHANGES
 
+## [2.2.0] - 2022-07-26
+
+### Added
+- feat(#401): Support preserving localStorage across spec files. Node events must be installed to support this feature.
+
+### Changed
+- docs: Update docs with installation method in Cypress v10. Add notes about installing it in prior versions.
+- chore(deps): Update devDependencies
+- test(e2e): Add E2E tests using different Cypress versions
+
 ## [2.1.0] - 2022-06-02
 
 ### Changed

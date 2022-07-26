@@ -1,5 +1,6 @@
 const LocalStorageMock = require("./LocalStorage.mock");
 const CyMock = require("./Cy.mock");
+const CypressMock = require("./Cypress.mock");
 const LocalStorage = require("../src/LocalStorage");
 
 describe("LocalStorage", () => {
@@ -7,11 +8,15 @@ describe("LocalStorage", () => {
   let localStorageMock;
   let localStorage;
   let cyMock;
+  let cypressMock;
 
   beforeAll(() => {
     cyMock = new CyMock();
+    // Ensure that tasks are not called (plugin must be disabled in these tests)
+    cyMock.stubs.task.throws();
+    cypressMock = new CypressMock();
     localStorageMock = new LocalStorageMock();
-    localStorage = new LocalStorage(localStorageMock.stubs, cyMock.stubs);
+    localStorage = new LocalStorage(localStorageMock.stubs, cyMock.stubs, cypressMock.stubs);
   });
 
   afterAll(() => {
@@ -155,11 +160,55 @@ describe("LocalStorage", () => {
     });
   });
 
+  describe("LocalStorage when memory is cleaned", () => {
+    describe("save and restore methods", () => {
+      it("should not restore values that localStorage had when save method was called", () => {
+        expect.assertions(2);
+        localStorageMock.stubs.setItem("foo", "foo-value");
+        localStorageMock.stubs.setItem("var", "var-value");
+        localStorage.saveLocalStorage();
+        localStorageMock.stubs.setItem("foo", "foo-new-value");
+        expect(localStorageMock.stubs.getItem("foo")).toEqual("foo-new-value");
+        localStorage._namedSnapshots = {};
+        localStorage._snapshot = {};
+        localStorage.restoreLocalStorage();
+        expect(localStorageMock.stubs.getItem("foo")).toEqual(undefined);
+      });
+
+      it("should not restore values after calling localStorage clear", () => {
+        expect.assertions(2);
+        localStorageMock.stubs.clear();
+        expect(localStorageMock.stubs.getItem("var")).toEqual(undefined);
+        localStorage.restoreLocalStorage();
+        expect(localStorageMock.stubs.getItem("var")).toEqual(undefined);
+      });
+
+      it("should not restore new values if Save is called again", () => {
+        expect.assertions(2);
+        localStorageMock.stubs.setItem("foo", "foo-new-value");
+        localStorageMock.stubs.removeItem("var");
+        localStorage.saveLocalStorage();
+        localStorageMock.stubs.setItem("foo", "foo-another-new-value");
+        localStorageMock.stubs.setItem("var", "foo-var-value");
+        localStorage._namedSnapshots = {};
+        localStorage._snapshot = {};
+        localStorage.restoreLocalStorage();
+        expect(localStorageMock.stubs.getItem("foo")).toEqual(undefined);
+        expect(localStorageMock.stubs.getItem("var")).toEqual(undefined);
+      });
+    });
+  });
+
   describe("disableLocalStorage", () => {
     beforeEach(() => {
       windowLocalStorageMock = new CyMock();
       cyMock = new CyMock();
-      localStorage = new LocalStorage(windowLocalStorageMock.window.localStorage, cyMock.stubs);
+      cypressMock = new CypressMock();
+      localStorage = new LocalStorage(
+        windowLocalStorageMock.window.localStorage,
+        cyMock.stubs,
+        cypressMock.stubs
+      );
     });
 
     afterEach(() => {
