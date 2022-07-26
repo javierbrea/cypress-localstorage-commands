@@ -51,7 +51,7 @@ import "cypress-localstorage-commands"
 
 ### Installing Node events
 
-__⚠ In order to support preserving localStorage across Cypress spec files, the plugin's Node events must be installed also.__
+__⚠ In order to support preserving localStorage across Cypress spec files, the plugin's Node events must be installed also.__ Otherwise, localStorage will be preserved only across tests in the same spec file.
 
 In the `cypress.config.js` file:
 
