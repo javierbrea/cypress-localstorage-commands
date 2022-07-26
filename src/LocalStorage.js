@@ -36,7 +36,6 @@ class LocalStorage {
     this._namedSnapshots = {};
     this._cy = cy;
     this._localStorage = localStorage;
-    this._loggedInstallationWarn = false;
 
     LOCAL_STORAGE_METHODS.forEach((localStorageMethod) => {
       this[logDisabledMethodName(localStorageMethod)] = logDisabled(localStorageMethod).bind(this);
@@ -69,7 +68,7 @@ class LocalStorage {
     return snapshotName ? this._namedSnapshots[snapshotName] : this._snapshot;
   }
 
-  _restoreLocalStorageFromSnapshot(obj) {
+  _restoreLocalStorageFromSnapshot(obj = {}) {
     Object.keys(obj).forEach((key) => {
       this._localStorage.setItem(key, obj[key]);
     });

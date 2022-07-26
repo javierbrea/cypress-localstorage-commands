@@ -13,7 +13,7 @@ module.exports = (on, config) => {
   // Create cypress-local-storage-commands tasks
   on("task", {
     [GET_SNAPSHOT_TASK]: function (name) {
-      return name ? namedSnapshots[name] : globalSnapshot;
+      return name ? namedSnapshots[name] || {} : globalSnapshot;
     },
     [SET_SNAPSHOT_TASK]: function ({ name, snapshot }) {
       if (name) {
