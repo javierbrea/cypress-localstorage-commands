@@ -15,8 +15,8 @@
     "test:ci": "npm run copy:library && npm run build-and-serve-and-cypress"
   },
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "5.36.0",
-    "@typescript-eslint/parser": "5.36.0",
+    "@typescript-eslint/eslint-plugin": "5.36.1",
+    "@typescript-eslint/parser": "5.36.1",
     "cypress": "10.6.0",
     "eslint": "8.23.0",
     "eslint-config-prettier": "8.5.0",
