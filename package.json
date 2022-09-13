@@ -68,7 +68,7 @@
     "cypress": "10.7.0",
     "eslint": "8.23.0",
     "eslint-config-prettier": "8.5.0",
-    "eslint-plugin-jest": "27.0.1",
+    "eslint-plugin-jest": "27.0.4",
     "eslint-plugin-mocha": "10.1.0",
     "eslint-plugin-no-only-tests": "3.0.0",
     "eslint-plugin-prettier": "4.2.1",
