@@ -15,7 +15,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Changed
 - chore(deps): Update devDependencies
 - test(e2e): Rename cypress-10 folder to cypress-latest
-- test(e2e): Use Cypress 11 in E2E tests
+- test(e2e): Use Cypress 12 in E2E tests
 
 ## [2.2.1] - 2022-08-30
 

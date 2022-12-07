@@ -3,10 +3,14 @@ describe("Accept cookies button using named snapshots", () => {
 
   before(() => {
     cy.clearLocalStorageSnapshot();
+    cy.visit("/");
+  });
+
+  beforeEach(() => {
+    cy.visit("/");
   });
 
   it("should be visible", () => {
-    cy.visit("/");
     cy.get(COOKIES_BUTTON).should("be.visible");
     cy.saveLocalStorage("cookies-not-accepted");
   });
@@ -19,20 +23,20 @@ describe("Accept cookies button using named snapshots", () => {
 
   it("should be visible when cookies are not accepted", () => {
     cy.restoreLocalStorage("cookies-not-accepted");
-    cy.visit("/");
+    cy.reload();
     cy.get(COOKIES_BUTTON).should("be.visible");
   });
 
   it("should not be visible when cookies are accepted", () => {
     cy.restoreLocalStorage("cookies-accepted");
-    cy.visit("/");
+    cy.reload();
     cy.get(COOKIES_BUTTON).should("not.exist");
   });
 
   it("should be visible after clearing localStorage snapshot", () => {
     cy.clearLocalStorageSnapshot("cookies-accepted");
     cy.restoreLocalStorage("cookies-accepted");
-    cy.visit("/");
+    cy.reload();
     cy.get(COOKIES_BUTTON).should("be.visible");
   });
 });

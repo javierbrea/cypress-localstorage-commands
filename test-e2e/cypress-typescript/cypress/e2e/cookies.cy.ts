@@ -8,11 +8,11 @@ describe("Cookies", () => {
     LOCALSTORAGE_DISABLED_WARNING: "#localstorage-disabled-warning",
   };
 
-  describe("when cookies are not accepted", () => {
-    before(() => {
-      cy.visit("/");
-    });
+  beforeEach(() => {
+    cy.visit("/");
+  });
 
+  describe("when cookies are not accepted", () => {
     it("should display accept cookies button", () => {
       cy.get(SELECTORS.ACCEPT_BUTTON).should("be.visible");
     });
