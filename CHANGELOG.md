@@ -10,7 +10,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Fixed
 ### Removed
 
-## [unreleased]
+## [2.2.2] - 2022-12-07
 
 ### Added
 - docs: Add alternatives
