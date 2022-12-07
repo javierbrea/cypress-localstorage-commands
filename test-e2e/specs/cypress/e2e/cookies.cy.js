@@ -5,6 +5,10 @@ describe("Cookies", () => {
     LOCALSTORAGE_DISABLED_WARNING: "#localstorage-disabled-warning",
   };
 
+  beforeEach(() => {
+    cy.visit("/");
+  });
+
   describe("when cookies are not accepted", () => {
     before(() => {
       cy.visit("/");
@@ -23,7 +27,6 @@ describe("Cookies", () => {
       });
 
       it("should accept cookies button after reloading page", () => {
-        cy.reload();
         cy.getLocalStorage("cookies-accepted").should("not.exist");
         cy.get(SELECTORS.ACCEPT_BUTTON).should("be.visible");
       });

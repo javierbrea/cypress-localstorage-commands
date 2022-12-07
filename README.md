@@ -18,6 +18,10 @@ Extends Cypress' cy commands with localStorage methods. Allows preserving localS
 
 This solution allows you to use all browser localStorage methods through Cypress commands, and preserve it between tests and spec files. It also allows to simulate that localStorage is disabled in the browser.
 
+## Alternatives
+
+As from Cypress 12, you can use [`cy.session`](https://docs.cypress.io/api/commands/session) and [Cypress Test Isolation](https://docs.cypress.io/guides/core-concepts/test-isolation) in order to persist localStorage between tests. __Anyway, this plugin can be still used for an easier manipulation of the localStorage, writing localStorage assertions and even disabling it for checking the error handling.__
+
 ## Installation
 
 This module is distributed via npm which is bundled with node and should be installed as one of your project's devDependencies:

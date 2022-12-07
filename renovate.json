@@ -14,14 +14,14 @@
       "allowedVersions": "9.x"
     },
     {
-      "matchPaths": ["test-e2e/cypress-10/package.json"],
+      "matchPaths": ["test-e2e/cypress-latest/package.json"],
       "matchPackageNames": ["cypress"],
-      "allowedVersions": "10.x"
+      "allowedVersions": "12.x"
     },
     {
-      "matchPaths": ["test-e2e/cypress-10-no-plugin/package.json"],
+      "matchPaths": ["test-e2e/cypress-latest-no-plugin/package.json"],
       "matchPackageNames": ["cypress"],
-      "allowedVersions": "10.x"
+      "allowedVersions": "12.x"
     }
   ]
 }
