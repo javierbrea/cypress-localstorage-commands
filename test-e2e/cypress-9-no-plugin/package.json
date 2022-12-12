@@ -16,7 +16,7 @@
     "babel-loader": "8.3.0",
     "babel-plugin-module-resolver": "4.1.0",
     "cypress": "9.7.0",
-    "start-server-and-test": "1.15.1",
+    "start-server-and-test": "1.15.2",
     "webpack": "5.75.0"
   }
 }
