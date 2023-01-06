@@ -19,7 +19,7 @@
     "@typescript-eslint/parser": "5.47.1",
     "cypress": "12.2.0",
     "eslint": "8.31.0",
-    "eslint-config-prettier": "8.5.0",
+    "eslint-config-prettier": "8.6.0",
     "eslint-plugin-prettier": "4.2.1",
     "start-server-and-test": "1.15.2",
     "typescript": "4.9.4"
