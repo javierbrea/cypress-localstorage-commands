@@ -1,5 +1,5 @@
 {
-  "name": "cypress-9",
+  "name": "cypress-9-no-plugin",
   "private": true,
   "scripts": {
     "build:serve": "cd ../app && npm run build:serve",
@@ -12,11 +12,11 @@
     "test:ci": "npm run copy:specs && npm run build-and-serve-and-cypress"
   },
   "devDependencies": {
-    "@cypress/webpack-preprocessor": "5.16.1",
-    "babel-loader": "8.3.0",
-    "babel-plugin-module-resolver": "4.1.0",
+    "@cypress/webpack-preprocessor": "5.17.0",
+    "babel-loader": "9.1.2",
+    "babel-plugin-module-resolver": "5.0.0",
     "cypress": "9.7.0",
-    "start-server-and-test": "1.15.2",
-    "webpack": "5.75.0"
+    "start-server-and-test": "2.0.0",
+    "webpack": "5.77.0"
   }
 }
