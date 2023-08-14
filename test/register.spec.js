@@ -22,7 +22,7 @@ describe("register", () => {
   describe("methods", () => {
     it("should register all LocalStorage public methods as commands on Cypress", () => {
       expect(cypressMock.stubs.Commands.add.callCount).toEqual(
-        LocalStorage.cypressCommands.length
+        LocalStorage.cypressCommands.length,
       );
     });
 

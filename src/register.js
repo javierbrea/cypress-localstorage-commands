@@ -7,7 +7,7 @@ const register = (Cypress, cy, localStorage) => {
   LocalStorage.cypressCommands.forEach((commandName) => {
     Cypress.Commands.add(
       commandName,
-      localStorageCommands[commandName].bind(localStorageCommands)
+      localStorageCommands[commandName].bind(localStorageCommands),
     );
   });
 };

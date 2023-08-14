@@ -207,7 +207,7 @@ describe("LocalStorage", () => {
       localStorage = new LocalStorage(
         windowLocalStorageMock.window.localStorage,
         cyMock.stubs,
-        cypressMock.stubs
+        cypressMock.stubs,
       );
     });
 
