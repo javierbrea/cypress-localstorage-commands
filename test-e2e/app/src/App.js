@@ -7,11 +7,13 @@ import RejectCookies from "./modules/reject-cookies";
 import CookiesValue from "./modules/cookies-value";
 import LocalStorageWarning from "./modules/localstorage-warning";
 
+const reduxDevToolsExtension = window?.__REDUX_DEVTOOLS_EXTENSION__;
+
 const store = createStore(
   combineReducers({
     dataProviders: storeManager.reducer,
   }),
-  window && window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
+  reduxDevToolsExtension && reduxDevToolsExtension(),
 );
 
 storeManager.setStore(store, "dataProviders");
