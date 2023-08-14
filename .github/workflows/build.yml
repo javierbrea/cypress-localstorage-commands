@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node: ["16.13.0", "18.2.0", "20.5.1"]
+        node: ["16.14.0", "18.2.0", "20.5.1"]
     steps:
       - name: Checkout
         uses: actions/checkout@v3

@@ -6,6 +6,7 @@ module.exports = {
   parserOptions: {
     sourceType: "module",
   },
+  ignorePatterns: ["cypress/support/cypress-localstorage-commands/**/*"],
   plugins: ["prettier"],
   rules: {
     "prettier/prettier": [
