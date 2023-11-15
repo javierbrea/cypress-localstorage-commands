@@ -4,7 +4,6 @@ on:
     branches:
       - master
       - release
-      - chore/do-not-use-set-output
   pull_request:
 concurrency:  
   group: ${{ github.workflow }}-${{ github.ref }}
