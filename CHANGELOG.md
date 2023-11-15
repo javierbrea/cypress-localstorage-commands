@@ -10,6 +10,14 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Fixed
 ### Removed
 
+## [unreleased]
+
+### Added
+* chore: Handle jobs concurrency in build workflow
+
+### Changed
+* chore: Remove usage of "set-output" in build workflow
+
 ## [2.2.5] - 2023-11-15
 
 ### Changed
