@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node: ["16.14.0", "18.2.0", "20.5.1"]
+        node: ["18.20.2", "20.13.1", "22.2.0"]
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -26,7 +26,7 @@ jobs:
         with:
           node-version: ${{ matrix.node }}
       - name: Cache node modules
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         env:
           cache-name: cache-node-modules
         with:
@@ -55,20 +55,20 @@ jobs:
         id: test-e2e
       - name: Upload E2E tests screenshots
         if: ${{ always() && steps.test-e2e.outcome == 'failure' }}
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: e2e-screenshots-${{ matrix.node }}
           path: test-e2e/react-app/cypress/screenshots
           retention-days: 7
       - name: Upload typescript E2E tests screenshots
         if: ${{ always() && steps.test-e2e.outcome == 'failure' }}
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: e2e-typescript-screenshots-${{ matrix.node }}
           path: test-e2e/typescript/cypress/screenshots
           retention-days: 7
       - name: Upload test results
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: coverage-${{ matrix.node }}
           path: coverage
@@ -82,9 +82,9 @@ jobs:
         with:
           fetch-depth: 0
       - name: Download test results
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
-          name: coverage-18.2.0
+          name: coverage-18.20.2
           path: coverage
       - name: Coveralls
         uses: coverallsapp/github-action@master
