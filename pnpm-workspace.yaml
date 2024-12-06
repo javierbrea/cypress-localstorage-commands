@@ -1,0 +1,4 @@
+packages:
+  - "."
+  - "test-e2e/app"
+  - "test-e2e/cypress-*"

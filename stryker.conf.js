@@ -12,6 +12,7 @@ const BASE_CONFIG = {
   reporters: ["html", "clear-text", "progress", "dashboard"],
   testRunner: "jest",
   coverageAnalysis: "off",
+  plugins: ["@stryker-mutator/jest-runner"],
 };
 
 const config = {

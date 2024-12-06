@@ -12,11 +12,10 @@
     "redux": "4.2.1"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "eject": "react-scripts eject",
+    "start": "DISABLE_ESLINT_PLUGIN=true react-scripts start",
+    "build": "DISABLE_ESLINT_PLUGIN=true react-scripts build",
     "serve": "serve -l 3000 --no-request-logging",
-    "build:serve": "npm run build && npm run serve"
+    "build:serve": "pnpm run build && pnpm run serve"
   },
   "browserslist": {
     "production": [
@@ -31,7 +30,6 @@
     ]
   },
   "devDependencies": {
-    "babel-plugin-module-resolver": "5.0.2",
     "react-scripts": "5.0.1",
     "serve": "14.2.3"
   }

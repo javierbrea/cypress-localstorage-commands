@@ -48,7 +48,11 @@ describe("LocalStorage with node events", () => {
     });
 
     localStorageMock = new LocalStorageMock();
-    localStorage = new LocalStorage(localStorageMock.stubs, cyMock.stubs, cypressMock.stubs);
+    localStorage = new LocalStorage(
+      localStorageMock.stubs,
+      cyMock.stubs,
+      cypressMock.stubs,
+    );
   });
 
   afterAll(() => {

@@ -3,7 +3,8 @@ import PropTypes from "prop-types";
 export const CookiesValue = ({ value }) => {
   return (
     <p>
-      Cookies are currently <span id="cookies-value">{value ? "accepted" : "rejected"}</span>
+      Cookies are currently{" "}
+      <span id="cookies-value">{value ? "accepted" : "rejected"}</span>
     </p>
   );
 };

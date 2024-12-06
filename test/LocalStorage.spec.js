@@ -16,7 +16,11 @@ describe("LocalStorage", () => {
     cyMock.stubs.task.throws();
     cypressMock = new CypressMock();
     localStorageMock = new LocalStorageMock();
-    localStorage = new LocalStorage(localStorageMock.stubs, cyMock.stubs, cypressMock.stubs);
+    localStorage = new LocalStorage(
+      localStorageMock.stubs,
+      cyMock.stubs,
+      cypressMock.stubs,
+    );
   });
 
   afterAll(() => {
@@ -242,7 +246,9 @@ describe("LocalStorage", () => {
       localStorage.disableLocalStorage();
       cyMock.loadWindow();
       localStorage.setLocalStorage("foo", "foo");
-      expect(cyMock.stubs.log.calledWith("localStorage.setItem is disabled")).toEqual(true);
+      expect(
+        cyMock.stubs.log.calledWith("localStorage.setItem is disabled"),
+      ).toEqual(true);
     });
 
     it("should make cy.getLocalStorage command to log after reloading page", () => {
@@ -250,7 +256,9 @@ describe("LocalStorage", () => {
       localStorage.disableLocalStorage();
       cyMock.loadWindow();
       localStorage.getLocalStorage("foo");
-      expect(cyMock.stubs.log.calledWith("localStorage.getItem is disabled")).toEqual(true);
+      expect(
+        cyMock.stubs.log.calledWith("localStorage.getItem is disabled"),
+      ).toEqual(true);
     });
 
     it("should make cy.removeLocalStorage command to log after reloading page", () => {
@@ -258,7 +266,9 @@ describe("LocalStorage", () => {
       localStorage.disableLocalStorage();
       cyMock.loadWindow();
       localStorage.removeLocalStorage("foo");
-      expect(cyMock.stubs.log.calledWith("localStorage.removeItem is disabled")).toEqual(true);
+      expect(
+        cyMock.stubs.log.calledWith("localStorage.removeItem is disabled"),
+      ).toEqual(true);
     });
 
     it("should make cy.restoreLocalStorage command to log after reloading page", () => {
@@ -266,7 +276,9 @@ describe("LocalStorage", () => {
       localStorage.disableLocalStorage();
       cyMock.loadWindow();
       localStorage.restoreLocalStorage();
-      expect(cyMock.stubs.log.calledWith("localStorage.clear is disabled")).toEqual(true);
+      expect(
+        cyMock.stubs.log.calledWith("localStorage.clear is disabled"),
+      ).toEqual(true);
     });
 
     it("should make cy.saveLocalStorage command to do nothing", () => {
@@ -274,7 +286,9 @@ describe("LocalStorage", () => {
       localStorage.disableLocalStorage();
       cyMock.loadWindow();
       localStorage.saveLocalStorage();
-      expect(windowLocalStorageMock.window.localStorage.getItem.callCount).toEqual(0);
+      expect(
+        windowLocalStorageMock.window.localStorage.getItem.callCount,
+      ).toEqual(0);
     });
 
     it("should do nothing if window.localStorage is not available", () => {
