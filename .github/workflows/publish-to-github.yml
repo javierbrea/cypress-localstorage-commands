@@ -8,6 +8,8 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     # Setup .npmrc file to publish to GitHub Packages
+    - name: Install pnpm
+      uses: pnpm/action-setup@v4
     - name: Install Node.js
       uses: actions/setup-node@v4
       with:
