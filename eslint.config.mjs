@@ -24,6 +24,7 @@ export default [
       "test-e2e/*/cypress/integration/**",
       "test-e2e/app/build/**",
       "test-e2e/cypress-typescript/cypress/support/cypress-localstorage-commands/**",
+      "reports/**",
     ],
   },
   {

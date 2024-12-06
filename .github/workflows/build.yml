@@ -39,6 +39,8 @@ jobs:
           key: pnpm-${{ hashFiles('pnpm-lock.yaml') }}
       - name: Install dependencies
         run: pnpm install
+      - name: Check spelling
+        run: pnpm run cspell
       - name: Lint
         run: pnpm run lint
       - name: Check types
