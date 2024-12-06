@@ -10,6 +10,19 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Fixed
 ### Removed
 
+## [2.2.7] - 2024-12-06
+
+### Added
+* chore: Check spelling in build workflow
+
+### Changed
+* chore: Use Pnpm as package manager
+* chore: Upgrade eslint configuration to v9
+* chore: Update devDependencies
+
+### Fixed
+* docs: Fix typos in README
+
 ## [2.2.6] - 2024-05-17
 
 ### Added
