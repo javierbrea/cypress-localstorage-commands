@@ -1,5 +1,5 @@
 {
-  "name": "app-typescript-tests",
+  "name": "cypress-typescript",
   "version": "1.0.0",
   "private": true,
   "scripts": {

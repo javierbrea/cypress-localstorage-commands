@@ -1,5 +1,5 @@
 {
-  "name": "cypress-10-no-plugin",
+  "name": "cypress-latest-no-plugin",
   "private": true,
   "scripts": {
     "build:serve": "cd ../app && pnpm run build:serve",
