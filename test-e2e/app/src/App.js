@@ -21,7 +21,10 @@ function App() {
     <Provider store={store}>
       <div className="App">
         <header className="App-header">
-          <p>Click cookies button and reload the page to see how value is maintained</p>
+          <p>
+            Click cookies button and reload the page to see how value is
+            maintained
+          </p>
           <AcceptCookies />
           <RejectCookies />
           <CookiesValue />

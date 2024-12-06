@@ -6,20 +6,29 @@ jobs:
   publish:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v4
+    - name: Checkout
+      uses: actions/checkout@v4
     # Setup .npmrc file to publish to GitHub Packages
-    - uses: actions/setup-node@v4
+    - name: Install pnpm
+      uses: pnpm/action-setup@v4
       with:
-        node-version: '18.x'
+        version: 9
+    - name: Install Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: "22.x"
         registry-url: 'https://npm.pkg.github.com'
         # Defaults to the user or organization that owns the workflow file
         scope: '@javierbrea'
-    - uses: MerthinTechnologies/edit-json-action@v1
+    - name: Change package name
+      uses: MerthinTechnologies/edit-json-action@v1
       with:
         filename: './package.json'
         key: 'name'
         value: '@javierbrea/cypress-localstorage-commands'
-    - run: npm ci
-    - run: npm publish
+    - name: Install dependencies
+      run: pnpm install
+    - name: Publish package
+      run: pnpm -r publish --no-git-checks
       env:
         NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

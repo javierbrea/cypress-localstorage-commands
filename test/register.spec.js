@@ -27,15 +27,21 @@ describe("register", () => {
     });
 
     it("should register clearLocalStorageSnapshot method", () => {
-      expect(cypressMock.stubs.Commands.add.calledWith("clearLocalStorageSnapshot")).toBe(true);
+      expect(
+        cypressMock.stubs.Commands.add.calledWith("clearLocalStorageSnapshot"),
+      ).toBe(true);
     });
 
     it("should register saveLocalStorage method", () => {
-      expect(cypressMock.stubs.Commands.add.calledWith("saveLocalStorage")).toBe(true);
+      expect(
+        cypressMock.stubs.Commands.add.calledWith("saveLocalStorage"),
+      ).toBe(true);
     });
 
     it("should register restoreLocalStorage method", () => {
-      expect(cypressMock.stubs.Commands.add.calledWith("restoreLocalStorage")).toBe(true);
+      expect(
+        cypressMock.stubs.Commands.add.calledWith("restoreLocalStorage"),
+      ).toBe(true);
     });
   });
 });

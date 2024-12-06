@@ -1,27 +1,20 @@
 {
-  "name": "app-typescript-tests",
+  "name": "cypress-typescript",
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "prelint": "npm run copy:library",
+    "prelint": "pnpm run copy:library",
     "lint": "eslint scripts cypress",
-    "build:serve": "cd ../app && npm run build:serve",
+    "build:serve": "cd ../app && pnpm run build:serve",
     "cypress:install": "cypress install",
     "cypress:verify": "cypress verify",
     "cypress:open": "cypress open",
     "cypress:run": "cypress run",
     "copy:library": "node scripts/copyLibrary.js",
     "build-and-serve-and-cypress": "start-server-and-test build:serve http-get://localhost:3000 cypress:run",
-    "test:ci": "npm run copy:library && npm run build-and-serve-and-cypress"
+    "test:ci": "pnpm run copy:library && pnpm run build-and-serve-and-cypress"
   },
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "7.9.0",
-    "@typescript-eslint/parser": "7.9.0",
-    "cypress": "13.9.0",
-    "eslint": "8.56.0",
-    "eslint-config-prettier": "9.1.0",
-    "eslint-plugin-prettier": "5.1.3",
-    "start-server-and-test": "2.0.3",
-    "typescript": "5.4.5"
+    "cypress": "13.9.0"
   }
 }

@@ -1,5 +1,5 @@
 describe("Cookies buttons", () => {
-  const ACEPT_BUTTON = "#accept-cookies";
+  const ACCEPT_BUTTON = "#accept-cookies";
   const REJECT_BUTTON = "#reject-cookies";
 
   beforeEach(() => {
@@ -8,7 +8,7 @@ describe("Cookies buttons", () => {
   });
 
   it("accept should be visible after loading", () => {
-    cy.get(ACEPT_BUTTON).should("be.visible");
+    cy.get(ACCEPT_BUTTON).should("be.visible");
   });
 
   it("reject should not exist", () => {

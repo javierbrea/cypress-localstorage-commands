@@ -38,7 +38,8 @@ class LocalStorage {
     this._localStorage = localStorage;
 
     LOCAL_STORAGE_METHODS.forEach((localStorageMethod) => {
-      this[logDisabledMethodName(localStorageMethod)] = logDisabled(localStorageMethod).bind(this);
+      this[logDisabledMethodName(localStorageMethod)] =
+        logDisabled(localStorageMethod).bind(this);
     });
   }
 
@@ -75,7 +76,9 @@ class LocalStorage {
   }
 
   _restoreLocalStorageFromMemory(snapshotName) {
-    this._restoreLocalStorageFromSnapshot(this._getSnapshotFromMemory(snapshotName));
+    this._restoreLocalStorageFromSnapshot(
+      this._getSnapshotFromMemory(snapshotName),
+    );
   }
 
   _copySnapshotFromMemoryToNode(snapshotName) {
@@ -144,7 +147,9 @@ class LocalStorage {
           this._cy
             .stub(this._localStorage, localStorageMethod)
             .callsFake(this[logDisabledMethodName(localStorageMethod)]);
-          this._cy.stub(win.localStorage, localStorageMethod).throws(options.withError);
+          this._cy
+            .stub(win.localStorage, localStorageMethod)
+            .throws(options.withError);
         });
       }
     });

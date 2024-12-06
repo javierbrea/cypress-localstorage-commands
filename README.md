@@ -142,7 +142,7 @@ Use `cy.saveLocalStorage()` to save a snapshot of current `localStorage` at the 
 
 #### Cookies button example
 
-Next example shows how this package can be used to test a "cookies button" _(which theorically sets a flag into `localStorage` and can be clicked only once)_
+Next example shows how this package can be used to test a "cookies button" _(which in theory sets a flag into `localStorage` and can be clicked only once)_
 
 ```js
 describe("Accept cookies button", () => {
