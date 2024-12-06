@@ -6,7 +6,8 @@ jobs:
   publish:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v4
+    - name: Checkout
+      uses: actions/checkout@v4
     # Setup .npmrc file to publish to GitHub Packages
     - name: Install pnpm
       uses: pnpm/action-setup@v4
@@ -19,14 +20,15 @@ jobs:
         registry-url: 'https://npm.pkg.github.com'
         # Defaults to the user or organization that owns the workflow file
         scope: '@javierbrea'
-    - name: Install dependencies
-      run: pnpm install
-    - uses: MerthinTechnologies/edit-json-action@v1
+    - name: Change package name
+      uses: MerthinTechnologies/edit-json-action@v1
       with:
         filename: './package.json'
         key: 'name'
         value: '@javierbrea/cypress-localstorage-commands'
-    - run: pnpm install
-    - run: pnpm -r publish --no-git-checks
+    - name: Install dependencies
+      run: pnpm install
+    - name: Publish package
+      run: pnpm -r publish --no-git-checks
       env:
         NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
