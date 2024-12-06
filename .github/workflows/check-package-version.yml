@@ -9,7 +9,7 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Get NPM version is new
+      - name: Get version is new
         id: check
         uses: EndBug/version-check@v2.1.1
         with:
@@ -22,7 +22,7 @@ jobs:
         run: |
           echo "Version not changed"
           exit 1
-      - name: Get NPM version
+      - name: Get version
         id: package-version
         uses: martinbeentjes/npm-get-version-action@v1.3.1
       - name: Check Changelog version

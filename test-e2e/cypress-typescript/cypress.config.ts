@@ -1,3 +1,4 @@
+// eslint-disable-next-line @typescript-eslint/no-require-imports
 import plugin = require("./cypress/support/cypress-localstorage-commands/plugin");
 
 export default {
@@ -8,4 +9,4 @@ export default {
     },
   },
   video: false,
-}
+};

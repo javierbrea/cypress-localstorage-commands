@@ -14,7 +14,10 @@ describe("when localStorage is disabled", () => {
   });
 
   it("should display localStorage error message", () => {
-    cy.get("#localstorage-error").should("have.text", "Disabled by cypress-localstorage-commands");
+    cy.get("#localstorage-error").should(
+      "have.text",
+      "Disabled by cypress-localstorage-commands",
+    );
   });
 
   it("should display accept-cookies button disabled", () => {

@@ -7,7 +7,12 @@ export const CookiesButton = ({ visible, onClick, id, text, disabled }) => {
     return null;
   }
   return (
-    <button onClick={onClick} id={id} className="cookies-button" disabled={disabled}>
+    <button
+      onClick={onClick}
+      id={id}
+      className="cookies-button"
+      disabled={disabled}
+    >
       {text}
     </button>
   );

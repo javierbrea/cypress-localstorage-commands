@@ -124,6 +124,7 @@ describe("Cookies", () => {
       cy.getLocalStorage("cookies-accepted").should("not.exist");
       cy.get(SELECTORS.ACCEPT_BUTTON).click({ force: true });
       cy.getLocalStorage("cookies-accepted").should("not.exist");
+      // eslint-disable-next-line cypress/no-unnecessary-waiting
       cy.wait(500);
       cy.get(SELECTORS.REJECT_BUTTON).should("not.exist");
     });
@@ -157,7 +158,10 @@ describe("Cookies", () => {
     it("should not clear previous localStorage snapshot", () => {
       cy.restoreLocalStorage();
       cy.reload();
-      cy.getLocalStorage("user-preferences").should("equal", '{"cookiesAccepted":true}');
+      cy.getLocalStorage("user-preferences").should(
+        "equal",
+        '{"cookiesAccepted":true}',
+      );
     });
 
     it("should not throw when reloading multiple times", () => {
@@ -190,9 +194,15 @@ describe("Cookies", () => {
       cy.restoreLocalStorage();
       cy.reload();
       cy.get(SELECTORS.REJECT_BUTTON).should("be.visible");
-      cy.getLocalStorage("user-preferences").should("equal", '{"cookiesAccepted":true}');
+      cy.getLocalStorage("user-preferences").should(
+        "equal",
+        '{"cookiesAccepted":true}',
+      );
       cy.setLocalStorage("user-preferences", '{"cookiesAccepted":false}');
-      cy.getLocalStorage("user-preferences").should("equal", '{"cookiesAccepted":false}');
+      cy.getLocalStorage("user-preferences").should(
+        "equal",
+        '{"cookiesAccepted":false}',
+      );
       cy.saveLocalStorage();
     });
   });
@@ -201,7 +211,10 @@ describe("Cookies", () => {
     it("should remove item from localStorage", () => {
       cy.restoreLocalStorage();
       cy.reload();
-      cy.getLocalStorage("user-preferences").should("equal", '{"cookiesAccepted":false}');
+      cy.getLocalStorage("user-preferences").should(
+        "equal",
+        '{"cookiesAccepted":false}',
+      );
       cy.get(SELECTORS.ACCEPT_BUTTON).should("be.visible");
       cy.removeLocalStorage("user-preferences");
       cy.getLocalStorage("user-preferences").should("equal", null);
@@ -210,7 +223,10 @@ describe("Cookies", () => {
     it("should have not removed item from localStorage snapshot", () => {
       cy.restoreLocalStorage();
       cy.reload();
-      cy.getLocalStorage("user-preferences").should("equal", '{"cookiesAccepted":false}');
+      cy.getLocalStorage("user-preferences").should(
+        "equal",
+        '{"cookiesAccepted":false}',
+      );
       cy.get(SELECTORS.ACCEPT_BUTTON).should("be.visible");
       cy.removeLocalStorage("user-preferences");
       cy.saveLocalStorage();

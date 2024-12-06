@@ -7,11 +7,22 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
-    - uses: actions/setup-node@v4
+    - name: Install Node.js
+      uses: actions/setup-node@v4
       with:
-        node-version: '18.x'
-        registry-url: 'https://registry.npmjs.org/'
-    - run: npm ci
-    - run: npm publish
+        node-version: "22.x"
+        cache: 'pnpm'
+        registry-url: 'https://npm.pkg.github.com'
+        # Defaults to the user or organization that owns the workflow file
+        scope: '@javierbrea'
+    - name: Cache dependencies
+      id: cache-pnpm
+      uses: actions/cache@v4
+      with:
+        path: node_modules
+        key: pnpm-${{ hashFiles('pnpm-lock.yaml') }}
+    - name: Install dependencies
+      run: pnpm install
+    - run: pnpm -r publish --no-git-checks
       env:
         NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

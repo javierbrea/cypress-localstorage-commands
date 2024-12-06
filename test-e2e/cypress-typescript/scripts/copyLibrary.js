@@ -3,7 +3,12 @@ const fsExtra = require("fs-extra");
 
 const rootPath = path.resolve(__dirname, "..");
 const rootLibPath = path.resolve(rootPath, "..", "..");
-const destPath = path.resolve(rootPath, "cypress", "support", "cypress-localstorage-commands");
+const destPath = path.resolve(
+  rootPath,
+  "cypress",
+  "support",
+  "cypress-localstorage-commands",
+);
 
 const SRC_FOLDER = "src";
 const INDEX_FILE = "index.js";

@@ -4,12 +4,12 @@
     "module": "commonjs",
     "outDir": "dist",
     "moduleResolution": "node",
-    "types": ["cypress"],
+    "types": ["cypress"]
   },
   "include": [
     "**/*.ts"
   ],
   "exclude": [
-    "node_modules",
-  ],
+    "node_modules"
+  ]
 }
