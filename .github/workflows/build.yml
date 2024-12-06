@@ -30,7 +30,12 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node }}
-          cache: 'pnpm'
+      - name: Cache dependencies
+        id: cache-cypress
+        uses: actions/cache@v4
+        with:
+          path: /home/runner/.cache/Cypress
+          key: pnpm-${{ hashFiles('pnpm-lock.yaml') }}
       - name: Install dependencies
         run: pnpm install
       - name: Check spelling
