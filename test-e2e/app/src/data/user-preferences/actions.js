@@ -2,7 +2,7 @@ import { userPreferences } from "./origins";
 
 function log(...args) {
   // eslint-disable-next-line no-console
-  console.log.apply(console, args);
+  console.log(...args);
 }
 
 export const acceptCookies = () => {
