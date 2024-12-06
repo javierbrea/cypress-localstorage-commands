@@ -83,7 +83,8 @@
     "**/*.ts": "eslint",
     "**/*.tsx": "eslint",
     "**/*.json": "eslint",
-    "**/*.md": "eslint"
+    "**/*.md": "eslint",
+    "*.*": "cspell --no-must-find-files"
   },
   "engines": {
     "node": ">=14.0.0"
