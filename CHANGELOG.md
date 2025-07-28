@@ -16,6 +16,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 * test: Upgrade latest Cypress version in E2E tests to v14
 * chore(deps): Upgrade dev dependencies
 * chore(deps): Remove Node 18 from workflows. Add Node 24
+* chore(deps): Add pnpm as package manager to package.json. Remove pnpm version from workflows
 
 ## [2.2.7] - 2024-12-06
 
