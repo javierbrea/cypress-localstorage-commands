@@ -13,7 +13,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ## [2.2.8] - 2025-07-28
 
 ### Changed
-* test: RUpgrade latest Cypress version in E2E tests to v14
+* test: Upgrade latest Cypress version in E2E tests to v14
 * chore(deps): Upgrade dev dependencies
 * chore(deps): Remove Node 18 from workflows. Add Node 24
 
