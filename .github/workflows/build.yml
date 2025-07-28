@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node: ["18.20.2", "20.13.1", "22.2.0"]
+        node: ["20.13.1", "22.2.0", "24.4.1"]
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -23,8 +23,6 @@ jobs:
         id: extract-branch
       - name: Install pnpm
         uses: pnpm/action-setup@v4
-        with:
-          version: 9
       - name: Install Node.js
         uses: actions/setup-node@v4
         with:
@@ -78,7 +76,7 @@ jobs:
       - name: Download test results
         uses: actions/download-artifact@v4
         with:
-          name: coverage-18.20.2
+          name: coverage-22.2.0
           path: coverage
       - name: Coveralls
         uses: coverallsapp/github-action@master
