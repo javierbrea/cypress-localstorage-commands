@@ -6,10 +6,10 @@
     "@data-provider/core": "4.0.0",
     "@data-provider/react": "2.0.0",
     "prop-types": "15.8.1",
-    "react": "18.3.1",
-    "react-dom": "18.3.1",
-    "react-redux": "8.1.3",
-    "redux": "4.2.1"
+    "react": "19.1.1",
+    "react-dom": "19.1.1",
+    "react-redux": "9.2.0",
+    "redux": "5.0.1"
   },
   "scripts": {
     "start": "DISABLE_ESLINT_PLUGIN=true react-scripts start",
@@ -31,6 +31,6 @@
   },
   "devDependencies": {
     "react-scripts": "5.0.1",
-    "serve": "14.2.3"
+    "serve": "14.2.4"
   }
 }
