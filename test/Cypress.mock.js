@@ -9,6 +9,7 @@ const Mock = class Mock {
         add: this._sandbox.stub(),
       },
       env: this._sandbox.stub(),
+      expose: this._sandbox.stub(),
     };
   }
 
