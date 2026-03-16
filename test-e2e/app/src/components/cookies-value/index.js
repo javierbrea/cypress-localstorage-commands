@@ -1,3 +1,1 @@
-import { CookiesValue } from "./CookiesValue";
-
-export default CookiesValue;
+export { CookiesValue as default } from "./CookiesValue";

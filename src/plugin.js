@@ -5,7 +5,7 @@ const {
   NODE_EVENTS_INSTALLED,
 } = require("./constants");
 
-module.exports = (on, config) => {
+const plugin = (on, config) => {
   const namedSnapshots = {};
   let globalSnapshot = {};
 
@@ -40,3 +40,5 @@ module.exports = (on, config) => {
 
   return config;
 };
+
+module.exports = plugin;

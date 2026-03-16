@@ -33,7 +33,7 @@ describe("LocalStorage with node events", () => {
       }
       return new Promise((resolve, reject) => {
         const result = cypressTasks[taskName](arg);
-        if (typeof result === "undefined") {
+        if (result === undefined) {
           reject(new Error("Task did not return a value"));
         }
         resolve(result);

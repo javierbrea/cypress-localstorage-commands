@@ -1,4 +1,4 @@
-const { resolve } = require("path");
+const { resolve } = require("node:path");
 
 const DICTIONARIES_BASE_PATH = resolve(__dirname, "cspell");
 
