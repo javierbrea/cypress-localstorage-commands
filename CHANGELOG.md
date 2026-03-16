@@ -6,17 +6,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [unreleased]
 ### Added
+- feat(#571): Migrate from Cypress.env() to Cypress.expose() for plugin configuration. Add backward compatibility for Cypress versions minor than 15.10.0 (continuing support for Cypress.env() in those versions).
 ### Changed
+- test: Update latest Cypress version in E2E tests to v15.10.0. Add E2E tests for Cypress v14.5.3 to check backward compatibility with Cypress.env() configuration method.
 ### Fixed
 ### Removed
-
-## [2.3.0] - 2026-02-02
-
-### Added
-- feat: Add backward compatibility for Cypress 15.10.0 (Cypress.expose and config.expose instead of Cypress.env and config.env).
-
-### Changed
-- test: Update latest Cypress version in E2E tests to v15.10.0
 
 ## [2.2.8] - 2025-07-28
 
