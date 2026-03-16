@@ -1,3 +1,1 @@
-import { CookiesButton } from "./CookiesButton";
-
-export default CookiesButton;
+export { CookiesButton as default } from "./CookiesButton";

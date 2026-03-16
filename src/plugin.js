@@ -5,10 +5,15 @@ const {
   NODE_EVENTS_INSTALLED,
 } = require("./constants");
 
-module.exports = (on, config) => {
+const plugin = (on, config) => {
   const namedSnapshots = {};
   let globalSnapshot = {};
-  config.env[NODE_EVENTS_INSTALLED] = true;
+
+  if (config.expose === undefined) {
+    config.env[NODE_EVENTS_INSTALLED] = true;
+  } else {
+    config.expose[NODE_EVENTS_INSTALLED] = true;
+  }
 
   // Create cypress-local-storage-commands tasks
   on("task", {
@@ -35,3 +40,5 @@ module.exports = (on, config) => {
 
   return config;
 };
+
+module.exports = plugin;

@@ -1,4 +1,4 @@
-const path = require("path");
+const path = require("node:path");
 const fsExtra = require("fs-extra");
 
 const rootPath = path.resolve(__dirname, "..");

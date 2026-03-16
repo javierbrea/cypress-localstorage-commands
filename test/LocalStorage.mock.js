@@ -1,6 +1,11 @@
 const sinon = require("sinon");
 
-const LOCALSTORAGE_METHODS = ["getItem", "setItem", "removeItem", "clear"];
+const LOCALSTORAGE_METHODS = new Set([
+  "getItem",
+  "setItem",
+  "removeItem",
+  "clear",
+]);
 
 const Mock = class Mock {
   constructor() {
@@ -11,7 +16,7 @@ const Mock = class Mock {
         return this._stubs[key];
       }),
       setItem: this._sandbox.stub().callsFake((key, value) => {
-        if (!LOCALSTORAGE_METHODS.includes(key)) {
+        if (!LOCALSTORAGE_METHODS.has(key)) {
           this._stubs[key] = value;
         }
       }),
@@ -20,7 +25,7 @@ const Mock = class Mock {
       }),
       clear: this._sandbox.stub().callsFake(() => {
         Object.keys(this._stubs).forEach((key) => {
-          if (!LOCALSTORAGE_METHODS.includes(key)) {
+          if (!LOCALSTORAGE_METHODS.has(key)) {
             delete this._stubs[key];
           }
         });
