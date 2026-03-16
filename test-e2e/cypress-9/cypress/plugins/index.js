@@ -3,9 +3,11 @@ const defaults = webpackPreprocessor.defaultOptions;
 
 const plugin = require("../../../../plugin");
 
-module.exports = (on, config) => {
+const registerPlugins = (on, config) => {
   plugin(on, config);
   delete defaults.webpackOptions.module.rules[0].use[0].options.presets;
   on("file:preprocessor", webpackPreprocessor(defaults));
   return config;
 };
+
+module.exports = registerPlugins;

@@ -11,7 +11,7 @@ const store = createStore(
   combineReducers({
     dataProviders: storeManager.reducer,
   }),
-  window?.__REDUX_DEVTOOLS_EXTENSION__?.(),
+  globalThis?.__REDUX_DEVTOOLS_EXTENSION__?.(),
 );
 
 storeManager.setStore(store, "dataProviders");
