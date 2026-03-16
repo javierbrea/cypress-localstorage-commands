@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Added
 ### Changed
 - chore(deps): Upgrade devDependencies
+- chore: Run linter, check spelling and check types only in the latest Node version in build workflow
 ### Fixed
 ### Removed
 

@@ -30,14 +30,18 @@ jobs:
       - name: Install dependencies
         run: pnpm install
       - name: Check spelling
+        if: ${{ matrix.node == '24.4.1' }}
         run: pnpm run cspell
       - name: Lint
+        if: ${{ matrix.node == '24.4.1' }}
         run: pnpm run lint
       - name: Check types
+        if: ${{ matrix.node == '24.4.1' }}
         run: pnpm run tsc
       - name: Test unit
         run: pnpm run test:unit
       - name: Test mutation
+        if: ${{ matrix.node == '24.4.1' }}
         run: pnpm run test:mutation
         env:
           BRANCH_NAME: ${{ steps.extract-branch.outputs.branch }}
