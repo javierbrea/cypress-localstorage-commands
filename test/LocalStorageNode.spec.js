@@ -113,6 +113,17 @@ describe("LocalStorage with node events", () => {
         expect(localStorageMock.stubs.getItem("foo")).toEqual("foo-value");
       });
 
+      it("should restore values from node snapshot when memory snapshot is empty", async () => {
+        expect.assertions(1);
+        localStorageMock.stubs.setItem("foo", "foo-value");
+        await localStorage.saveLocalStorage();
+        localStorageMock.stubs.clear();
+        localStorage._snapshot = {};
+        localStorage._namedSnapshots = {};
+        await localStorage.restoreLocalStorage();
+        expect(localStorageMock.stubs.getItem("foo")).toEqual("foo-value");
+      });
+
       it("should restore values after calling localStorage clear", async () => {
         expect.assertions(2);
         localStorageMock.stubs.setItem("var", "var-value");

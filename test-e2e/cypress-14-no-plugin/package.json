@@ -10,6 +10,6 @@
     "test:ci": "start-server-and-test build:serve http-get://localhost:3000 cypress:run"
   },
   "devDependencies": {
-    "cypress": "13.9.0"
+    "cypress": "14.5.3"
   }
 }

@@ -20,4 +20,5 @@ module.exports = {
     ],
   },
   video: false,
+  allowCypressEnv: false,
 };
