@@ -6,14 +6,22 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [unreleased]
 ### Added
-- feat(#571): Migrate from Cypress.env() to Cypress.expose() to check whether node events are installed. Add backward compatibility for Cypress versions minor than 15.10.0 (continuing using Cypress.env() in those versions).
 ### Changed
+### Fixed
+### Removed
+
+## [2.3.0] - 2026-03-16
+
+### Added
+
+- feat(#571): Migrate from Cypress.env() to Cypress.expose() to check whether node events are installed. Add backward compatibility for Cypress versions minor than 15.10.0 (continuing using Cypress.env() in those versions).
+
+### Changed
+
 - test: Update latest Cypress version in E2E tests to v15.10.0. Add E2E tests for Cypress v14.5.3 to check backward compatibility with Cypress.env() configuration method.
 - refactor: Fix minor Sonar issues.
 - chore(deps): Upgrade devDependencies
 - chore: Run linter, check spelling and check types only in the latest Node version in build workflow
-### Fixed
-### Removed
 
 ## [2.2.8] - 2025-07-28
 
