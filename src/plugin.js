@@ -9,10 +9,10 @@ module.exports = (on, config) => {
   const namedSnapshots = {};
   let globalSnapshot = {};
 
-  if (config.expose !== undefined) {
-    config.expose[NODE_EVENTS_INSTALLED] = true;
-  } else {
+  if (config.expose === undefined) {
     config.env[NODE_EVENTS_INSTALLED] = true;
+  } else {
+    config.expose[NODE_EVENTS_INSTALLED] = true;
   }
 
   // Create cypress-local-storage-commands tasks

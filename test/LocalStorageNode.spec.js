@@ -29,12 +29,12 @@ describe("LocalStorage with node events", () => {
 
     cyMock.stubs.task.callsFake((taskName, arg) => {
       if (!taskName) {
-        throw new Error();
+        throw new Error("Task name is required");
       }
       return new Promise((resolve, reject) => {
         const result = cypressTasks[taskName](arg);
         if (typeof result === "undefined") {
-          reject(new Error());
+          reject(new Error("Task did not return a value"));
         }
         resolve(result);
       });
@@ -43,14 +43,14 @@ describe("LocalStorage with node events", () => {
     if (useExpose) {
       cypressMock.stubs.expose.callsFake((envVarName) => {
         if (!envVarName) {
-          throw new Error();
+          throw new Error("Env var name is required");
         }
         return config.expose[envVarName];
       });
     } else {
       cypressMock.stubs.env.callsFake((envVarName) => {
         if (!envVarName) {
-          throw new Error();
+          throw new Error("Env var name is required");
         }
         return config.env[envVarName];
       });
