@@ -10,6 +10,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Changed
 - test: Update latest Cypress version in E2E tests to v15.10.0. Add E2E tests for Cypress v14.5.3 to check backward compatibility with Cypress.env() configuration method.
 - refactor: Fix minor Sonar issues.
+- chore(deps): Upgrade devDependencies
+- chore: Run linter, check spelling and check types only in the latest Node version in build workflow
 ### Fixed
 ### Removed
 
