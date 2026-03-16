@@ -1,6 +1,6 @@
 {
   "name": "cypress-localstorage-commands",
-  "version": "2.2.8",
+  "version": "2.3.0",
   "description": "Extends Cypress' cy commands with localStorage methods. Allows preserving localStorage between tests",
   "keywords": [
     "cypress",
@@ -31,9 +31,11 @@
     "lint-staged": "lint-staged",
     "test": "jest",
     "test:ci": "pnpm run test:unit && pnpm run test:mutation && pnpm run test:e2e",
-    "test:e2e": "pnpm test:e2e:cypress-9 && pnpm test:e2e:cypress-9-no-plugin && pnpm test:e2e:cypress-latest && pnpm test:e2e:cypress-latest-no-plugin && pnpm test:e2e:cypress-typescript",
+    "test:e2e": "pnpm test:e2e:cypress-9 && pnpm test:e2e:cypress-9-no-plugin && pnpm test:e2e:cypress-14 && pnpm test:e2e:cypress-14-no-plugin && pnpm test:e2e:cypress-latest && pnpm test:e2e:cypress-latest-no-plugin && pnpm test:e2e:cypress-typescript",
     "test:e2e:cypress-9": "pnpm --filter cypress-9 test:ci",
     "test:e2e:cypress-9-no-plugin": "pnpm --filter cypress-9-no-plugin test:ci",
+    "test:e2e:cypress-14": "pnpm --filter cypress-14 test:ci",
+    "test:e2e:cypress-14-no-plugin": "pnpm --filter cypress-14-no-plugin test:ci",
     "test:e2e:cypress-latest": "pnpm --filter cypress-latest test:ci",
     "test:e2e:cypress-latest-no-plugin": "pnpm --filter cypress-latest-no-plugin test:ci",
     "test:e2e:cypress-typescript": "pnpm --filter cypress-typescript test:ci",
