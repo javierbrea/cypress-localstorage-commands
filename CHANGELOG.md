@@ -10,6 +10,14 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Fixed
 ### Removed
 
+## [2.3.0] - 2026-02-02
+
+### Added
+- feat: Add backward compatibility for Cypress 15.10.0 (Cypress.expose and config.expose instead of Cypress.env and config.env).
+
+### Changed
+- test: Update latest Cypress version in E2E tests to v15.10.0
+
 ## [2.2.8] - 2025-07-28
 
 ### Changed

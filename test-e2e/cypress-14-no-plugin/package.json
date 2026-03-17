@@ -1,5 +1,5 @@
 {
-  "name": "cypress-latest-no-plugin",
+  "name": "cypress-14-no-plugin",
   "private": true,
   "scripts": {
     "build:serve": "cd ../app && pnpm run build:serve",
@@ -10,6 +10,6 @@
     "test:ci": "start-server-and-test build:serve http-get://localhost:3000 cypress:run"
   },
   "devDependencies": {
-    "cypress": "15.10.0"
+    "cypress": "13.9.0"
   }
 }

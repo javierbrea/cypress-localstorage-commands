@@ -15,6 +15,6 @@
     "test:ci": "pnpm run copy:library && pnpm run build-and-serve-and-cypress"
   },
   "devDependencies": {
-    "cypress": "13.9.0"
+    "cypress": "15.10.0"
   }
 }
