@@ -7,19 +7,19 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout
-      uses: actions/checkout@v4
+      uses: actions/checkout@v4.4.0
     # Setup .npmrc file to publish to GitHub Packages
     - name: Install pnpm
-      uses: pnpm/action-setup@v4
+      uses: pnpm/action-setup@v4.4.0
     - name: Install Node.js
-      uses: actions/setup-node@v4
+      uses: actions/setup-node@v4.4.0
       with:
-        node-version: "22.x"
+        node-version: "22.23.1"
         registry-url: 'https://npm.pkg.github.com'
         # Defaults to the user or organization that owns the workflow file
         scope: '@javierbrea'
     - name: Change package name
-      uses: MerthinTechnologies/edit-json-action@v1
+      uses: MerthinTechnologies/edit-json-action@v1.0.2
       with:
         filename: './package.json'
         key: 'name'
