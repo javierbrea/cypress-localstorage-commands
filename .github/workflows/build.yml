@@ -16,7 +16,7 @@ jobs:
         node: ["20.13.1", "22.2.0", "24.4.1"]
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
       - name: Extract branch name
         shell: bash
         run: echo "branch=$(echo ${GITHUB_REF##*/})" >> $GITHUB_OUTPUT
@@ -76,7 +76,7 @@ jobs:
       SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           fetch-depth: 0
       - name: Download test results
