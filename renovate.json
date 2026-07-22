@@ -1,7 +1,12 @@
 {
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
     "github>javierbrea/renovate-config"
   ],
+  "constraints": {
+    "pnpm": "9.4.0",
+    "node": "20"
+  },
   "packageRules": [
     {
       "matchPaths": ["test-e2e/cypress-9/package.json"],
