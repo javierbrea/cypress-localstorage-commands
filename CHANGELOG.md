@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - chore(deps): Upgrade dependencies, including major versions
 - chore: Use "bundler" as moduleResolution in tsconfig files, because "node" is deprecated in TypeScript 6
 - chore(deps): Upgrade Node.js versions in workflows. Upgrade pnpm to v12. Add allowBuilds to pnpm workspace config
+- chore: Add devEngines to package.json to set the minimum Node.js version for development, without affecting library consumers
 ### Fixed
 ### Removed
 
