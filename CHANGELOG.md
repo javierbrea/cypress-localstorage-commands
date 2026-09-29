@@ -11,7 +11,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - chore: Use "bundler" as moduleResolution in tsconfig files, because "node" is deprecated in TypeScript 6
 - chore(deps): Upgrade Node.js versions in workflows. Upgrade pnpm to v12. Add allowBuilds to pnpm workspace config
 - chore: Add devEngines to package.json to set the minimum Node.js version for development, without affecting library consumers
+- chore(deps): Use matchFileNames instead of deprecated matchPaths in Renovate config
 ### Fixed
+- chore(deps): Remove obsolete Renovate rules limiting latest Cypress version in E2E tests to v13.x. Limit Cypress v14 E2E tests to v14.x, so they keep checking backward compatibility with Cypress.env()
+- ci: Fix path of E2E tests screenshots uploaded when E2E tests fail
 ### Removed
 
 ## [2.3.0] - 2026-03-16

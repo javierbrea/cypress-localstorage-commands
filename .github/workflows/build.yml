@@ -54,14 +54,7 @@ jobs:
         uses: actions/upload-artifact@v7.0.1
         with:
           name: e2e-screenshots-${{ matrix.node }}
-          path: test-e2e/react-app/cypress/screenshots
-          retention-days: 7
-      - name: Upload typescript E2E tests screenshots
-        if: ${{ always() && steps.test-e2e.outcome == 'failure' }}
-        uses: actions/upload-artifact@v7.0.1
-        with:
-          name: e2e-typescript-screenshots-${{ matrix.node }}
-          path: test-e2e/typescript/cypress/screenshots
+          path: test-e2e/cypress-*/cypress/screenshots
           retention-days: 7
       - name: Upload test results
         uses: actions/upload-artifact@v7.0.1
