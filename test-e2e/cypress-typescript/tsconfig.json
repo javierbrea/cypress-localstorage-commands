@@ -2,8 +2,9 @@
   "compilerOptions": {
     "target": "es6",
     "module": "commonjs",
+    "rootDir": ".",
     "outDir": "dist",
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "types": ["cypress"]
   },
   "include": [

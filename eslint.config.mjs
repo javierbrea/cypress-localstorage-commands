@@ -11,8 +11,7 @@ import typescriptParser from "@typescript-eslint/parser";
 import typescriptEslintPlugin from "@typescript-eslint/eslint-plugin";
 import pluginJest from "eslint-plugin-jest";
 import importPlugin from "eslint-plugin-import";
-// eslint-disable-next-line import/no-unresolved
-import pluginCypress from "eslint-plugin-cypress/flat";
+import pluginCypress from "eslint-plugin-cypress";
 import reactPlugin from "eslint-plugin-react";
 
 export default [
