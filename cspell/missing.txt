@@ -1,8 +1,11 @@
 Brea
 commonmark
 coverallsapp
+draeger
 javierbrea
+martinbeentjes
 Merthin
+mindsers
 prelint
 sonarcloud
 sonarqube
