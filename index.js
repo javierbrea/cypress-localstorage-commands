@@ -1,4 +1,4 @@
-/* global Cypress, cy, localStorage */
+/* global Cypress, cy */
 
 const { register } = require("./src/register");
 

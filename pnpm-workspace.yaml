@@ -2,3 +2,10 @@ packages:
   - "."
   - "test-e2e/app"
   - "test-e2e/cypress-*"
+
+allowBuilds:
+  "@parcel/watcher": false
+  core-js: false
+  core-js-pure: false
+  cypress: true
+  unrs-resolver: false

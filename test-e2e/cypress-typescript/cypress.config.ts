@@ -9,5 +9,4 @@ export default {
     },
   },
   video: false,
-  allowCypressEnv: false,
 };
