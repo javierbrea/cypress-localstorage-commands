@@ -30,7 +30,7 @@ class LocalStorage {
     ];
   }
 
-  constructor(localStorage, cy, Cypress) {
+  constructor(windowLocalStorage, cy, Cypress) {
     this._nodeEventsInstalled =
       (typeof Cypress.expose === "function"
         ? Cypress.expose(NODE_EVENTS_INSTALLED)
@@ -38,7 +38,7 @@ class LocalStorage {
     this._snapshot = {};
     this._namedSnapshots = {};
     this._cy = cy;
-    this._localStorage = localStorage;
+    this._localStorage = windowLocalStorage;
 
     LOCAL_STORAGE_METHODS.forEach((localStorageMethod) => {
       this[logDisabledMethodName(localStorageMethod)] =

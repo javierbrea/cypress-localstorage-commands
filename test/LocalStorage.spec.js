@@ -6,7 +6,7 @@ const LocalStorage = require("../src/LocalStorage");
 describe("LocalStorage", () => {
   let windowLocalStorageMock;
   let localStorageMock;
-  let localStorage;
+  let localStorageCommands;
   let cyMock;
   let cypressMock;
 
@@ -16,7 +16,7 @@ describe("LocalStorage", () => {
     cyMock.stubs.task.throws();
     cypressMock = new CypressMock();
     localStorageMock = new LocalStorageMock();
-    localStorage = new LocalStorage(
+    localStorageCommands = new LocalStorage(
       localStorageMock.stubs,
       cyMock.stubs,
       cypressMock.stubs,
@@ -34,10 +34,10 @@ describe("LocalStorage", () => {
         expect.assertions(2);
         localStorageMock.stubs.setItem("foo", "foo-value");
         localStorageMock.stubs.setItem("var", "var-value");
-        localStorage.saveLocalStorage();
+        localStorageCommands.saveLocalStorage();
         localStorageMock.stubs.setItem("foo", "foo-new-value");
         expect(localStorageMock.stubs.getItem("foo")).toEqual("foo-new-value");
-        localStorage.restoreLocalStorage();
+        localStorageCommands.restoreLocalStorage();
         expect(localStorageMock.stubs.getItem("foo")).toEqual("foo-value");
       });
 
@@ -45,7 +45,7 @@ describe("LocalStorage", () => {
         expect.assertions(2);
         localStorageMock.stubs.clear();
         expect(localStorageMock.stubs.getItem("var")).toEqual(undefined);
-        localStorage.restoreLocalStorage();
+        localStorageCommands.restoreLocalStorage();
         expect(localStorageMock.stubs.getItem("var")).toEqual("var-value");
       });
 
@@ -53,10 +53,10 @@ describe("LocalStorage", () => {
         expect.assertions(2);
         localStorageMock.stubs.setItem("foo", "foo-new-value");
         localStorageMock.stubs.removeItem("var");
-        localStorage.saveLocalStorage();
+        localStorageCommands.saveLocalStorage();
         localStorageMock.stubs.setItem("foo", "foo-another-new-value");
         localStorageMock.stubs.setItem("var", "foo-var-value");
-        localStorage.restoreLocalStorage();
+        localStorageCommands.restoreLocalStorage();
         expect(localStorageMock.stubs.getItem("foo")).toEqual("foo-new-value");
         expect(localStorageMock.stubs.getItem("var")).toEqual(undefined);
       });
@@ -66,10 +66,10 @@ describe("LocalStorage", () => {
       it("should clear values in localStorage snapshot, but maintain localStorage values", () => {
         expect.assertions(4);
         localStorageMock.stubs.setItem("var", "foo-var-value");
-        localStorage.clearLocalStorageSnapshot();
+        localStorageCommands.clearLocalStorageSnapshot();
         expect(localStorageMock.stubs.getItem("foo")).toEqual("foo-new-value");
         expect(localStorageMock.stubs.getItem("var")).toEqual("foo-var-value");
-        localStorage.restoreLocalStorage();
+        localStorageCommands.restoreLocalStorage();
         expect(localStorageMock.stubs.getItem("foo")).toEqual(undefined);
         expect(localStorageMock.stubs.getItem("var")).toEqual(undefined);
       });
@@ -82,18 +82,18 @@ describe("LocalStorage", () => {
         expect.assertions(3);
         localStorageMock.stubs.setItem("foo", "foo-value");
         localStorageMock.stubs.setItem("var", "var-value");
-        localStorage.saveLocalStorage("first");
+        localStorageCommands.saveLocalStorage("first");
         localStorageMock.stubs.setItem("foo", "foo-new-value");
-        localStorage.saveLocalStorage("second");
+        localStorageCommands.saveLocalStorage("second");
         expect(localStorageMock.stubs.getItem("foo")).toEqual("foo-new-value");
-        localStorage.restoreLocalStorage("first");
+        localStorageCommands.restoreLocalStorage("first");
         expect(localStorageMock.stubs.getItem("foo")).toEqual("foo-value");
-        localStorage.restoreLocalStorage("second");
+        localStorageCommands.restoreLocalStorage("second");
         expect(localStorageMock.stubs.getItem("foo")).toEqual("foo-new-value");
       });
 
       it("should clear whole localStorage if snapshot to restore does not exists", () => {
-        localStorage.restoreLocalStorage("fourth");
+        localStorageCommands.restoreLocalStorage("fourth");
         expect(localStorageMock.stubs.getItem("foo")).toEqual(undefined);
         expect(localStorageMock.stubs.getItem("var")).toEqual(undefined);
       });
@@ -102,18 +102,18 @@ describe("LocalStorage", () => {
     describe("Clear method", () => {
       it("should clear values in localStorage snapshot, but maintain localStorage values", () => {
         expect.assertions(4);
-        localStorage.restoreLocalStorage("second");
+        localStorageCommands.restoreLocalStorage("second");
         localStorageMock.stubs.setItem("var", "foo-var-value");
-        localStorage.clearLocalStorageSnapshot("second");
+        localStorageCommands.clearLocalStorageSnapshot("second");
         expect(localStorageMock.stubs.getItem("foo")).toEqual("foo-new-value");
         expect(localStorageMock.stubs.getItem("var")).toEqual("foo-var-value");
-        localStorage.restoreLocalStorage("second");
+        localStorageCommands.restoreLocalStorage("second");
         expect(localStorageMock.stubs.getItem("foo")).toEqual(undefined);
         expect(localStorageMock.stubs.getItem("var")).toEqual(undefined);
       });
 
       it("should not clear values from other snapshot", () => {
-        localStorage.restoreLocalStorage("first");
+        localStorageCommands.restoreLocalStorage("first");
         expect(localStorageMock.stubs.getItem("foo")).toEqual("foo-value");
         expect(localStorageMock.stubs.getItem("var")).toEqual("var-value");
       });
@@ -123,15 +123,15 @@ describe("LocalStorage", () => {
   describe("setLocalStorage method", () => {
     it("should set values in localStorage", () => {
       expect.assertions(2);
-      localStorage.setLocalStorage("foo", "foo-value");
-      localStorage.setLocalStorage("var", "var-value");
+      localStorageCommands.setLocalStorage("foo", "foo-value");
+      localStorageCommands.setLocalStorage("var", "var-value");
       expect(localStorageMock.stubs.getItem("foo")).toEqual("foo-value");
       expect(localStorageMock.stubs.getItem("var")).toEqual("var-value");
     });
 
     it("should not have set values in localStorage snapshot", () => {
       expect.assertions(2);
-      localStorage.restoreLocalStorage();
+      localStorageCommands.restoreLocalStorage();
       expect(localStorageMock.stubs.getItem("foo")).toEqual(undefined);
       expect(localStorageMock.stubs.getItem("var")).toEqual(undefined);
     });
@@ -140,27 +140,27 @@ describe("LocalStorage", () => {
   describe("getLocalStorage method", () => {
     it("should get localStorage items", () => {
       expect.assertions(2);
-      localStorage.setLocalStorage("foo", "foo-value");
-      localStorage.setLocalStorage("var", "var-value");
-      expect(localStorage.getLocalStorage("foo")).toEqual("foo-value");
-      expect(localStorage.getLocalStorage("var")).toEqual("var-value");
+      localStorageCommands.setLocalStorage("foo", "foo-value");
+      localStorageCommands.setLocalStorage("var", "var-value");
+      expect(localStorageCommands.getLocalStorage("foo")).toEqual("foo-value");
+      expect(localStorageCommands.getLocalStorage("var")).toEqual("var-value");
     });
   });
 
   describe("removeLocalStorage", () => {
     it("should remove local storage items", () => {
       expect.assertions(2);
-      localStorage.saveLocalStorage();
-      localStorage.removeLocalStorage("foo");
-      expect(localStorage.getLocalStorage("foo")).toEqual(undefined);
-      expect(localStorage.getLocalStorage("var")).toEqual("var-value");
+      localStorageCommands.saveLocalStorage();
+      localStorageCommands.removeLocalStorage("foo");
+      expect(localStorageCommands.getLocalStorage("foo")).toEqual(undefined);
+      expect(localStorageCommands.getLocalStorage("var")).toEqual("var-value");
     });
 
     it("should not remove local storage items from localstorage snapshot", () => {
       expect.assertions(2);
-      localStorage.restoreLocalStorage();
-      expect(localStorage.getLocalStorage("foo")).toEqual("foo-value");
-      expect(localStorage.getLocalStorage("var")).toEqual("var-value");
+      localStorageCommands.restoreLocalStorage();
+      expect(localStorageCommands.getLocalStorage("foo")).toEqual("foo-value");
+      expect(localStorageCommands.getLocalStorage("var")).toEqual("var-value");
     });
   });
 
@@ -170,12 +170,12 @@ describe("LocalStorage", () => {
         expect.assertions(2);
         localStorageMock.stubs.setItem("foo", "foo-value");
         localStorageMock.stubs.setItem("var", "var-value");
-        localStorage.saveLocalStorage();
+        localStorageCommands.saveLocalStorage();
         localStorageMock.stubs.setItem("foo", "foo-new-value");
         expect(localStorageMock.stubs.getItem("foo")).toEqual("foo-new-value");
-        localStorage._namedSnapshots = {};
-        localStorage._snapshot = {};
-        localStorage.restoreLocalStorage();
+        localStorageCommands._namedSnapshots = {};
+        localStorageCommands._snapshot = {};
+        localStorageCommands.restoreLocalStorage();
         expect(localStorageMock.stubs.getItem("foo")).toEqual(undefined);
       });
 
@@ -183,7 +183,7 @@ describe("LocalStorage", () => {
         expect.assertions(2);
         localStorageMock.stubs.clear();
         expect(localStorageMock.stubs.getItem("var")).toEqual(undefined);
-        localStorage.restoreLocalStorage();
+        localStorageCommands.restoreLocalStorage();
         expect(localStorageMock.stubs.getItem("var")).toEqual(undefined);
       });
 
@@ -191,12 +191,12 @@ describe("LocalStorage", () => {
         expect.assertions(2);
         localStorageMock.stubs.setItem("foo", "foo-new-value");
         localStorageMock.stubs.removeItem("var");
-        localStorage.saveLocalStorage();
+        localStorageCommands.saveLocalStorage();
         localStorageMock.stubs.setItem("foo", "foo-another-new-value");
         localStorageMock.stubs.setItem("var", "foo-var-value");
-        localStorage._namedSnapshots = {};
-        localStorage._snapshot = {};
-        localStorage.restoreLocalStorage();
+        localStorageCommands._namedSnapshots = {};
+        localStorageCommands._snapshot = {};
+        localStorageCommands.restoreLocalStorage();
         expect(localStorageMock.stubs.getItem("foo")).toEqual(undefined);
         expect(localStorageMock.stubs.getItem("var")).toEqual(undefined);
       });
@@ -208,7 +208,7 @@ describe("LocalStorage", () => {
       windowLocalStorageMock = new CyMock();
       cyMock = new CyMock();
       cypressMock = new CypressMock();
-      localStorage = new LocalStorage(
+      localStorageCommands = new LocalStorage(
         windowLocalStorageMock.window.localStorage,
         cyMock.stubs,
         cypressMock.stubs,
@@ -221,20 +221,20 @@ describe("LocalStorage", () => {
 
     it("should do nothing if page is not reloaded", () => {
       expect.assertions(3);
-      localStorage.disableLocalStorage();
+      localStorageCommands.disableLocalStorage();
       expect(() => cyMock.window.localStorage.setItem()).not.toThrow();
       expect(() => cyMock.window.localStorage.getItem()).not.toThrow();
       expect(() => cyMock.window.localStorage.removeItem()).not.toThrow();
     });
 
     it("should use Cypress window:before:load event to create stubs", () => {
-      localStorage.disableLocalStorage();
+      localStorageCommands.disableLocalStorage();
       expect(cyMock.stubs.on.getCall(0).args[0]).toEqual("window:before:load");
     });
 
     it("should make localStorage methods to throw after reloading page", () => {
       expect.assertions(3);
-      localStorage.disableLocalStorage();
+      localStorageCommands.disableLocalStorage();
       cyMock.loadWindow();
       expect(() => cyMock.window.localStorage.setItem()).toThrow();
       expect(() => cyMock.window.localStorage.getItem()).toThrow();
@@ -243,9 +243,9 @@ describe("LocalStorage", () => {
 
     it("should make cy.setLocalStorage command to log after reloading page", () => {
       expect.assertions(1);
-      localStorage.disableLocalStorage();
+      localStorageCommands.disableLocalStorage();
       cyMock.loadWindow();
-      localStorage.setLocalStorage("foo", "foo");
+      localStorageCommands.setLocalStorage("foo", "foo");
       expect(
         cyMock.stubs.log.calledWith("localStorage.setItem is disabled"),
       ).toEqual(true);
@@ -253,9 +253,9 @@ describe("LocalStorage", () => {
 
     it("should make cy.getLocalStorage command to log after reloading page", () => {
       expect.assertions(1);
-      localStorage.disableLocalStorage();
+      localStorageCommands.disableLocalStorage();
       cyMock.loadWindow();
-      localStorage.getLocalStorage("foo");
+      localStorageCommands.getLocalStorage("foo");
       expect(
         cyMock.stubs.log.calledWith("localStorage.getItem is disabled"),
       ).toEqual(true);
@@ -263,9 +263,9 @@ describe("LocalStorage", () => {
 
     it("should make cy.removeLocalStorage command to log after reloading page", () => {
       expect.assertions(1);
-      localStorage.disableLocalStorage();
+      localStorageCommands.disableLocalStorage();
       cyMock.loadWindow();
-      localStorage.removeLocalStorage("foo");
+      localStorageCommands.removeLocalStorage("foo");
       expect(
         cyMock.stubs.log.calledWith("localStorage.removeItem is disabled"),
       ).toEqual(true);
@@ -273,9 +273,9 @@ describe("LocalStorage", () => {
 
     it("should make cy.restoreLocalStorage command to log after reloading page", () => {
       expect.assertions(1);
-      localStorage.disableLocalStorage();
+      localStorageCommands.disableLocalStorage();
       cyMock.loadWindow();
-      localStorage.restoreLocalStorage();
+      localStorageCommands.restoreLocalStorage();
       expect(
         cyMock.stubs.log.calledWith("localStorage.clear is disabled"),
       ).toEqual(true);
@@ -283,9 +283,9 @@ describe("LocalStorage", () => {
 
     it("should make cy.saveLocalStorage command to do nothing", () => {
       expect.assertions(1);
-      localStorage.disableLocalStorage();
+      localStorageCommands.disableLocalStorage();
       cyMock.loadWindow();
-      localStorage.saveLocalStorage();
+      localStorageCommands.saveLocalStorage();
       expect(
         windowLocalStorageMock.window.localStorage.getItem.callCount,
       ).toEqual(0);
@@ -293,15 +293,15 @@ describe("LocalStorage", () => {
 
     it("should do nothing if window.localStorage is not available", () => {
       cyMock.window.localStorage = null;
-      localStorage.disableLocalStorage();
+      localStorageCommands.disableLocalStorage();
       cyMock.loadWindow();
-      localStorage.setLocalStorage("foo", "foo");
+      localStorageCommands.setLocalStorage("foo", "foo");
       expect(cyMock.stubs.log.callCount).toEqual(0);
     });
 
     it("should work when reloading page multiple times", () => {
       expect.assertions(3);
-      localStorage.disableLocalStorage();
+      localStorageCommands.disableLocalStorage();
       cyMock.loadWindow();
       cyMock.loadWindow();
       cyMock.loadWindow();
@@ -312,10 +312,10 @@ describe("LocalStorage", () => {
 
     it("should work when called multiple times", () => {
       expect.assertions(3);
-      localStorage.disableLocalStorage();
+      localStorageCommands.disableLocalStorage();
       cyMock.loadWindow();
-      localStorage.disableLocalStorage();
-      localStorage.disableLocalStorage();
+      localStorageCommands.disableLocalStorage();
+      localStorageCommands.disableLocalStorage();
       cyMock.loadWindow();
       expect(() => cyMock.window.localStorage.setItem()).toThrow();
       expect(() => cyMock.window.localStorage.getItem()).toThrow();
@@ -325,7 +325,7 @@ describe("LocalStorage", () => {
     it("should throw error provided in the 'withError' option", () => {
       expect.assertions(3);
       const error = new Error("foo");
-      localStorage.disableLocalStorage({
+      localStorageCommands.disableLocalStorage({
         withError: error,
       });
       cyMock.loadWindow();

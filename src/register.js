@@ -1,7 +1,11 @@
 const LocalStorage = require("./LocalStorage");
 
-const register = (Cypress, cy, localStorage) => {
-  const localStorageCommands = new LocalStorage(localStorage, cy, Cypress);
+const register = (Cypress, cy, windowLocalStorage) => {
+  const localStorageCommands = new LocalStorage(
+    windowLocalStorage,
+    cy,
+    Cypress,
+  );
 
   // Register commands
   LocalStorage.cypressCommands.forEach((commandName) => {
