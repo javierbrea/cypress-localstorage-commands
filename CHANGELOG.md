@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ## [unreleased]
 ### Added
 ### Changed
+- chore(deps): Upgrade dependencies, including major versions
+- chore: Use "bundler" as moduleResolution in tsconfig files, because "node" is deprecated in TypeScript 6
+- chore(deps): Upgrade pnpm to v12. Add allowBuilds to pnpm workspace config
 ### Fixed
 ### Removed
 
