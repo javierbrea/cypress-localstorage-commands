@@ -54,8 +54,8 @@
     "@eslint/markdown": "8.0.3",
     "@stryker-mutator/core": "10.0.0",
     "@stryker-mutator/jest-runner": "10.0.0",
-    "@typescript-eslint/eslint-plugin": "8.70.1",
-    "@typescript-eslint/parser": "8.70.1",
+    "@typescript-eslint/eslint-plugin": "8.71.0",
+    "@typescript-eslint/parser": "8.71.0",
     "babel-loader": "10.1.1",
     "babel-plugin-module-resolver": "5.0.3",
     "cspell": "10.3.5",
@@ -98,5 +98,5 @@
       "onFail": "error"
     }
   },
-  "packageManager": "pnpm@12.6.0"
+  "packageManager": "pnpm@12.8.1"
 }
