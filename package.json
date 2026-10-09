@@ -54,13 +54,13 @@
     "@eslint/markdown": "8.0.3",
     "@stryker-mutator/core": "10.0.0",
     "@stryker-mutator/jest-runner": "10.0.0",
-    "@typescript-eslint/eslint-plugin": "8.70.1",
-    "@typescript-eslint/parser": "8.70.1",
+    "@typescript-eslint/eslint-plugin": "8.71.1",
+    "@typescript-eslint/parser": "8.71.1",
     "babel-loader": "10.1.1",
     "babel-plugin-module-resolver": "5.0.3",
     "cspell": "10.3.5",
     "cypress": "16.1.0",
-    "eslint": "10.11.0",
+    "eslint": "10.12.0",
     "eslint-config-prettier": "10.1.8",
     "eslint-import-resolver-typescript": "4.4.5",
     "eslint-plugin-cypress": "7.0.2",
@@ -69,7 +69,7 @@
     "eslint-plugin-prettier": "5.5.6",
     "eslint-plugin-react": "7.37.5",
     "fs-extra": "11.4.1",
-    "globals": "17.12.0",
+    "globals": "17.13.0",
     "husky": "9.1.7",
     "is-ci": "4.1.0",
     "jest": "30.5.2",
@@ -98,5 +98,5 @@
       "onFail": "error"
     }
   },
-  "packageManager": "pnpm@12.6.0"
+  "packageManager": "pnpm@12.10.1"
 }
