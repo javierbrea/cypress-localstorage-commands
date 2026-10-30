@@ -4,8 +4,8 @@
     "github>javierbrea/renovate-config"
   ],
   "constraints": {
-    "pnpm": "12.6.0",
-    "node": "24.21.0"
+    "pnpm": "12.16.1",
+    "node": "24.22.1"
   },
   "packageRules": [
     {
