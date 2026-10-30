@@ -24,7 +24,7 @@ jobs:
       - name: Install pnpm
         uses: pnpm/action-setup@v6.1.0
       - name: Install Node.js
-        uses: actions/setup-node@v7.0.0
+        uses: actions/setup-node@v7.1.0
         with:
           node-version: ${{ matrix.node }}
       - name: Install dependencies
@@ -83,7 +83,7 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
       - name: SonarCloud Scan
         if: env.SONAR_TOKEN != ''
-        uses: SonarSource/sonarqube-scan-action@v8.2.2
+        uses: SonarSource/sonarqube-scan-action@v8.4.0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
