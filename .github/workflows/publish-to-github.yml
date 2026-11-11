@@ -10,7 +10,7 @@ jobs:
       uses: actions/checkout@v7.0.1
     # Setup .npmrc file to publish to GitHub Packages
     - name: Install pnpm
-      uses: pnpm/action-setup@v6.1.0
+      uses: pnpm/action-setup@v6.1.1
     - name: Install Node.js
       uses: actions/setup-node@v7.0.0
       with:
