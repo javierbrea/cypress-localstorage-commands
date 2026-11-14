@@ -1,102 +1,10 @@
 {
-  "name": "cypress-localstorage-commands",
-  "version": "2.3.1",
-  "description": "Extends Cypress' cy commands with localStorage methods. Allows preserving localStorage between tests",
-  "keywords": [
-    "cypress",
-    "plugin",
-    "local-storage",
-    "localstorage",
-    "methods",
-    "utilities",
-    "commands",
-    "testing-tools",
-    "testing",
-    "persistence"
+  "name": "cypress-monorepo",
+  "private": true,
+  "workspaces": [
+    "packages/*"
   ],
-  "author": "Javier Brea",
-  "license": "MIT",
-  "repository": "https://github.com/javierbrea/cypress-localstorage-commands",
-  "files": [
-    "src",
-    "index.d.ts",
-    "plugin.js",
-    "plugin.d.ts"
-  ],
-  "main": "index.js",
-  "types": "index.d.ts",
   "scripts": {
-    "cspell": "cspell . --quiet",
-    "lint": "eslint .",
-    "lint-staged": "lint-staged",
-    "test": "jest",
-    "test:ci": "pnpm run test:unit && pnpm run test:mutation && pnpm run test:e2e",
-    "test:e2e": "pnpm test:e2e:cypress-9 && pnpm test:e2e:cypress-9-no-plugin && pnpm test:e2e:cypress-14 && pnpm test:e2e:cypress-14-no-plugin && pnpm test:e2e:cypress-latest && pnpm test:e2e:cypress-latest-no-plugin && pnpm test:e2e:cypress-typescript",
-    "test:e2e:cypress-9": "pnpm --filter cypress-9 test:ci",
-    "test:e2e:cypress-9-no-plugin": "pnpm --filter cypress-9-no-plugin test:ci",
-    "test:e2e:cypress-14": "pnpm --filter cypress-14 test:ci",
-    "test:e2e:cypress-14-no-plugin": "pnpm --filter cypress-14-no-plugin test:ci",
-    "test:e2e:cypress-latest": "pnpm --filter cypress-latest test:ci",
-    "test:e2e:cypress-latest-no-plugin": "pnpm --filter cypress-latest-no-plugin test:ci",
-    "test:e2e:cypress-typescript": "pnpm --filter cypress-typescript test:ci",
-    "test:mutation": "stryker run",
-    "test:unit": "pnpm run test",
-    "tsc": "tsc",
-    "prepare": "is-ci || husky install"
-  },
-  "peerDependencies": {
-    "cypress": ">=2.1.0"
-  },
-  "devDependencies": {
-    "@cypress/webpack-preprocessor": "8.0.0",
-    "@eslint/js": "10.0.1",
-    "@eslint/json": "2.1.0",
-    "@eslint/markdown": "8.0.3",
-    "@stryker-mutator/core": "10.0.0",
-    "@stryker-mutator/jest-runner": "10.0.0",
-    "@typescript-eslint/eslint-plugin": "8.70.1",
-    "@typescript-eslint/parser": "8.70.1",
-    "babel-loader": "10.1.1",
-    "babel-plugin-module-resolver": "5.0.3",
-    "cspell": "10.3.5",
-    "cypress": "16.1.0",
-    "eslint": "10.11.0",
-    "eslint-config-prettier": "10.1.8",
-    "eslint-import-resolver-typescript": "4.4.5",
-    "eslint-plugin-cypress": "7.0.2",
-    "eslint-plugin-import": "2.32.0",
-    "eslint-plugin-jest": "29.16.6",
-    "eslint-plugin-prettier": "5.5.6",
-    "eslint-plugin-react": "7.37.5",
-    "fs-extra": "11.4.1",
-    "globals": "17.12.0",
-    "husky": "9.1.7",
-    "is-ci": "4.1.0",
-    "jest": "30.5.2",
-    "lint-staged": "17.6.0",
-    "prettier": "3.9.9",
-    "sinon": "22.1.0",
-    "start-server-and-test": "3.0.12",
-    "typescript": "6.0.3",
-    "webpack": "5.111.1"
-  },
-  "lint-staged": {
-    "**/*.js": "eslint",
-    "**/*.ts": "eslint",
-    "**/*.tsx": "eslint",
-    "**/*.json": "eslint",
-    "**/*.md": "eslint",
-    "*.*": "cspell --no-must-find-files"
-  },
-  "engines": {
-    "node": ">=14.0.0"
-  },
-  "devEngines": {
-    "runtime": {
-      "name": "node",
-      "version": ">=22.22.1",
-      "onFail": "error"
-    }
-  },
-  "packageManager": "pnpm@12.6.0"
+    "test": "node tests/e2e/runner.test.js"
+  }
 }
